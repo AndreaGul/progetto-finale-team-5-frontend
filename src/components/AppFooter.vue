@@ -29,13 +29,13 @@ li {
 }
 
 .boxes {
-  padding: 50px;
+  padding: 10px;
 
   background: rgb(1, 42, 58);
   background: linear-gradient(
     90deg,
     rgba(1, 42, 58, 1) 0%,
-    rgba(190, 218, 246, 1) 100%
+    rgba(31, 121, 176, 1) 100%
   );
 
   .container-box {
@@ -76,7 +76,5 @@ li {
 .container-box-shop {
   display: flex;
   justify-content: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid gray;
 }
 </style>
