@@ -6,10 +6,12 @@ export default {
 
 <template>
   <header>
-    <div class="cont d-flex flex-row justify-content-between p-3">
+    <div
+      class="container d-flex flex-row justify-content-between align-items-center p-3"
+    >
       <h2>HOME</h2>
 
-      <ul class="d-flex gap-3 list-unstyled">
+      <ul class="d-flex gap-3 list-unstyled m-0">
         <li>
           <a
             class="text-decoration-none text-black"
@@ -29,4 +31,14 @@ export default {
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+h2 {
+  font-size: 40;
+  font-weight: bold;
+}
+
+a {
+  font-size: 20;
+  font-weight: 500;
+}
+</style>
