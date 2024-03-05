@@ -1,6 +1,29 @@
 <script>
+import axios from 'axios';
+import store from '../../store';
 export default {
   name: 'Jumbotron',
+
+  data() {
+    return {
+      store,
+    };
+  },
+
+  methods: {
+    getSpecializations() {
+      axios
+        .get('http://127.0.0.1:8001/api/specializations')
+        .then((response) => {
+          console.log(response);
+          this.store.specializations = response.data.data;
+          console.log(this.store.specializations);
+        });
+    },
+  },
+  created() {
+    this.getSpecializations();
+  },
 };
 </script>
 
@@ -9,74 +32,20 @@ export default {
     <div class="container pt-5 pb-2">
       <h1 class="titolo">Cerca il professionista che fa per te</h1>
       <form id="form">
-        <div
-          class="check-container row p-3 mb-2 d-flex justify-content-between"
-        >
-          <div class="form-check form-check-inline col-3">
+        <div class="check-container row p-3 mb-2 d-flex">
+          <div
+            class="form-check form-check-inline col-3"
+            v-for="specialization in this.store.specializations"
+          >
             <input
               class="form-check-input"
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
             />
-            <label class="form-check-label" for="inlineCheckbox1"
-              >WebDev 1</label
-            >
-          </div>
-          <div class="form-check form-check-inline col-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox2"
-              value="option2"
-            />
-            <label class="form-check-label" for="inlineCheckbox2"
-              >WebDev 2</label
-            >
-          </div>
-          <div class="form-check form-check-inline col-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox3"
-              value="option3"
-            />
-            <label class="form-check-label" for="inlineCheckbox3"
-              >WebDev 3</label
-            >
-          </div>
-          <div class="form-check form-check-inline col-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox4"
-              value="option4"
-            />
-            <label class="form-check-label" for="inlineCheckbox4"
-              >WebDev 4</label
-            >
-          </div>
-          <div class="form-check form-check-inline col-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox5"
-              value="option5"
-            />
-            <label class="form-check-label" for="inlineCheckbox5"
-              >WebDev 5</label
-            >
-          </div>
-          <div class="form-check form-check-inline col-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox6"
-              value="option6"
-            />
-            <label class="form-check-label" for="inlineCheckbox6"
-              >WebDev 6</label
-            >
+            <label class="form-check-label" for="inlineCheckbox1">{{
+              specialization.name
+            }}</label>
           </div>
         </div>
         <button class="btn">Cerca</button>
