@@ -7,17 +7,22 @@ export default {
   data() {
     return {
       store,
+      loading: false,
     };
   },
 
   methods: {
     getSpecializations() {
+      this.loading = true;
       axios
         .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
           console.log(this.store.specializations);
+        })
+        .finally(() => {
+          this.loading = false;
         });
     },
     selectOption(option) {
@@ -33,7 +38,7 @@ export default {
 
 <template>
   <div class="bg">
-    <div class="container pb-2">
+    <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
       <form id="form" class="d-flex align-items-center gap-3">
         <div class="dropdown">
@@ -60,6 +65,12 @@ export default {
         </div>
         <button class="btn">Cerca</button>
       </form>
+    </div>
+    <div class="my-3 container" v-else>
+      Caricamento in corso...
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
   </div>
 </template>
