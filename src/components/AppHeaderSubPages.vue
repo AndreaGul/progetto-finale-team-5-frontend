@@ -48,7 +48,7 @@ export default {
       class="container d-flex flex-row justify-content-between align-items-center p-3"
     >
       <div class="d-flex gap-5 align-items-center">
-        <h2 class="mb-0">HOME</h2>
+        <h2 class="mb-0"><a href="http://localhost:5173">HOME</a></h2>
 
         <form
           id="form"
@@ -63,7 +63,11 @@ export default {
               aria-expanded="false"
               id="dropdownMenuButton"
             >
-              {{ this.store.specializationsId === '' ? 'Specializzazione' : this.store.specializationsName }}
+              {{
+                this.store.specializationsId === ''
+                  ? 'Specializzazione'
+                  : this.store.specializationsName
+              }}
             </button>
             <ul class="dropdown-menu rounded-4">
               <li v-for="specialization in this.store.specializations">
@@ -105,9 +109,11 @@ export default {
 header {
   border-bottom: 1px solid #022b3aff;
 }
-h2 {
+h2 a {
   font-size: 40;
   font-weight: bold;
+  text-decoration: none;
+  color: #022b3a;
 }
 
 a {

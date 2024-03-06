@@ -9,7 +9,7 @@ export default {
     <div
       class="container d-flex flex-row justify-content-between align-items-center p-3"
     >
-      <h2 class="mb-0">HOME</h2>
+      <h2 class="mb-0"><a href="http://localhost:5173">HOME</a></h2>
 
       <ul class="d-flex gap-3 list-unstyled m-0">
         <li>
@@ -32,9 +32,11 @@ export default {
 </template>
 
 <style scoped>
-h2 {
+h2 a {
   font-size: 40;
   font-weight: bold;
+  text-decoration: none;
+  color: #022b3a;
 }
 
 a {
