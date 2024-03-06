@@ -1,14 +1,14 @@
 <script>
-import axios from 'axios';
-import store from '../../store';
+import axios from "axios";
+import store from "../../store";
 export default {
-  name: 'Jumbotron',
+  name: "Jumbotron",
 
   data() {
     return {
       store,
       loading: false,
-      specializationId: '',
+      specializationId: "",
     };
   },
 
@@ -16,7 +16,7 @@ export default {
     getSpecializations() {
       this.loading = true;
       axios
-        .get('http://127.0.0.1:8000/api/specializations')
+        .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
@@ -28,7 +28,7 @@ export default {
     },
 
     selectOption(option, id) {
-      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
 
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
@@ -36,7 +36,7 @@ export default {
       this.store.specializationsName = option;
     },
     search() {
-      this.$emit('search', this.specializationId);
+      this.$emit("search", this.specializationId);
     },
   },
   created() {
@@ -78,14 +78,7 @@ export default {
           </ul>
         </div>
 
-        <button class="btn btn-default btn-cerca">
-          <router-link
-            :to="{ name: 'professionalList' }"
-            class="text-decoration-none text-black"
-          >
-            cerca
-          </router-link>
-        </button>
+        <button class="btn btn-default btn-cerca">cerca</button>
       </form>
     </div>
     <div class="my-3 container" v-else>
@@ -120,7 +113,7 @@ export default {
 }
 
 .titolo {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 64px;
   max-width: 900px;
 }
