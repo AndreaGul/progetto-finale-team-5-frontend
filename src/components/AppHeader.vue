@@ -15,14 +15,14 @@ export default {
         <li>
           <a
             class="text-decoration-none text-black"
-            href="http://127.0.0.1:8001/login"
+            href="http://127.0.0.1:8000/login"
             >Login</a
           >
         </li>
         <li>
           <a
             class="text-decoration-none text-black"
-            href="http://127.0.0.1:8001/register"
+            href="http://127.0.0.1:8000/register"
             >Registrati</a
           >
         </li>
