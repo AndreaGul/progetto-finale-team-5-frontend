@@ -26,8 +26,10 @@ export default {
           this.loading = false;
         });
     },
+
     selectOption(option, id) {
       const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
     },
@@ -46,7 +48,9 @@ export default {
   <div class="bg">
     <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
+
       <form id="form" class="d-flex align-items-center gap-3" @submit.prevent="search">
+
         <div class="dropdown">
           <button
             class="btn btn-default specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
@@ -69,7 +73,16 @@ export default {
             </li>
           </ul>
         </div>
-        <button class="btn btn-default btn-cerca">Cerca</button>
+
+        <button class="btn btn-default btn-cerca">
+          <router-link
+            :to="{ name: 'professionalList' }"
+            class="text-decoration-none text-black"
+          >
+            cerca
+          </router-link>
+        </button>
+
       </form>
     </div>
     <div class="my-3 container" v-else>
