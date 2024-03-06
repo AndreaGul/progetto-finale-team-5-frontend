@@ -1,8 +1,8 @@
 <script>
-import axios from 'axios';
-import store from '../../store';
+import axios from "axios";
+import store from "../../store";
 export default {
-  name: 'Jumbotron',
+  name: "Jumbotron",
 
   data() {
     return {
@@ -13,12 +13,16 @@ export default {
   methods: {
     getSpecializations() {
       axios
-        .get('http://127.0.0.1:8001/api/specializations')
+        .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
           console.log(this.store.specializations);
         });
+    },
+    selectOption(option) {
+      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+      dropdownMenuButton.innerHTML = option;
     },
   },
   created() {
@@ -31,29 +35,30 @@ export default {
   <div class="bg">
     <div class="container pb-2">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
-      <form id="form">
-
-        <div class="check-container px-2">
-          <div class="row p-3 justify-content-between">
-              <div
-                class="form-check form-check-inline col-3"
-                v-for="specialization in this.store.specializations"
+      <form id="form" class="d-flex align-items-center gap-3">
+        <div class="dropdown">
+          <button
+            class="btn specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            id="dropdownMenuButton"
+          >
+            Specializzazione
+          </button>
+          <ul class="dropdown-menu rounded-4">
+            <li v-for="specialization in this.store.specializations">
+              <a
+                :value="specialization.id"
+                class="dropdown-item"
+                href="#"
+                @click="selectOption(specialization.name)"
+                >{{ specialization.name }}</a
               >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox1"
-                    value="option1"
-                  />
-                  <label class="form-check-label" for="inlineCheckbox1">{{
-                    specialization.name
-                  }}</label>
-          
-               </div>
-
-          </div>
+            </li>
+          </ul>
         </div>
-        <button class="btn mt-3">Cerca</button>
+        <button class="btn">Cerca</button>
       </form>
     </div>
   </div>
@@ -72,7 +77,7 @@ export default {
   font-size: 18px;
 }
 .titolo {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 64px;
   max-width: 900px;
 }
@@ -84,6 +89,11 @@ export default {
   border-radius: 30px;
   font-size: 24px;
 }
+
+.btn.specializations {
+  width: 400px;
+}
+
 .btn:hover {
   background-color: #bfdbf7;
 }
