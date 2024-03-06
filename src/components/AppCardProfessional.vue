@@ -1,28 +1,27 @@
 <script>
 export default {
   name: 'CardProfessional',
+  props : ['slug', 'specializations', 'photo'],
 };
+
 </script>
 
 <template>
-  <div class="container">
-    <div class="row g-3">
-      <div class="col-4">
+  <div class="col-12 col-md-6 col-lg-4 py-2">
         <div class="card py-3">
           <div
             class="cont-card d-flex justify-content-center align-items-center"
           >
             <div class="cont-img">
               <img
-                src="https://fastly.picsum.photos/id/37/200/200.jpg?hmac=iQLD6vXJYds0UdYxW9UhbkVxORZeEckKL-FVeaMfwF0"
+                :src="photo"
                 alt=""
               />
             </div>
-
             <ul class="cont-ul">
-              <li class="list-unstyled"><h3>Nome</h3></li>
+              <li class="list-unstyled"><h3>{{slug.split('-').join(' ')}}</h3></li>
               <li class="list-unstyled">
-                <h5>Specializazzione</h5>
+                <h5 v-for="specialization in specializations">{{specialization.name}}</h5>
               </li>
               <li class="list-unstyled">
                 <a class="text-decoration-none color-a" href="">Link Pagina</a>
@@ -31,8 +30,6 @@ export default {
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <style scoped>
