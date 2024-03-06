@@ -8,6 +8,7 @@ export default {
     return {
       store,
       loading: false,
+      specializationId: '',
     };
   },
 
@@ -25,9 +26,16 @@ export default {
           this.loading = false;
         });
     },
-    selectOption(option) {
+    selectOption(option, id) {
       const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+
       dropdownMenuButton.innerHTML = option;
+      this.specializationId = id;
+    },
+
+    search() {
+      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+      this.$emit('search', this.specializationId);
     },
   },
   created() {
@@ -44,7 +52,11 @@ export default {
       <div class="d-flex gap-5 align-items-center">
         <h2 class="mb-0">HOME</h2>
 
-        <form id="form" class="d-flex align-items-center gap-3">
+        <form
+          id="form"
+          class="d-flex align-items-center gap-3"
+          @submit.prevent="search"
+        >
           <div class="dropdown">
             <button
               class="btn btn-default specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
@@ -61,7 +73,7 @@ export default {
                   :value="specialization.id"
                   class="dropdown-item"
                   href="#"
-                  @click="selectOption(specialization.name)"
+                  @click="selectOption(specialization.name, specialization.id)"
                   >{{ specialization.name }}</a
                 >
               </li>

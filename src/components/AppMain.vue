@@ -7,7 +7,6 @@ import AppCardProfessional from './AppCardProfessional.vue';
 // import AppReviews from './AppReviews.vue';
 // import AppDetailInfoProfessional from './AppDetailInfoProfessional.vue';
 
-import AppHeaderSubPages from './AppHeaderSubPages.vue';
 import axios from 'axios';
 
 export default {
@@ -21,10 +20,10 @@ export default {
   components: {
     AppJumbotron,
     AppCardProfessional,
+
     // AppInfoSingleProfessional,
     // AppDetailInfoProfessional,
     // AppReviews,
-    AppHeaderSubPages,
   },
 
   methods: {
