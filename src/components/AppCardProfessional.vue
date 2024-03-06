@@ -6,28 +6,6 @@ export default {
 </script>
 
 <template>
-  <!-- <div class="col-12 col-md-6 col-lg-4 py-2">
-    <div class="card py-3">
-      <div class="cont-card d-flex justify-content-center align-items-center">
-        <div class="cont-img">
-          <img :src="photo" alt="" />
-        </div>
-        <ul class="cont-ul">
-          <li class="list-unstyled">
-            <h3>{{ slug.split("-").join(" ") }}</h3>
-          </li>
-          <li class="list-unstyled">
-            <h5 v-for="specialization in specializations">
-              {{ specialization.name }}
-            </h5>
-          </li>
-          <li class="list-unstyled">
-            <a class="text-decoration-none color-a" href="">Link Pagina</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
   <div class="wrapper col-12 col-md-6 pb-3">
     <div class="user-card">
       <div class="user-card-img">
@@ -42,9 +20,6 @@ export default {
             <li v-for="specialization in specializations">{{ specialization.name }}</li>
           </ul>
           </p>
-        <p>
-          <span>Descrizione:</span> {{performance}}
-        </p>
         <a class="text-decoration-none color-a btn btn-detail" href="">Dettaglio</a>
       </div>
     </div>
@@ -122,8 +97,8 @@ img {
 }
 
 .user-card-img img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 50%;
 }
