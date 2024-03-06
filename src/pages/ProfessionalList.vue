@@ -1,9 +1,14 @@
 <script>
+import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
+
 export default {
   name: 'ProfessionalList',
+  components: {
+    AppHeaderSubPages,
+  },
 };
 </script>
 
-<template>ciao</template>
+<template><AppHeaderSubPages></AppHeaderSubPages></template>
 
 <style scoped></style>
