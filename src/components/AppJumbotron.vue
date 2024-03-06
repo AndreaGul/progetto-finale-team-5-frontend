@@ -7,17 +7,22 @@ export default {
   data() {
     return {
       store,
+      loading: false,
     };
   },
 
   methods: {
     getSpecializations() {
+      this.loading = true;
       axios
-        .get('http://127.0.0.1:8001/api/specializations')
+        .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
           console.log(this.store.specializations);
+        })
+        .finally(() => {
+          this.loading = false;
         });
     },
   },
@@ -29,32 +34,39 @@ export default {
 
 <template>
   <div class="bg">
-    <div class="container pb-2">
+    <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
       <form id="form">
-
         <div class="check-container px-2">
           <div class="row p-3 justify-content-between">
-              <div
-                class="form-check form-check-inline col-3"
-                v-for="specialization in this.store.specializations"
+            <div
+              class="form-check form-check-inline col-3"
+              v-for="specialization in this.store.specializations"
+              :key="specialization.id"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                :id="'inlineCheckbox' + specialization.id"
+                :value="specialization.id"
+              />
+              <label
+                class="form-check-label"
+                :for="'inlineCheckbox' + specialization.id"
               >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="inlineCheckbox1"
-                    value="option1"
-                  />
-                  <label class="form-check-label" for="inlineCheckbox1">{{
-                    specialization.name
-                  }}</label>
-          
-               </div>
-
+                {{ specialization.name }}
+              </label>
+            </div>
           </div>
         </div>
         <button class="btn mt-3">Cerca</button>
       </form>
+    </div>
+    <div class="my-3 container" v-else>
+      Caricamento in corso...
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
   </div>
 </template>
