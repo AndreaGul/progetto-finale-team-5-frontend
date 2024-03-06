@@ -1,7 +1,7 @@
 <script>
-import AppCardProfessional from '../components/AppCardProfessional.vue';
+import AppCardProfessional from "../components/AppCardProfessional.vue";
 export default {
-  name: 'MainSubPages',
+  name: "MainSubPages",
   components: {
     AppCardProfessional,
   },
@@ -19,6 +19,8 @@ export default {
     <div class="row d-flex flex-wrap">
       <AppCardProfessional
         v-for="professional in professionals"
+        :address="professional.address"
+        :performance="professional.performance"
         :slug="professional.slug"
         :specializations="professional.specializations"
         :photo="professional.photo"
