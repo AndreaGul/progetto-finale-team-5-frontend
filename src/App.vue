@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader></AppHeader>
+  <!-- <AppHeader></AppHeader> -->
   <router-view />
   <AppFooter></AppFooter>
 </template>
