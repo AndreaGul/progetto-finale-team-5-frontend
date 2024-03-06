@@ -1,7 +1,7 @@
 <script>
 export default {
   name: "CardProfessional",
-  props: ["slug", "specializations", "photo","address","performance"],
+  props: ["slug", "specializations", "photo", "address", "performance"],
 };
 </script>
 
@@ -14,13 +14,16 @@ export default {
       <div class="user-card-info">
         <h2>{{ slug.split("-").join(" ") }}</h2>
         <p><span>Email:</span> mail</p>
-        <p><span>Indirizzo:</span> {{address}}</p>
-        <p><span>Specializzazioni:</span> 
-          <ul>
-            <li v-for="specialization in specializations">{{ specialization.name }}</li>
-          </ul>
-          </p>
-        <a class="text-decoration-none color-a btn btn-detail" href="">Dettaglio</a>
+        <p><span>Indirizzo:</span> {{ address }}</p>
+        <ul>
+          <span>Specializzazioni:</span>
+          <li v-for="specialization in specializations">
+            - {{ specialization.name }}
+          </li>
+        </ul>
+        <a class="text-decoration-none color-a btn btn-detail" href=""
+          >Dettaglio</a
+        >
       </div>
     </div>
   </div>
@@ -119,12 +122,18 @@ img {
   font-size: 14px;
   margin-bottom: 2px;
 }
-.user-card-info p span {
+
+.user-card-info ul {
+  padding-inline-start: 0;
+  list-style: none;
+}
+.user-card-info p span,
+.user-card-info ul span {
   font-weight: 700;
   margin-right: 10px;
 }
 
-.btn-detail{
+.btn-detail {
   background-color: #1f798b;
   color: white;
 }

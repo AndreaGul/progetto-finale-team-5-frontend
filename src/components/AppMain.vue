@@ -34,6 +34,7 @@ export default {
           .then((response) => {
             this.professionals = response.data.data.data;
           });
+        this.$router.push("professionalList");
       }
     },
   },
