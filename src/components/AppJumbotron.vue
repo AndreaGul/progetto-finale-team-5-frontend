@@ -1,8 +1,8 @@
 <script>
-import axios from "axios";
-import store from "../../store";
+import axios from 'axios';
+import store from '../../store';
 export default {
-  name: "Jumbotron",
+  name: 'Jumbotron',
 
   data() {
     return {
@@ -15,7 +15,7 @@ export default {
     getSpecializations() {
       this.loading = true;
       axios
-        .get("http://127.0.0.1:8000/api/specializations")
+        .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
@@ -26,7 +26,7 @@ export default {
         });
     },
     selectOption(option) {
-      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
       dropdownMenuButton.innerHTML = option;
     },
   },
@@ -40,6 +40,7 @@ export default {
   <div class="bg">
     <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
+
       <form id="form" class="d-flex align-items-center gap-3">
         <div class="dropdown">
           <button
@@ -63,7 +64,14 @@ export default {
             </li>
           </ul>
         </div>
-        <button class="btn">Cerca</button>
+        <button class="btn">
+          <router-link
+            :to="{ name: 'professionalList' }"
+            class="text-decoration-none text-black"
+          >
+            cerca
+          </router-link>
+        </button>
       </form>
     </div>
     <div class="my-3 container" v-else>
@@ -88,7 +96,7 @@ export default {
   font-size: 18px;
 }
 .titolo {
-  font-family: "Share Tech Mono", monospace;
+  font-family: 'Share Tech Mono', monospace;
   font-size: 64px;
   max-width: 900px;
 }
