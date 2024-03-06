@@ -9,7 +9,7 @@ export default {
     <div
       class="container d-flex flex-row justify-content-between align-items-center p-3"
     >
-      <h2>HOME</h2>
+      <h2 class="mb-0">HOME</h2>
 
       <ul class="d-flex gap-3 list-unstyled m-0">
         <li>
