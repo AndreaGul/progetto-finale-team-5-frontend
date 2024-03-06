@@ -1,13 +1,14 @@
 <script>
-import axios from "axios";
-import store from "../../store";
+import axios from 'axios';
+import store from '../../store';
 export default {
-  name: "Jumbotron",
+  name: 'Jumbotron',
 
   data() {
     return {
       store,
       loading: false,
+      specializationId : ''
     };
   },
 
@@ -15,7 +16,7 @@ export default {
     getSpecializations() {
       this.loading = true;
       axios
-        .get("http://127.0.0.1:8000/api/specializations")
+        .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
@@ -25,10 +26,15 @@ export default {
           this.loading = false;
         });
     },
-    selectOption(option) {
+    selectOption(option, id) {
       const dropdownMenuButton = document.getElementById("dropdownMenuButton");
       dropdownMenuButton.innerHTML = option;
+      this.specializationId = id;
     },
+    search(){
+      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+      this.$emit('search', this.specializationId);
+    }
   },
   created() {
     this.getSpecializations();
@@ -40,10 +46,10 @@ export default {
   <div class="bg">
     <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
-      <form id="form" class="d-flex align-items-center gap-3">
+      <form id="form" class="d-flex align-items-center gap-3" @submit.prevent="search">
         <div class="dropdown">
           <button
-            class="btn specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
+            class="btn btn-default specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -57,13 +63,13 @@ export default {
                 :value="specialization.id"
                 class="dropdown-item"
                 href="#"
-                @click="selectOption(specialization.name)"
+                @click="selectOption(specialization.name, specialization.id)"
                 >{{ specialization.name }}</a
               >
             </li>
           </ul>
         </div>
-        <button class="btn">Cerca</button>
+        <button class="btn btn-default btn-cerca">Cerca</button>
       </form>
     </div>
     <div class="my-3 container" v-else>
@@ -82,18 +88,13 @@ export default {
   padding: 100px 0;
 }
 
-.check-container {
-  background-color: #1f7a8c;
-  border-radius: 7px;
-  font-size: 18px;
-}
 .titolo {
-  font-family: "Share Tech Mono", monospace;
+  font-family: 'Share Tech Mono', monospace;
   font-size: 64px;
   max-width: 900px;
 }
 
-.btn {
+.btn-default {
   background-color: white;
   color: #022b3aff;
   font-weight: bold;
@@ -101,7 +102,10 @@ export default {
   font-size: 24px;
 }
 
-.btn.specializations {
+.btn-cerca {
+  border: 2px solid #022b3aff;
+}
+.btn-default.specializations {
   width: 400px;
 }
 
