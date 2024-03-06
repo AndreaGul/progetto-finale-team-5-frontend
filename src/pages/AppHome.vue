@@ -4,7 +4,7 @@ import AppMain from '../components/AppMain.vue';
 export default {
   name: 'home',
   components: {
-    AppHome,
+    AppHeader,
     AppMain,
   },
 };

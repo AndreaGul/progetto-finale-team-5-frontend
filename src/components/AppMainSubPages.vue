@@ -1,22 +1,31 @@
 <script>
-import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
-import AppCardProfessional from '../components/AppCardProfessional.vue';
-//  import AppMainSubPages from '../components/AppMainSubPages.vue';
+import AppJumbotron from './AppJumbotron.vue';
+import AppCardProfessional from './AppCardProfessional.vue';
+// da mettere nella pagina info
+
+// import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
+// import AppReviews from './AppReviews.vue';
+// import AppDetailInfoProfessional from './AppDetailInfoProfessional.vue';
 
 import axios from 'axios';
 
 export default {
-  name: 'ProfessionalList',
+  name: 'MainSubPages',
+
   data() {
     return {
       professionals: [],
     };
   },
   components: {
-    AppHeaderSubPages,
+    AppJumbotron,
     AppCardProfessional,
-    // AppMainSubPages,
+
+    // AppInfoSingleProfessional,
+    // AppDetailInfoProfessional,
+    // AppReviews,
   },
+
   methods: {
     search(id) {
       if (id !== '') {
@@ -32,8 +41,7 @@ export default {
 </script>
 
 <template>
-  <AppHeaderSubPages @search="search"></AppHeaderSubPages>
-  <!-- <AppMainSubPages ></AppMainSubPages> -->
+  <AppJumbotron @search="search"></AppJumbotron>
   <div class="container pt-5">
     <div class="row d-flex flex-wrap">
       <AppCardProfessional
@@ -43,7 +51,7 @@ export default {
         :photo="professional.photo"
       ></AppCardProfessional>
     </div>
-
+    main
     <!-- <div class="info d-flex">
       <AppInfoSingleProfessional></AppInfoSingleProfessional>
       <AppReviews></AppReviews>
