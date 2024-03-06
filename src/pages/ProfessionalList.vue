@@ -1,7 +1,6 @@
 <script>
 import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
-import AppCardProfessional from '../components/AppCardProfessional.vue';
-//  import AppMainSubPages from '../components/AppMainSubPages.vue';
+import AppMainSubPages from '../components/AppMainSubPages.vue';
 
 import axios from 'axios';
 import store from '../../store';
@@ -16,8 +15,7 @@ export default {
   },
   components: {
     AppHeaderSubPages,
-    AppCardProfessional,
-    // AppMainSubPages,
+    AppMainSubPages,
   },
   methods: {
     search(id) {
@@ -30,31 +28,16 @@ export default {
       }
     },
   },
-  created(){
-    if(this.store.specializationsId !== '')this.search(this.store.specializationsId)
-  }
+  created() {
+    if (this.store.specializationsId !== '')
+      this.search(this.store.specializationsId);
+  },
 };
 </script>
 
 <template>
   <AppHeaderSubPages @search="search"></AppHeaderSubPages>
-  <!-- <AppMainSubPages ></AppMainSubPages> -->
-  <div class="container pt-5">
-    <div class="row d-flex flex-wrap">
-      <AppCardProfessional
-        v-for="professional in professionals"
-        :slug="professional.slug"
-        :specializations="professional.specializations"
-        :photo="professional.photo"
-      ></AppCardProfessional>
-    </div>
-
-    <!-- <div class="info d-flex">
-      <AppInfoSingleProfessional></AppInfoSingleProfessional>
-      <AppReviews></AppReviews>
-    </div>
-    <AppDetailInfoProfessional></AppDetailInfoProfessional> -->
-  </div>
+  <AppMainSubPages :professionals="professionals"></AppMainSubPages>
 </template>
 
 <style scoped></style>
