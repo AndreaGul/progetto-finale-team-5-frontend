@@ -32,9 +32,10 @@ export default {
 
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
+      this.store.specializationsId = id;
+      this.store.specializationsName = option;
     },
     search(){
-      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
       this.$emit('search', this.specializationId);
     }
   },

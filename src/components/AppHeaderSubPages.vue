@@ -28,13 +28,11 @@ export default {
     },
     selectOption(option, id) {
       const dropdownMenuButton = document.getElementById('dropdownMenuButton');
-
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
     },
 
     search() {
-      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
       this.$emit('search', this.specializationId);
     },
   },
@@ -65,7 +63,7 @@ export default {
               aria-expanded="false"
               id="dropdownMenuButton"
             >
-              Specializzazione
+              {{ this.store.specializationsId === '' ? 'Specializzazione' : this.store.specializationsName }}
             </button>
             <ul class="dropdown-menu rounded-4">
               <li v-for="specialization in this.store.specializations">

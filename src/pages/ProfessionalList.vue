@@ -4,12 +4,14 @@ import AppCardProfessional from '../components/AppCardProfessional.vue';
 //  import AppMainSubPages from '../components/AppMainSubPages.vue';
 
 import axios from 'axios';
+import store from '../../store';
 
 export default {
   name: 'ProfessionalList',
   data() {
     return {
       professionals: [],
+      store,
     };
   },
   components: {
@@ -28,6 +30,9 @@ export default {
       }
     },
   },
+  created(){
+    if(this.store.specializationsId !== '')this.search(this.store.specializationsId)
+  }
 };
 </script>
 
