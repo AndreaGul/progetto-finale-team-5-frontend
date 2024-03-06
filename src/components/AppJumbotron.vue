@@ -8,7 +8,7 @@ export default {
     return {
       store,
       loading: false,
-      specializationId : ''
+      specializationId: '',
     };
   },
 
@@ -28,16 +28,16 @@ export default {
     },
 
     selectOption(option, id) {
-      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
 
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
       this.store.specializationsId = id;
       this.store.specializationsName = option;
     },
-    search(){
+    search() {
       this.$emit('search', this.specializationId);
-    }
+    },
   },
   created() {
     this.getSpecializations();
@@ -50,8 +50,11 @@ export default {
     <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
 
-      <form id="form" class="d-flex align-items-center gap-3" @submit.prevent="search">
-
+      <form
+        id="form"
+        class="d-flex align-items-center gap-3"
+        @submit.prevent="search"
+      >
         <div class="dropdown">
           <button
             class="btn btn-default specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
@@ -83,7 +86,6 @@ export default {
             cerca
           </router-link>
         </button>
-
       </form>
     </div>
     <div class="my-3 container" v-else>
@@ -97,9 +99,24 @@ export default {
 
 <style scoped>
 .bg {
-  background-color: #022b3a;
+  background: linear-gradient(-45deg, #e1e4f1, #012a3a, #1f798b, #bedaf6);
+  background-size: 400% 400%;
+  animation: gradient 13s ease infinite;
+
   color: white;
   padding: 100px 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .titolo {
