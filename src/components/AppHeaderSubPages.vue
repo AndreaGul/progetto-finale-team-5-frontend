@@ -48,7 +48,10 @@ export default {
       class="container d-flex flex-row justify-content-between align-items-center p-3"
     >
       <div class="d-flex gap-5 align-items-center">
-        <h2 class="mb-0"><a href="http://localhost:5173">HOME</a></h2>
+        <h2 class="mb-0">
+          <!-- <a href="http://localhost:5173">HOME</a> -->
+          <router-link :to="{ name: 'home' }"> HOME </router-link>
+        </h2>
 
         <form
           id="form"
