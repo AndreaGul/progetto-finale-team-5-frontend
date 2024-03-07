@@ -1,12 +1,18 @@
 <script>
+import store from '../../store';
 export default {
   name: "CardProfessional",
   props: ["slug", "specializations", "photo", "address", "performance", "id"],
   methods: {
     getInfo() {
-      this.$emit("getInfoProfessional", this.id);
+      this.store.professionalId = this.id
     },
   },
+  data() {
+    return {
+      store,
+    }
+  }
 };
 </script>
 
@@ -42,16 +48,9 @@ export default {
             name: 'ProfessionalDetail',
             params: { slug: slug },
           }"
+          @click="getInfo"
           class="text-decoration-none color-a btn btn-detail"
-          >Dettaglio</router-link
-
-        <a
-          @click.prevent="getInfo"
-          class="text-decoration-none color-a btn btn-detail"
-          href="#"
-          >Dettaglio</a
-
-        >
+          >Dettaglio</router-link>
       </div>
     </div>
   </div>
