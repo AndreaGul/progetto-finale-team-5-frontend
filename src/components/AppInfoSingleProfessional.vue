@@ -9,7 +9,17 @@ export default {
   <div class="container d-flex justify-content-between">
     <div class="card-info d-flex justify-content-around">
       <div class="cont-img">
-        <img :src="photo" class="img-prof" alt="..." />
+        <img
+          v-if="photo && photo.startsWith('uploads')"
+          :src="'http://127.0.0.1:8000/storage/' + photo"
+          alt=""
+        />
+        <img v-else-if="photo" :src="photo" alt="" />
+        <img
+          v-else
+          src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+          alt=""
+        />
       </div>
       <div class="info-prof d-flex flex-column">
         <ul>
