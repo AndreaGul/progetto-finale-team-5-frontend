@@ -1,13 +1,21 @@
 <script>
 export default {
-  name: "AppInfoSingleProfessional",
-  props: ["name", "surname", "specializations", "photo"],
+  name: 'AppInfoSingleProfessional',
+  props: [
+    'name',
+    'surname',
+    'specializations',
+    'photo',
+    'address',
+    'phone',
+    'curriculum',
+  ],
 };
 </script>
 
 <template>
-  <div class="container d-flex justify-content-between">
-    <div class="card-info d-flex justify-content-around">
+  <div class="info-container">
+    <div class="card-info d-flex align-items-center">
       <div class="cont-img">
         <img
           v-if="photo && photo.startsWith('uploads')"
@@ -21,51 +29,105 @@ export default {
           alt=""
         />
       </div>
-      <div class="info-prof d-flex flex-column">
-        <ul>
-          <li class="list-unstyled">
-            <h3>{{ name + " " + surname }}</h3>
+      <div class="d-flex flex-column">
+        <ul class="list-unstyled">
+          <li>
+            <h3>{{ name + ' ' + surname }}</h3>
           </li>
-          <li class="list-unstyled">
+          <li class="specialization">
             <h5 v-for="specialization in specializations">
               {{ specialization.name }}
             </h5>
           </li>
         </ul>
 
-        <ul class="d-flex">
-          <li class="list-unstyled star"><i class="fa-solid fa-star"></i></li>
-          <li class="list-unstyled star"><i class="fa-solid fa-star"></i></li>
-          <li class="list-unstyled star"><i class="fa-regular fa-star"></i></li>
-          <li class="list-unstyled star"><i class="fa-regular fa-star"></i></li>
-          <li class="list-unstyled star"><i class="fa-regular fa-star"></i></li>
+        <ul class="d-flex list-unstyled star">
+          <li><i class="fa-solid fa-star"></i></li>
+          <li><i class="fa-solid fa-star"></i></li>
+          <li><i class="fa-regular fa-star"></i></li>
+          <li><i class="fa-regular fa-star"></i></li>
+          <li><i class="fa-regular fa-star"></i></li>
         </ul>
       </div>
+    </div>
+    <div class="card-details">
+      <ul class="p-0 m-0">
+        <li class="list-unstyled">
+          <h4>Indirizzo</h4>
+          <h5>{{ address }}</h5>
+        </li>
+        <li class="list-unstyled" v-if="phone">
+          <!-- <h4>Telefono</h4> -->
+
+          <h4>Telefono</h4>
+          <h5>{{ phone }}</h5>
+        </li>
+
+        <li class="list-unstyled" v-if="curriculum">
+          <h6>
+            <a :href="'http://127.0.0.1:8000/storage/' + curriculum"
+              >Curriculum vitae</a
+            >
+          </h6>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <style scoped>
-.card-info {
+.info-container {
   padding: 20px;
 }
-.star {
-  font-size: 30px;
+.card-info {
+  margin-bottom: 40px;
 }
 
-.star:hover {
-  color: rgb(255, 230, 8);
-  cursor: pointer;
+.card-info h3 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.card-info ul {
+  margin: 0 0 0 60px;
+}
+
+.card-info .specialization {
+  margin: 10px 0 20px 0;
 }
 
 img {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 24px;
 }
 
 .cont-img {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
+}
+
+.star li {
+  font-size: 30px;
+}
+
+.star li:hover {
+  color: rgb(255, 230, 8);
+  cursor: pointer;
+}
+
+.card-details {
+  background-color: #e1e5f2;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.card-details h4 {
+  font-size: 26px;
+}
+
+.card-details li {
+  padding: 5px 0;
 }
 </style>
