@@ -35,6 +35,18 @@ export default {
     search() {
       this.$emit('search', this.specializationId);
     },
+    findSpecialization(id, name){
+      if(id == this.store.specializationsId){
+        this.store.specializationsName = name;
+      }
+    },
+    getName(){
+      if(this.store.specializationsName !== ''){
+        return this.store.specializationsName;
+      }else{
+        return 'Specializzazione';
+      }
+    }
   },
   created() {
     this.getSpecializations();
@@ -67,13 +79,12 @@ export default {
               id="dropdownMenuButton"
             >
               {{
-                this.store.specializationsId === ''
-                  ? 'Specializzazione'
-                  : this.store.specializationsName
+                getName()
               }}
             </button>
             <ul class="dropdown-menu rounded-4">
               <li v-for="specialization in this.store.specializations">
+                {{ findSpecialization(specialization.id, specialization.name) }}
                 <a
                   :value="specialization.id"
                   class="dropdown-item"

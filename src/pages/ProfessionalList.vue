@@ -36,7 +36,9 @@ export default {
     },
   },
   created() {
-    if (this.store.specializationsId !== '')
+    if(this.store.specializationsId === ''){
+        this.store.specializationsId = this.$route.params.id;
+    }
       this.search(this.store.specializationsId);
   },
 };
