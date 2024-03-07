@@ -9,6 +9,8 @@ export default {
   name: 'ProfessionalList',
   data() {
     return {
+      loading: false,
+
       professionals: [],
       store,
     };
@@ -19,11 +21,16 @@ export default {
   },
   methods: {
     search(id) {
+      this.loading = true;
+
       if (id !== '') {
         axios
           .get('http://127.0.0.1:8000/api/professionals/' + id)
           .then((response) => {
             this.professionals = response.data.data.data;
+          })
+          .finally(() => {
+            this.loading = false;
           });
       }
     },
@@ -37,6 +44,15 @@ export default {
 
 <template>
   <AppHeaderSubPages @search="search"></AppHeaderSubPages>
+  <div class="container">
+    <div class="my-3" v-if="loading">
+      caricamento in corso...
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
   <AppMainSubPages :professionals="professionals"></AppMainSubPages>
 </template>
 
