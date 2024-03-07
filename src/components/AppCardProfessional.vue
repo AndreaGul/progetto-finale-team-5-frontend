@@ -17,7 +17,7 @@ export default {
         <img :src="photo ?? 'bah'" alt="" />
       </div>
       <div class="user-card-info">
-        <h2>{{ slug.split("-").join(" ") }}</h2>
+        <h2>{{ slug.split('-').join(' ') }}</h2>
         <p><span>Email:</span> mail</p>
         <p><span>Indirizzo:</span> {{ address }}</p>
         <ul>
@@ -26,11 +26,21 @@ export default {
             - {{ specialization.name }}
           </li>
         </ul>
+
+        <router-link
+          :to="{
+            name: 'ProfessionalDetail',
+            params: { slug: slug },
+          }"
+          class="text-decoration-none color-a btn btn-detail"
+          >Dettaglio</router-link
+
         <a
           @click.prevent="getInfo"
           class="text-decoration-none color-a btn btn-detail"
           href="#"
           >Dettaglio</a
+
         >
       </div>
     </div>
@@ -89,7 +99,7 @@ img {
 }
 
 .user-card:before {
-  content: "";
+  content: '';
   position: absolute;
   height: 300%;
   width: 173px;
@@ -122,7 +132,7 @@ img {
   font-size: 24px;
   margin: 0;
   margin-bottom: 10px;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 3px;
 }
 
