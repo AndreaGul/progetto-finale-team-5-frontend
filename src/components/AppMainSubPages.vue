@@ -1,11 +1,10 @@
 <script>
-import AppCardProfessional from "../components/AppCardProfessional.vue";
-import AppDetailInfoProfessional from "./AppDetailInfoProfessional.vue";
-import AppInfoSingleProfessional from "./AppInfoSingleProfessional.vue";
-import AppReviews from "./AppReviews.vue";
-import axios from "axios";
+import AppCardProfessional from '../components/AppCardProfessional.vue';
+import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
+import AppReviews from './AppReviews.vue';
+import axios from 'axios';
 export default {
-  name: "MainSubPages",
+  name: 'MainSubPages',
   data() {
     return {
       professional: null,
@@ -13,7 +12,6 @@ export default {
   },
   components: {
     AppCardProfessional,
-    AppDetailInfoProfessional,
     AppInfoSingleProfessional,
     AppReviews,
   },
@@ -27,7 +25,7 @@ export default {
     getInfo(id) {
       console.log(id);
       axios
-        .get("http://127.0.0.1:8000/api/professionals/show/" + id)
+        .get('http://127.0.0.1:8000/api/professionals/show/' + id)
         .then((response) => {
           console.log(response.data.data);
           this.professional = response.data.data;
@@ -58,18 +56,14 @@ export default {
         :surname="professional.user.surname"
         :specializations="professional.specializations"
         :photo="professional.photo"
+        :address="professional.address"
+        :phone="professional.phone"
+        :curriculum="professional.curriculum"
       ></AppInfoSingleProfessional>
       <AppReviews
         v-if="professional"
         :reviews="professional.reviews"
       ></AppReviews>
-    </div>
-    <div v-if="professional">
-      <AppDetailInfoProfessional
-        :address="professional.address"
-        :phone="professional.phone"
-        :curriculum="professional.curriculum"
-      ></AppDetailInfoProfessional>
     </div>
   </div>
   <!-- <div class="container">

@@ -1,7 +1,7 @@
 <script>
 export default {
-  name: "AppReviews",
-  props: ["reviews"],
+  name: 'AppReviews',
+  props: ['reviews'],
 };
 </script>
 
@@ -18,9 +18,9 @@ export default {
 
 <style scoped>
 .card-reviews {
-  overflow: scroll;
+  overflow: auto;
   padding: 20px;
-  background-color: rgb(35, 118, 181);
+  background-color: #1f7a8c;
   height: 400px;
 }
 .star {
