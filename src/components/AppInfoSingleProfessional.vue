@@ -1,6 +1,7 @@
 <script>
 export default {
-  name: 'AppInfoSingleProfessional',
+  name: "AppInfoSingleProfessional",
+  props: ["name", "surname", "specializations", "photo"],
 };
 </script>
 
@@ -8,16 +9,18 @@ export default {
   <div class="container d-flex justify-content-between">
     <div class="card-info d-flex justify-content-around">
       <div class="cont-img">
-        <img
-          src="https://fastly.picsum.photos/id/37/200/200.jpg?hmac=iQLD6vXJYds0UdYxW9UhbkVxORZeEckKL-FVeaMfwF0"
-          class="img-prof"
-          alt="..."
-        />
+        <img :src="photo" class="img-prof" alt="..." />
       </div>
       <div class="info-prof d-flex flex-column">
         <ul>
-          <li class="list-unstyled"><h3>Nome</h3></li>
-          <li class="list-unstyled"><h5>Specializazzione</h5></li>
+          <li class="list-unstyled">
+            <h3>{{ name + " " + surname }}</h3>
+          </li>
+          <li class="list-unstyled">
+            <h5 v-for="specialization in specializations">
+              {{ specialization.name }}
+            </h5>
+          </li>
         </ul>
 
         <ul class="d-flex">

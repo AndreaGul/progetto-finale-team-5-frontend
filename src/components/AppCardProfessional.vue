@@ -1,7 +1,12 @@
 <script>
 export default {
-  name: 'CardProfessional',
-  props: ['slug', 'specializations', 'photo', 'address', 'performance'],
+  name: "CardProfessional",
+  props: ["slug", "specializations", "photo", "address", "performance", "id"],
+  methods: {
+    getInfo() {
+      this.$emit("getInfoProfessional", this.id);
+    },
+  },
 };
 </script>
 
@@ -21,6 +26,7 @@ export default {
             - {{ specialization.name }}
           </li>
         </ul>
+
         <router-link
           :to="{
             name: 'ProfessionalDetail',
@@ -28,6 +34,13 @@ export default {
           }"
           class="text-decoration-none color-a btn btn-detail"
           >Dettaglio</router-link
+
+        <a
+          @click.prevent="getInfo"
+          class="text-decoration-none color-a btn btn-detail"
+          href="#"
+          >Dettaglio</a
+
         >
       </div>
     </div>
