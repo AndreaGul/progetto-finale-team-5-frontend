@@ -13,7 +13,7 @@ const router = createRouter({
       component: AppHome,
     },
     {
-      path: '/professionalList',
+      path: '/professionalList/:id',
       name: 'professionalList',
       component: ProfessionalList,
     },
