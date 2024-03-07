@@ -47,7 +47,7 @@ export default {
     <div
       class="container d-flex flex-row justify-content-between align-items-center p-3"
     >
-      <div class="d-flex gap-5 align-items-center">
+      <div class="d-flex align-items-center">
         <h2 class="mb-0">
           <!-- <a href="http://localhost:5173">HOME</a> -->
           <router-link :to="{ name: 'home' }"> HOME </router-link>
@@ -88,22 +88,51 @@ export default {
         </form>
       </div>
 
-      <ul class="d-flex gap-3 list-unstyled m-0">
-        <li>
-          <a
-            class="text-decoration-none text-black"
-            href="http://127.0.0.1:8000/login"
-            >Login</a
-          >
-        </li>
-        <li>
-          <a
-            class="text-decoration-none text-black"
-            href="http://127.0.0.1:8000/register"
-            >Registrati</a
-          >
-        </li>
-      </ul>
+      <div class="dropdown dropdown-small">
+        <button
+          class="btn hamburger"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="dropdown-menu list-unstyled m-0">
+          <li>
+            <a
+              class="dropdown-item text-decoration-none text-black"
+              href="http://127.0.0.1:8000/login"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item text-decoration-none text-black"
+              href="http://127.0.0.1:8000/register"
+              >Registrati</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-links">
+        <ul class="d-flex gap-3 list-unstyled m-0">
+          <li>
+            <a
+              class="text-decoration-none text-black"
+              href="http://127.0.0.1:8000/login"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-decoration-none text-black"
+              href="http://127.0.0.1:8000/register"
+              >Registrati</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </header>
 </template>
@@ -117,6 +146,7 @@ h2 a {
   font-weight: bold;
   text-decoration: none;
   color: #022b3a;
+  margin-right: 10px;
 }
 
 a {
@@ -129,7 +159,7 @@ a {
   color: #022b3aff;
   font-weight: bold;
   border-radius: 30px;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .btn-cerca {
@@ -137,10 +167,49 @@ a {
 }
 
 .btn-default.specializations {
-  width: 450px;
+  width: 250px;
 }
 
 .btn:hover {
   background-color: #bfdbf7;
+}
+
+.nav-links {
+  display: none;
+}
+
+.hamburger {
+  font-size: 25px;
+}
+
+@media (min-width: 575.98px) {
+}
+
+@media (min-width: 767.98px) {
+  .dropdown-small {
+    display: none;
+  }
+
+  .nav-links {
+    display: block;
+  }
+
+  .btn-default.specializations {
+    width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .btn-default {
+    font-size: 20px;
+  }
+
+  .btn-default.specializations {
+    width: 400px;
+  }
+
+  h2 a {
+    margin-right: 30px;
+  }
 }
 </style>

@@ -1,14 +1,14 @@
 <script>
-import axios from "axios";
-import store from "../../store";
+import axios from 'axios';
+import store from '../../store';
 export default {
-  name: "Jumbotron",
+  name: 'Jumbotron',
 
   data() {
     return {
       store,
       loading: false,
-      specializationId: "",
+      specializationId: '',
     };
   },
 
@@ -16,7 +16,7 @@ export default {
     getSpecializations() {
       this.loading = true;
       axios
-        .get("http://127.0.0.1:8000/api/specializations")
+        .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
@@ -28,7 +28,7 @@ export default {
     },
 
     selectOption(option, id) {
-      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
 
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
@@ -36,7 +36,7 @@ export default {
       this.store.specializationsName = option;
     },
     search() {
-      this.$emit("search", this.specializationId);
+      this.$emit('search', this.specializationId);
     },
   },
   created() {
@@ -52,7 +52,7 @@ export default {
 
       <form
         id="form"
-        class="d-flex align-items-center gap-3"
+        class="d-flex flex-wrap align-items-center gap-3"
         @submit.prevent="search"
       >
         <div class="dropdown">
@@ -78,7 +78,7 @@ export default {
           </ul>
         </div>
 
-        <button class="btn btn-default btn-cerca">cerca</button>
+        <button class="btn btn-default btn-cerca">Cerca</button>
       </form>
     </div>
     <div class="my-3 container" v-else>
@@ -113,8 +113,8 @@ export default {
 }
 
 .titolo {
-  font-family: "Share Tech Mono", monospace;
-  font-size: 64px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 40px;
   max-width: 900px;
 }
 
@@ -123,17 +123,39 @@ export default {
   color: #022b3aff;
   font-weight: bold;
   border-radius: 30px;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .btn-cerca {
   border: 2px solid #022b3aff;
 }
 .btn-default.specializations {
-  width: 400px;
+  width: 300px;
 }
 
 .btn:hover {
   background-color: #bfdbf7;
+}
+
+@media (min-width: 575.98px) {
+  .btn-default.specializations {
+    width: 400px;
+  }
+
+  .btn-default {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 767.98px) {
+  .titolo {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .titolo {
+    font-size: 64px;
+  }
 }
 </style>
