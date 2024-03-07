@@ -1,15 +1,15 @@
 <script>
 import axios from 'axios';
-import AppHeader from '../components/AppHeader.vue';
-import AppMain from '../components/AppMain.vue';
+import AppHeaderSingleProfessional from '../components/AppHeaderSingleProfessional.vue';
+
 import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
 import AppReviews from '../components/AppReviews.vue';
 import store from '../../store';
 export default {
   name: 'ProfessionalDetail',
   components: {
-    AppHeader,
-    AppMain,
+    AppHeaderSingleProfessional,
+
     AppInfoSingleProfessional,
     AppReviews,
   },
@@ -33,6 +33,16 @@ export default {
           });
       }
     },
+    search(id) {
+      if (id !== '') {
+        axios
+          .get('http://127.0.0.1:8000/api/professionals/' + id)
+          .then((response) => {
+            this.professionals = response.data.data.data;
+          });
+        this.$router.push('/professionalList');
+      }
+    },
   },
   created() {
     this.getInfo();
@@ -41,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader></AppHeader>
+  <AppHeaderSingleProfessional @search="search"></AppHeaderSingleProfessional>
   <div class="container pt-5" v-if="professional !== null">
     <div class="row">
       <div class="col-7">
