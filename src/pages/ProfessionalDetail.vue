@@ -54,7 +54,7 @@ export default {
   <AppHeaderSingleProfessional @search="search"></AppHeaderSingleProfessional>
   <div class="container pt-5" v-if="professional !== null">
     <div class="row">
-      <div class="col-7">
+      <div class="col-12 col-lg-7">
         <AppInfoSingleProfessional
           :name="professional.user.name"
           :surname="professional.user.surname"
@@ -65,7 +65,7 @@ export default {
           :curriculum="professional.curriculum"
         ></AppInfoSingleProfessional>
       </div>
-      <div class="col-5">
+      <div class="col-12 col-lg-5">
         <AppReviews :reviews="professional.reviews"></AppReviews>
       </div>
     </div>

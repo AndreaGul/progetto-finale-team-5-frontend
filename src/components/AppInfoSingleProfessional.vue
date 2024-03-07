@@ -84,8 +84,12 @@ export default {
 }
 
 .card-info h3 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
+}
+
+.card-info h5 {
+  font-size: 18px;
 }
 
 .card-info ul {
@@ -104,12 +108,11 @@ img {
 }
 
 .cont-img {
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
 }
 
 .star li {
-  font-size: 30px;
+  font-size: 26px;
 }
 
 .star li:hover {
@@ -124,10 +127,31 @@ img {
 }
 
 .card-details h4 {
-  font-size: 26px;
+  font-size: 22px;
+}
+.card-details h5 {
+  font-size: 18px;
 }
 
 .card-details li {
   padding: 5px 0;
+}
+
+@media (min-width: 767.98px) {
+  .card-info h3 {
+    font-size: 32px;
+  }
+  .star li {
+    font-size: 30px;
+  }
+  .card-info h5 {
+    font-size: 22px;
+  }
+  .card-details h4 {
+    font-size: 26px;
+  }
+  .card-details h5 {
+    font-size: 22px;
+  }
 }
 </style>

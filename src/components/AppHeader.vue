@@ -82,8 +82,6 @@ a {
 .nav-links {
   display: none;
 }
-@media (min-width: 575.98px) {
-}
 
 @media (min-width: 767.98px) {
   .dropdown-small {
