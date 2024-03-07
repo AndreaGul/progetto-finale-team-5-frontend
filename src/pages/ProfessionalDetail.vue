@@ -21,6 +21,9 @@ export default {
   },
   methods: {
     getInfo() {
+      if(this.store.professionalId === null){
+        this.store.professionalId = this.$route.params.slug;
+      }
       if (this.store.professionalId !== null) {
         axios
           .get(
@@ -46,6 +49,7 @@ export default {
   },
   created() {
     this.getInfo();
+    console.log('slug', this.$route.params.slug);
   },
 };
 </script>
