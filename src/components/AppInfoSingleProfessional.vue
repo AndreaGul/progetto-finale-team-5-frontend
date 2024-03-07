@@ -109,6 +109,7 @@ img {
 
 .cont-img {
   min-width: 200px;
+  width: 200px;
 }
 
 .star li {
