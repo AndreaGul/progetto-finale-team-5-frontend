@@ -1,7 +1,12 @@
 <script>
 export default {
   name: "CardProfessional",
-  props: ["slug", "specializations", "photo", "address", "performance"],
+  props: ["slug", "specializations", "photo", "address", "performance", "id"],
+  methods: {
+    getInfo() {
+      this.$emit("getInfoProfessional", this.id);
+    },
+  },
 };
 </script>
 
@@ -21,7 +26,10 @@ export default {
             - {{ specialization.name }}
           </li>
         </ul>
-        <a class="text-decoration-none color-a btn btn-detail" href=""
+        <a
+          @click.prevent="getInfo"
+          class="text-decoration-none color-a btn btn-detail"
+          href="#"
           >Dettaglio</a
         >
       </div>

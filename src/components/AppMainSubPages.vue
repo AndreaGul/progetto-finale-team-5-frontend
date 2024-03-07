@@ -1,14 +1,37 @@
 <script>
 import AppCardProfessional from "../components/AppCardProfessional.vue";
+import AppDetailInfoProfessional from "./AppDetailInfoProfessional.vue";
+import AppInfoSingleProfessional from "./AppInfoSingleProfessional.vue";
+import AppReviews from "./AppReviews.vue";
+import axios from "axios";
 export default {
   name: "MainSubPages",
+  data() {
+    return {
+      professional: null,
+    };
+  },
   components: {
     AppCardProfessional,
+    AppDetailInfoProfessional,
+    AppInfoSingleProfessional,
+    AppReviews,
   },
   props: {
     professionals: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    getInfo(id) {
+      console.log(id);
+      axios
+        .get("http://127.0.0.1:8000/api/professionals/show/" + id)
+        .then((response) => {
+          console.log(response.data.data);
+          this.professional = response.data.data;
+        });
     },
   },
 };
@@ -18,7 +41,9 @@ export default {
   <div class="container pt-5">
     <div class="row d-flex flex-wrap">
       <AppCardProfessional
+        @getInfoProfessional="getInfo"
         v-for="professional in professionals"
+        :id="professional.id"
         :address="professional.address"
         :performance="professional.performance"
         :slug="professional.slug"
@@ -27,12 +52,33 @@ export default {
       ></AppCardProfessional>
     </div>
 
-    <!-- <div class="info d-flex">
-      <AppInfoSingleProfessional></AppInfoSingleProfessional>
-      <AppReviews></AppReviews>
+    <div v-if="professional" class="info d-flex">
+      <AppInfoSingleProfessional
+        :name="professional.user.name"
+        :surname="professional.user.surname"
+        :specializations="professional.specializations"
+        :photo="professional.photo"
+      ></AppInfoSingleProfessional>
+      <AppReviews
+        v-if="professional"
+        :reviews="professional.reviews"
+      ></AppReviews>
     </div>
-    <AppDetailInfoProfessional></AppDetailInfoProfessional> -->
+    <div v-if="professional">
+      <AppDetailInfoProfessional
+        :address="professional.address"
+        :phone="professional.phone"
+        :curriculum="professional.curriculum"
+      ></AppDetailInfoProfessional>
+    </div>
   </div>
+  <!-- <div class="container">
+    <p>{{ professional.user.name }}</p>
+    <p>{{ professional.user.surname }}</p>
+    <p>{{ professional.slug }}</p>
+    <p>{{ professional.address }}</p>
+    <p>{{ professional.performance }}</p>
+  </div> -->
 </template>
 
 <style scoped></style>
