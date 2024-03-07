@@ -14,7 +14,17 @@ export default {
   <div class="wrapper col-12 col-md-6 pb-3">
     <div class="user-card">
       <div class="user-card-img">
-        <img :src="photo ?? 'bah'" alt="" />
+        <img
+          v-if="photo && photo.startsWith('uploads')"
+          :src="'http://127.0.0.1:8000/storage/' + photo"
+          alt=""
+        />
+        <img v-else-if="photo" :src="photo" alt="" />
+        <img
+          v-else
+          src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+          alt=""
+        />
       </div>
       <div class="user-card-info">
         <h2>{{ slug.split("-").join(" ") }}</h2>
