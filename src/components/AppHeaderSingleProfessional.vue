@@ -185,9 +185,6 @@ a {
   font-size: 25px;
 }
 
-@media (min-width: 575.98px) {
-}
-
 @media (min-width: 767.98px) {
   .dropdown-small {
     display: none;

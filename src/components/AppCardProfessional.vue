@@ -1,18 +1,18 @@
 <script>
 import store from '../../store';
 export default {
-  name: "CardProfessional",
-  props: ["slug", "specializations", "photo", "address", "performance", "id"],
+  name: 'CardProfessional',
+  props: ['slug', 'specializations', 'photo', 'address', 'performance', 'id'],
   methods: {
     getInfo() {
-      this.store.professionalId = this.id
+      this.store.professionalId = this.id;
     },
   },
   data() {
     return {
       store,
-    }
-  }
+    };
+  },
 };
 </script>
 
@@ -50,7 +50,8 @@ export default {
           }"
           @click="getInfo"
           class="text-decoration-none color-a btn btn-detail"
-          >Dettaglio</router-link>
+          >Dettaglio</router-link
+        >
       </div>
     </div>
   </div>
@@ -198,23 +199,23 @@ img {
   }
 }
 
-@media (max-width: 767px) {
-  /* .wrapper {
+/* @media (max-width: 767px) {
+   .wrapper {
     padding-top: 3%;
-  } */
-  /* .user-card:before {
+  } 
+   .user-card:before {
     width: 300%;
     height: 200px;
     transform: rotate(0);
-  } */
-  /* .user-card-info h2 {
+  } 
+   .user-card-info h2 {
     margin-top: 25px;
     font-size: 35px;
-  } */
-  /* .user-card-info p span {
+  } 
+   .user-card-info p span {
     display: block;
     margin-bottom: 15px;
     font-size: 18px;
-  } */
-}
+  } 
+} */
 </style>
