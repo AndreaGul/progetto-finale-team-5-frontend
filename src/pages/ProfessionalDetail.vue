@@ -1,16 +1,63 @@
 <script>
+import axios from "axios";
 import AppHeader from '../components/AppHeader.vue';
 import AppMain from '../components/AppMain.vue';
+import AppDetailInfoProfessional from "../components/AppDetailInfoProfessional.vue";
+import AppInfoSingleProfessional from "../components/AppInfoSingleProfessional.vue";
+import AppReviews from "../components/AppReviews.vue";
+import store from "../../store";
 export default {
   name: 'ProfessionalDetail',
   components: {
     AppHeader,
     AppMain,
+    AppDetailInfoProfessional,
+    AppInfoSingleProfessional,
+    AppReviews,
   },
+  data() {
+    return {
+      store,
+      professional : null
+    }
+  },
+  methods: {
+    getInfo() {
+      if(this.store.professionalId !== null){
+        axios
+        .get("http://127.0.0.1:8000/api/professionals/show/" + this.store.professionalId)
+        .then((response) => {
+          console.log(response.data.data);
+          this.professional = response.data.data;
+        });
+      }
+    },
+  },
+  created(){
+    this.getInfo();
+  }
 };
 </script>
 
 <template>
   <AppHeader></AppHeader>
-  <h2>CIAOOO</h2>
+  <div class="container pt-5" v-if="professional !== null">
+
+    <div class="info d-flex">
+      <AppInfoSingleProfessional
+        :name="professional.user.name"
+        :surname="professional.user.surname"
+        :specializations="professional.specializations"
+        :photo="professional.photo"
+      ></AppInfoSingleProfessional>
+      <AppReviews :reviews="professional.reviews"></AppReviews>
+    </div>
+    <div>
+      <AppDetailInfoProfessional
+        :address="professional.address"
+        :phone="professional.phone"
+        :curriculum="professional.curriculum"
+      ></AppDetailInfoProfessional>
+    </div>
+  </div>
 </template>
