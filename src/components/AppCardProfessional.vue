@@ -1,18 +1,18 @@
 <script>
 export default {
-  name: "CardProfessional",
-  props: ["slug", "specializations", "photo", "address", "performance"],
+  name: 'CardProfessional',
+  props: ['slug', 'specializations', 'photo', 'address', 'performance'],
 };
 </script>
 
 <template>
-  <div class="wrapper col-12 col-md-6 pb-3">
+  <div class="wrapper col-12 col-lg-6 pb-3">
     <div class="user-card">
       <div class="user-card-img">
         <img :src="photo ?? 'bah'" alt="" />
       </div>
       <div class="user-card-info">
-        <h2>{{ slug.split("-").join(" ") }}</h2>
+        <h2>{{ slug.split('-').join(' ') }}</h2>
         <p><span>Email:</span> mail</p>
         <p><span>Indirizzo:</span> {{ address }}</p>
         <ul>
@@ -65,6 +65,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 3%;
 }
 .user-card {
   display: flex;
@@ -81,15 +82,15 @@ img {
 }
 
 .user-card:before {
-  content: "";
+  content: '';
   position: absolute;
-  height: 300%;
-  width: 173px;
   background: #1f798b;
   top: -60px;
   left: -125px;
   z-index: 0;
-  transform: rotate(17deg);
+  width: 300%;
+  height: 200px;
+  transform: rotate(0);
 }
 
 .user-card-img {
@@ -111,11 +112,12 @@ img {
 }
 
 .user-card-info h2 {
-  font-size: 24px;
   margin: 0;
   margin-bottom: 10px;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 3px;
+  margin-top: 25px;
+  font-size: 35px;
 }
 
 .user-card-info p {
@@ -127,6 +129,13 @@ img {
   padding-inline-start: 0;
   list-style: none;
 }
+
+.user-card-info p span {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
 .user-card-info p span,
 .user-card-info ul span {
   font-weight: 700;
@@ -150,25 +159,35 @@ img {
   .user-card-info {
     text-align: left;
   }
+
+  .user-card:before {
+    transform: rotate(17deg);
+    height: 300%;
+    width: 173px;
+  }
+
+  .user-card-info h2 {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 767px) {
-  .wrapper {
+  /* .wrapper {
     padding-top: 3%;
-  }
-  .user-card:before {
+  } */
+  /* .user-card:before {
     width: 300%;
     height: 200px;
     transform: rotate(0);
-  }
-  .user-card-info h2 {
+  } */
+  /* .user-card-info h2 {
     margin-top: 25px;
     font-size: 35px;
-  }
-  .user-card-info p span {
+  } */
+  /* .user-card-info p span {
     display: block;
     margin-bottom: 15px;
     font-size: 18px;
-  }
+  } */
 }
 </style>
