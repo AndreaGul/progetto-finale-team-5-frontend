@@ -1,12 +1,12 @@
 <script>
-import axios from 'axios';
-import AppHeaderSingleProfessional from '../components/AppHeaderSingleProfessional.vue';
+import axios from "axios";
+import AppHeaderSingleProfessional from "../components/AppHeaderSingleProfessional.vue";
 
-import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
-import AppReviews from '../components/AppReviews.vue';
-import store from '../../store';
+import AppInfoSingleProfessional from "../components/AppInfoSingleProfessional.vue";
+import AppReviews from "../components/AppReviews.vue";
+import store from "../../store";
 export default {
-  name: 'ProfessionalDetail',
+  name: "ProfessionalDetail",
   components: {
     AppHeaderSingleProfessional,
 
@@ -21,13 +21,13 @@ export default {
   },
   methods: {
     getInfo() {
-      if(this.store.professionalId === null){
+      if (this.store.professionalId === null) {
         this.store.professionalId = this.$route.params.slug;
       }
       if (this.store.professionalId !== null) {
         axios
           .get(
-            'http://127.0.0.1:8000/api/professionals/show/' +
+            "http://127.0.0.1:8000/api/professionals/show/" +
               this.store.professionalId
           )
           .then((response) => {
@@ -37,19 +37,22 @@ export default {
       }
     },
     search(id) {
-      if (id !== '') {
+      if (id !== "") {
         axios
-          .get('http://127.0.0.1:8000/api/professionals/' + id)
+          .get("http://127.0.0.1:8000/api/professionals/" + id)
           .then((response) => {
             this.professionals = response.data.data.data;
           });
-        this.$router.push({name : "professionalList", params: { id:  this.store.professionalId }});
+        this.$router.push({
+          name: "professionalList",
+          params: { id: this.store.specializationsId },
+        });
       }
     },
   },
   created() {
     this.getInfo();
-    console.log('slug', this.$route.params.slug);
+    console.log("slug", this.$route.params.slug);
   },
 };
 </script>
