@@ -65,7 +65,7 @@ export default {
           >
             Specializzazione
           </button>
-          <ul class="dropdown-menu rounded-4">
+          <ul class="dropdown-menu rounded-4 w-100">
             <li v-for="specialization in this.store.specializations">
               <a
                 :value="specialization.id"

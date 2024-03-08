@@ -1,8 +1,8 @@
 <script>
-import axios from "axios";
-import store from "../../store";
+import axios from 'axios';
+import store from '../../store';
 export default {
-  name: "HeaderSubPages",
+  name: 'HeaderSubPages',
 
   data() {
     return {
@@ -15,7 +15,7 @@ export default {
     getSpecializations() {
       this.loading = true;
       axios
-        .get("http://127.0.0.1:8000/api/specializations")
+        .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
@@ -26,13 +26,13 @@ export default {
         });
     },
     selectOption(option, id) {
-      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
+      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
       dropdownMenuButton.innerHTML = option;
       this.store.specializationsId = id;
     },
 
     search() {
-      this.$emit("search", this.store.specializationsId);
+      this.$emit('search', this.store.specializationsId);
     },
     findSpecialization(id, name) {
       if (id == this.store.specializationsId) {
@@ -40,10 +40,10 @@ export default {
       }
     },
     getName() {
-      if (this.store.specializationsName !== "") {
+      if (this.store.specializationsName !== '') {
         return this.store.specializationsName;
       } else {
-        return "Specializzazione";
+        return 'Specializzazione';
       }
     },
   },
@@ -79,7 +79,7 @@ export default {
             >
               {{ getName() }}
             </button>
-            <ul class="dropdown-menu rounded-4">
+            <ul class="dropdown-menu rounded-4 w-100">
               <li v-for="specialization in this.store.specializations">
                 {{ findSpecialization(specialization.id, specialization.name) }}
                 <a
