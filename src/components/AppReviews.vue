@@ -8,9 +8,14 @@ export default {
 <template>
   <div class="container">
     <div class="card-reviews">
-      <h1>Recensioni</h1>
-      <div class="info-reviews">
-        <p v-for="review in reviews">{{ review.review }}</p>
+      <h2>Recensioni</h2>
+      <div class="info-reviews" v-for="review in reviews">
+        <p class="nome-recensione">{{ review.name_reviewer }}</p>
+        <p class="testo-recensione">{{ review.review }}</p>
+      </div>
+      <div class="info-reviews" v-for="review in reviews">
+        <p class="nome-recensione">{{ review.name_reviewer }}</p>
+        <p class="testo-recensione">{{ review.review }}</p>
       </div>
     </div>
   </div>
@@ -18,10 +23,32 @@ export default {
 
 <style scoped>
 .card-reviews {
-  overflow: auto;
+  overflow-y: auto;
   padding: 20px;
-  background-color: #1f7a8c;
-  height: 400px;
+  background-color: #e1e5f2;
+  max-height: 65vh;
+  margin-bottom: 35px;
+  border-radius: 33px;
+  h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 550;
+  }
+  .testo-recensione {
+    margin-left: 40px;
+  }
+}
+
+.info-reviews {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 17px;
+  border-radius: 33px;
 }
 .star {
   font-size: 30px;
