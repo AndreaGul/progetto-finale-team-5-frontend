@@ -63,6 +63,9 @@ export default {
 </template>
 
 <style scoped>
+header {
+  border-bottom: 1px solid #022b3aff;
+}
 h2 a {
   font-size: 40;
   font-weight: bold;
