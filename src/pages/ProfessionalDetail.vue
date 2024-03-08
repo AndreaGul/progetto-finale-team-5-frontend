@@ -3,6 +3,7 @@ import axios from 'axios';
 import AppHeader from '../components/AppHeader.vue';
 import AppSearchSubPages from '../components/AppSearchSubPages.vue';
 import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
+import AppSendVote from '../components/AppSendVote.vue';
 import AppReviews from '../components/AppReviews.vue';
 import store from '../../store';
 export default {
@@ -11,6 +12,7 @@ export default {
     AppHeader,
     AppSearchSubPages,
     AppInfoSingleProfessional,
+    AppSendVote,
     AppReviews,
   },
   data() {
@@ -62,7 +64,7 @@ export default {
   <AppSearchSubPages @search="search"></AppSearchSubPages>
   <div class="container pt-5" v-if="professional !== null">
     <div class="row">
-      <div class="col-12 col-lg-7">
+      <div class="left-container col-12 col-lg-7">
         <AppInfoSingleProfessional
           :name="professional.user.name"
           :surname="professional.user.surname"
@@ -72,10 +74,21 @@ export default {
           :phone="professional.phone"
           :curriculum="professional.curriculum"
         ></AppInfoSingleProfessional>
+        <AppSendVote></AppSendVote>
       </div>
-      <div class="col-12 col-lg-5">
+      <div class="col-12 col-lg-5 right-container">
         <AppReviews :reviews="professional.reviews"></AppReviews>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.left-container {
+  padding: 20px;
+}
+
+.right-container {
+  padding: 20px 0;
+}
+</style>
