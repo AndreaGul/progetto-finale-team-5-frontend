@@ -3,6 +3,8 @@ import axios from 'axios';
 import AppHeader from '../components/AppHeader.vue';
 import AppSearchSubPages from '../components/AppSearchSubPages.vue';
 import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
+import AppSendMessage from '../components/AppSendMessage.vue';
+import AppSendReviews from '../components/AppSendReviews.vue';
 import AppReviews from '../components/AppReviews.vue';
 import store from '../../store';
 export default {
@@ -12,6 +14,8 @@ export default {
     AppSearchSubPages,
     AppInfoSingleProfessional,
     AppReviews,
+    AppSendMessage,
+    AppSendReviews,
   },
   data() {
     return {
@@ -77,5 +81,7 @@ export default {
         <AppReviews :reviews="professional.reviews"></AppReviews>
       </div>
     </div>
+    <AppSendMessage></AppSendMessage>
+    <AppSendReviews></AppSendReviews>
   </div>
 </template>
