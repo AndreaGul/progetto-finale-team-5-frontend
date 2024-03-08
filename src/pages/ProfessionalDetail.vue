@@ -5,6 +5,7 @@ import AppSearchSubPages from '../components/AppSearchSubPages.vue';
 import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
 import AppSendMessage from '../components/AppSendMessage.vue';
 import AppSendReviews from '../components/AppSendReviews.vue';
+import AppSendVote from '../components/AppSendVote.vue';
 import AppReviews from '../components/AppReviews.vue';
 import store from '../../store';
 export default {
@@ -13,6 +14,7 @@ export default {
     AppHeader,
     AppSearchSubPages,
     AppInfoSingleProfessional,
+    AppSendVote,
     AppReviews,
     AppSendMessage,
     AppSendReviews,
@@ -66,7 +68,7 @@ export default {
   <AppSearchSubPages @search="search"></AppSearchSubPages>
   <div class="container pt-5" v-if="professional !== null">
     <div class="row">
-      <div class="col-12 col-lg-7">
+      <div class="left-container col-12 col-lg-7">
         <AppInfoSingleProfessional
           :name="professional.user.name"
           :surname="professional.user.surname"
@@ -76,12 +78,24 @@ export default {
           :phone="professional.phone"
           :curriculum="professional.curriculum"
         ></AppInfoSingleProfessional>
+        <AppSendMessage></AppSendMessage>
+        <AppSendReviews></AppSendReviews>
+        <AppSendVote></AppSendVote>
       </div>
-      <div class="col-12 col-lg-5">
+      <div class="col-12 col-lg-5 right-container">
         <AppReviews :reviews="professional.reviews"></AppReviews>
       </div>
     </div>
-    <AppSendMessage></AppSendMessage>
-    <AppSendReviews></AppSendReviews>
+    
   </div>
 </template>
+
+<style scoped>
+.left-container {
+  padding: 20px;
+}
+
+.right-container {
+  padding: 20px 0;
+}
+</style>
