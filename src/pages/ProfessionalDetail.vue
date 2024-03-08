@@ -1,15 +1,15 @@
 <script>
-import axios from "axios";
-import AppHeaderSingleProfessional from "../components/AppHeaderSingleProfessional.vue";
-
-import AppInfoSingleProfessional from "../components/AppInfoSingleProfessional.vue";
-import AppReviews from "../components/AppReviews.vue";
-import store from "../../store";
+import axios from 'axios';
+import AppHeader from '../components/AppHeader.vue';
+import AppSearchSubPages from '../components/AppSearchSubPages.vue';
+import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
+import AppReviews from '../components/AppReviews.vue';
+import store from '../../store';
 export default {
-  name: "ProfessionalDetail",
+  name: 'ProfessionalDetail',
   components: {
-    AppHeaderSingleProfessional,
-
+    AppHeader,
+    AppSearchSubPages,
     AppInfoSingleProfessional,
     AppReviews,
   },
@@ -27,7 +27,7 @@ export default {
       if (this.store.professionalId !== null) {
         axios
           .get(
-            "http://127.0.0.1:8000/api/professionals/show/" +
+            'http://127.0.0.1:8000/api/professionals/show/' +
               this.store.professionalId
           )
           .then((response) => {
@@ -37,14 +37,14 @@ export default {
       }
     },
     search(id) {
-      if (id !== "") {
+      if (id !== '') {
         axios
-          .get("http://127.0.0.1:8000/api/professionals/" + id)
+          .get('http://127.0.0.1:8000/api/professionals/' + id)
           .then((response) => {
             this.professionals = response.data.data.data;
           });
         this.$router.push({
-          name: "professionalList",
+          name: 'professionalList',
           params: { id: this.store.specializationsId },
         });
       }
@@ -52,13 +52,14 @@ export default {
   },
   created() {
     this.getInfo();
-    console.log("slug", this.$route.params.slug);
+    console.log('slug', this.$route.params.slug);
   },
 };
 </script>
 
 <template>
-  <AppHeaderSingleProfessional @search="search"></AppHeaderSingleProfessional>
+  <AppHeader></AppHeader>
+  <AppSearchSubPages @search="search"></AppSearchSubPages>
   <div class="container pt-5" v-if="professional !== null">
     <div class="row">
       <div class="col-12 col-lg-7">
