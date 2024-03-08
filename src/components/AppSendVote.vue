@@ -1,6 +1,22 @@
 <script>
 export default {
   name: 'SendVote',
+  data() {
+    return {
+      numeroDiStelle: 5,
+      stelleColorate: 0,
+    };
+  },
+  methods: {
+    coloraStelle(index) {
+      // Imposta il numero di stelle piene in base all'indice cliccato
+      if (this.stelleColorate === index + 1) {
+        this.stelleColorate = 0;
+      } else {
+        this.stelleColorate = index + 1;
+      }
+    },
+  },
 };
 </script>
 
@@ -13,11 +29,16 @@ export default {
 
       <ul class="d-flex list-unstyled star my-0 mx-4 col-4 col-lg-3">
         <!-- <li><i class="fa-solid fa-star"></i></li> -->
-        <li><i class="fa-regular fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
+        <li>
+          <i
+            v-for="(star, index) in numeroDiStelle"
+            :class="{
+              'fas fa-star': index < stelleColorate,
+              'far fa-star': index >= stelleColorate,
+            }"
+            @click="coloraStelle(index)"
+          ></i>
+        </li>
       </ul>
       <div class="col-6 col-lg-2">
         <button class="btn button-send">invia</button>
@@ -27,7 +48,7 @@ export default {
 </template>
 
 <style scoped>
-.vote-container {
+star-color .vote-container {
   padding: 20px;
   margin: 20px 0;
   background-color: aliceblue;
@@ -50,8 +71,8 @@ h3 {
   font-size: 26px;
 }
 
-.star li:hover {
+/* .star li:hover {
   color: rgb(255, 230, 8);
   cursor: pointer;
-}
+} */
 </style>
