@@ -2,7 +2,15 @@
 import store from '../../store';
 export default {
   name: 'CardProfessional',
-  props: ['slug', 'specializations', 'photo', 'address', 'performance', 'id'],
+  props: [
+    'slug',
+    'mail',
+    'specializations',
+    'photo',
+    'address',
+    'performance',
+    'id',
+  ],
   methods: {
     getInfo() {
       this.store.professionalId = this.id;
@@ -34,10 +42,10 @@ export default {
       </div>
       <div class="user-card-info">
         <h2>{{ slug.split('-').join(' ') }}</h2>
-        <p><span>Email:</span> mail</p>
+        <p><span>Email:</span>{{ mail }}</p>
         <p><span>Indirizzo:</span> {{ address }}</p>
+        <p><span>Specializzazioni:</span></p>
         <ul>
-          <span>Specializzazioni:</span>
           <li v-for="specialization in specializations">
             - {{ specialization.name }}
           </li>
