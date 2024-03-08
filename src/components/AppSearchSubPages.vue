@@ -8,6 +8,7 @@ export default {
     return {
       store,
       loading: false,
+      specializationId: '',
     };
   },
 
@@ -28,7 +29,9 @@ export default {
     selectOption(option, id) {
       const dropdownMenuButton = document.getElementById('dropdownMenuButton');
       dropdownMenuButton.innerHTML = option;
+      this.specializationId = id;
       this.store.specializationsId = id;
+      this.store.specializationsName = option;
     },
 
     search() {
