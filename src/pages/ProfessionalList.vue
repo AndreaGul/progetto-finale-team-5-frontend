@@ -1,7 +1,7 @@
-<!-- import AppSearchSubPages from '../components/AppSearchSubPages.vue';
-AppSearchSubPages -->
 <script>
+import AppHeader from '../components/AppHeader.vue';
 import AppSearchSubPages from '../components/AppSearchSubPages.vue';
+//import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
 import AppMainSubPages from '../components/AppMainSubPages.vue';
 import axios from 'axios';
 import store from '../../store';
@@ -16,6 +16,8 @@ export default {
     };
   },
   components: {
+    AppHeader,
+    //AppHeaderSubPages,
     AppSearchSubPages,
     AppMainSubPages,
   },
@@ -23,13 +25,13 @@ export default {
     search(id) {
       this.loading = true;
       if (id !== '') {
-        const specializationName = this.store.getSpecializationNameById(id);
-        const formattedSpecializationName =
-          this.formatSpecializationName(specializationName);
-        this.$router.push({
-          name: 'professionalList',
-          params: { id: formattedSpecializationName },
-        });
+        // const specializationName = this.store.getSpecializationNameById(id);
+        // const formattedSpecializationName =
+        //   this.formatSpecializationName(specializationName);
+        // this.$router.push({
+        //   name: 'professionalList',
+        //   params: { id: formattedSpecializationName },
+        // });
         axios
           .get('http://127.0.0.1:8000/api/professionals/' + id)
           .then((response) => {
@@ -55,6 +57,7 @@ export default {
 
 <template>
   <AppHeader></AppHeader>
+
   <!-- <AppHeaderSubPages @search="search"></AppHeaderSubPages> -->
   <AppSearchSubPages @search="search"></AppSearchSubPages>
   <div class="container">
