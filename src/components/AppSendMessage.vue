@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="cont-message">
-    <h2 class="text-uppercase">Manda Un Messaggio</h2>
+    <h3 class="text-uppercase">Manda Un Messaggio</h3>
 
     <div class="input-group mb-3">
       <input
