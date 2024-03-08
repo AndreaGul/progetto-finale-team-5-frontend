@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template>
-  <div class="container pt-5">
+  <div class="container">
     <div class="row d-flex flex-wrap">
       <AppCardProfessional
         @getInfoProfessional="getInfo"
