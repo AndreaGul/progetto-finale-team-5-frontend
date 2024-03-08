@@ -43,6 +43,7 @@ export default {
         v-for="professional in professionals"
         :id="professional.id"
         :address="professional.address"
+        :mail="professional.user.email"
         :performance="professional.performance"
         :slug="professional.slug"
         :specializations="professional.specializations"
