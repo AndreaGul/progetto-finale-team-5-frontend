@@ -1,11 +1,8 @@
+<!-- import AppSearchSubPages from '../components/AppSearchSubPages.vue';
+AppSearchSubPages -->
 <script>
-
-import AppHeader from '../components/AppHeader.vue';
-// import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
-import AppMainSubPages from '../components/AppMainSubPages.vue';
 import AppSearchSubPages from '../components/AppSearchSubPages.vue';
-
-
+import AppMainSubPages from '../components/AppMainSubPages.vue';
 import axios from 'axios';
 import store from '../../store';
 
@@ -19,8 +16,6 @@ export default {
     };
   },
   components: {
-    AppHeader,
-    // AppHeaderSubPages,
     AppSearchSubPages,
     AppMainSubPages,
   },
@@ -42,7 +37,6 @@ export default {
           })
           .finally(() => {
             this.loading = false;
-            this.$router.push({ name: 'professionalList', params: { id: id } });
           });
       }
     },
