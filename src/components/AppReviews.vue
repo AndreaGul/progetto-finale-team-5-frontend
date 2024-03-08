@@ -9,13 +9,14 @@ export default {
   <div class="container">
     <div class="card-reviews">
       <h2>Recensioni</h2>
-      <div class="info-reviews" v-for="review in reviews">
-        <p class="nome-recensione">{{ review.name_reviewer }}</p>
-        <p class="testo-recensione">{{ review.review }}</p>
+      <div v-if="reviews.length > 0">
+        <div class="info-reviews" v-for="review in reviews">
+          <p class="nome-recensione">{{ review.name_reviewer }}</p>
+          <p class="testo-recensione">{{ review.review }}</p>
+        </div>
       </div>
-      <div class="info-reviews" v-for="review in reviews">
-        <p class="nome-recensione">{{ review.name_reviewer }}</p>
-        <p class="testo-recensione">{{ review.review }}</p>
+      <div v-else>
+        <p>Ancora nessuna recensione.</p>
       </div>
     </div>
   </div>
