@@ -27,7 +27,9 @@ export default {
         Vota Professionista
       </h3>
 
-      <ul class="d-flex list-unstyled star my-0 mx-4 col-4 col-lg-3">
+      <ul
+        class="d-flex list-unstyled star my-0 col-4 col-lg-4 justify-content-end"
+      >
         <!-- <li><i class="fa-solid fa-star"></i></li> -->
         <li>
           <i
@@ -40,7 +42,7 @@ export default {
           ></i>
         </li>
       </ul>
-      <div class="col-6 col-lg-2">
+      <div class="col-6 col-lg-2 text-end">
         <button class="btn button-send">invia</button>
       </div>
     </div>
@@ -48,21 +50,16 @@ export default {
 </template>
 
 <style scoped>
-star-color .vote-container {
+.vote-container {
   padding: 20px;
   margin: 20px 0;
   background-color: aliceblue;
   border-radius: 30px;
 }
-.cont-message {
-  width: 50%;
-  padding: 20px;
-  margin: 20px 0 20px 20px;
-  background-color: aliceblue;
-  border-radius: 30px;
-}
+
 .button-send {
   background: #1f798b;
+  color: white;
 }
 h3 {
   font-weight: 700;
