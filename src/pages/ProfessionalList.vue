@@ -1,12 +1,14 @@
 <script>
-import AppHeaderSubPages from "../components/AppHeaderSubPages.vue";
-import AppMainSubPages from "../components/AppMainSubPages.vue";
+import AppHeader from '../components/AppHeader.vue';
+// import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
+import AppMainSubPages from '../components/AppMainSubPages.vue';
+import AppSearchSubPages from '../components/AppSearchSubPages.vue';
 
-import axios from "axios";
-import store from "../../store";
+import axios from 'axios';
+import store from '../../store';
 
 export default {
-  name: "ProfessionalList",
+  name: 'ProfessionalList',
   data() {
     return {
       loading: false,
@@ -16,27 +18,29 @@ export default {
     };
   },
   components: {
-    AppHeaderSubPages,
+    AppHeader,
+    // AppHeaderSubPages,
+    AppSearchSubPages,
     AppMainSubPages,
   },
   methods: {
     search(id) {
       this.loading = true;
-      if (id !== "") {
+      if (id !== '') {
         axios
-          .get("http://127.0.0.1:8000/api/professionals/" + id)
+          .get('http://127.0.0.1:8000/api/professionals/' + id)
           .then((response) => {
             this.professionals = response.data.data.data;
           })
           .finally(() => {
             this.loading = false;
-            this.$router.push({ name: "professionalList", params: { id: id } });
+            this.$router.push({ name: 'professionalList', params: { id: id } });
           });
       }
     },
   },
   created() {
-    if (this.store.specializationsId === "") {
+    if (this.store.specializationsId === '') {
       this.store.specializationsId = this.$route.params.id;
     }
     this.search(this.store.specializationsId);
@@ -45,7 +49,9 @@ export default {
 </script>
 
 <template>
-  <AppHeaderSubPages @search="search"></AppHeaderSubPages>
+  <AppHeader></AppHeader>
+  <!-- <AppHeaderSubPages @search="search"></AppHeaderSubPages> -->
+  <AppSearchSubPages @search="search"></AppSearchSubPages>
   <div class="container">
     <div class="my-3" v-if="loading">
       caricamento in corso...
