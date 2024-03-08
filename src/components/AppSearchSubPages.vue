@@ -89,6 +89,41 @@ export default {
             </li>
           </ul>
         </div>
+
+        <div class="dropdown">
+          <button
+            class="btn btn-default specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            id="dropdownMenuButton"
+          >
+            Media Voti
+          </button>
+          <ul class="dropdown-menu rounded-4 w-100">
+            <li>
+              <a class="dropdown-item" href="#">Prova</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <button
+            class="btn btn-default specializations btn-secondary dropdown-toggle d-flex justify-content-between align-items-center"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            id="dropdownMenuButton"
+          >
+            Numero Recensioni
+          </button>
+          <ul class="dropdown-menu rounded-4 w-100">
+            <li>
+              <a class="dropdown-item" href="#">Prova</a>
+            </li>
+          </ul>
+        </div>
+
         <button class="btn btn-default btn-cerca">Cerca</button>
       </form>
     </div>
