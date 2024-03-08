@@ -25,8 +25,8 @@ export default {
 </script>
 
 <template>
-  <div class="wrapper col-12 col-lg-6 pb-3">
-    <div class="user-card">
+  <div class="wrapper col-12 col-lg-6 pb-3 d-flex align-items-stretch">
+    <div class="user-card justify-content-start">
       <div class="user-card-img">
         <img
           v-if="photo && photo.startsWith('uploads')"
@@ -112,6 +112,7 @@ img {
   border-radius: 10px;
   padding: 20px;
   width: 650px;
+
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.5);
@@ -145,6 +146,7 @@ img {
 
 .user-card-info {
   text-align: center;
+  z-index: 3;
 }
 
 .user-card-info h2 {
@@ -188,8 +190,8 @@ img {
     align-items: flex-start;
   }
   .user-card-img {
-    margin-right: 20px;
     margin-bottom: 0;
+    margin-right: 50px;
   }
 
   .user-card-info {
