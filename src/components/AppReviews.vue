@@ -16,7 +16,7 @@ export default {
         </div>
       </div>
       <div v-else>
-        <p>Ancora nessuna recensione.</p>
+        <p>Ancora nessuna recensione</p>
       </div>
     </div>
   </div>
