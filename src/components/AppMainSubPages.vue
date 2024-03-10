@@ -1,10 +1,10 @@
 <script>
-import AppCardProfessional from '../components/AppCardProfessional.vue';
-import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
-import AppReviews from './AppReviews.vue';
-import axios from 'axios';
+import AppCardProfessional from "../components/AppCardProfessional.vue";
+import AppInfoSingleProfessional from "./AppInfoSingleProfessional.vue";
+import AppReviews from "./AppReviews.vue";
+import axios from "axios";
 export default {
-  name: 'MainSubPages',
+  name: "MainSubPages",
   data() {
     return {
       professional: null,
@@ -25,7 +25,7 @@ export default {
     getInfo(id) {
       console.log(id);
       axios
-        .get('http://127.0.0.1:8000/api/professionals/show/' + id)
+        .get("http://127.0.0.1:8000/api/professionals/show/" + id)
         .then((response) => {
           console.log(response.data.data);
           this.professional = response.data.data;
@@ -51,7 +51,7 @@ export default {
       ></AppCardProfessional>
     </div>
 
-    <div v-if="professional" class="info d-flex">
+    <!-- <div v-if="professional" class="info d-flex">
       <AppInfoSingleProfessional
         :name="professional.user.name"
         :surname="professional.user.surname"
@@ -65,7 +65,7 @@ export default {
         v-if="professional"
         :reviews="professional.reviews"
       ></AppReviews>
-    </div>
+    </div> -->
   </div>
   <!-- <div class="container">
     <p>{{ professional.user.name }}</p>
