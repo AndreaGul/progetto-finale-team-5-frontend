@@ -1,6 +1,7 @@
 <script>
 import AppJumbotron from "./AppJumbotron.vue";
 import AppCardProfessional from "./AppCardProfessional.vue";
+import store from "../../store";
 // da mettere nella pagina info
 
 // import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
@@ -15,6 +16,7 @@ export default {
   data() {
     return {
       professionals: [],
+      store,
     };
   },
   components: {
@@ -27,15 +29,11 @@ export default {
   },
 
   methods: {
-    search(id) {
-      if (id !== "") {
-        axios
-          .get("http://127.0.0.1:8000/api/professionals/" + id)
-          .then((response) => {
-            this.professionals = response.data.data.data;
-          });
-        this.$router.push({name : "professionalList", params: { id: id }});
-      }
+    search() {
+      this.$router.push({
+        name: "professionalList",
+        params: { id: this.store.specializationsName },
+      });
     },
   },
 };
