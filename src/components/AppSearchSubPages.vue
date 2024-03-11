@@ -1,14 +1,16 @@
 <script>
-import axios from 'axios';
-import store from '../../store';
+import axios from "axios";
+import store from "../../store";
 export default {
-  name: 'SearchSubPages',
+  name: "SearchSubPages",
 
   data() {
     return {
       store,
       loading: false,
-      specializationId: '',
+      specializationId: "",
+      mediaVoti: null,
+      numeroRecensioni: null,
     };
   },
 
@@ -16,7 +18,7 @@ export default {
     getSpecializations() {
       this.loading = true;
       axios
-        .get('http://127.0.0.1:8000/api/specializations')
+        .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
           console.log(response);
           this.store.specializations = response.data.data;
@@ -27,7 +29,7 @@ export default {
         });
     },
     selectOption(option, id) {
-      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+      const dropdownMenuButton = document.getElementById("dropdownMenuButton");
       dropdownMenuButton.innerHTML = option;
       this.specializationId = id;
       this.store.specializationsId = id;
@@ -35,7 +37,7 @@ export default {
     },
 
     search() {
-      this.$emit('search', this.store.specializationsId);
+      this.$emit("search", this.mediaVoti, this.numeroRecensioni);
     },
     findSpecialization(id, name) {
       if (id == this.store.specializationsId) {
@@ -43,11 +45,41 @@ export default {
       }
     },
     getName() {
-      if (this.store.specializationsName !== '') {
+      if (this.store.specializationsName !== "") {
         return this.store.specializationsName;
       } else {
-        return 'Specializzazione';
+        return "Specializzazione";
       }
+    },
+    updateVote(vote) {
+      this.mediaVoti = vote;
+      const dropdownMenuButton = document.getElementById(
+        "dropdownMenuButtonVote"
+      );
+      if (vote === null) {
+        dropdownMenuButton.innerHTML = "Voto";
+      } else {
+        dropdownMenuButton.innerHTML = vote;
+      }
+    },
+    updateReview(review) {
+      this.numeroRecensioni = review;
+      const dropdownMenuButton = document.getElementById(
+        "dropdownMenuButtonReview"
+      );
+      dropdownMenuButton.innerHTML = review;
+    },
+    azzera() {
+      this.mediaVoti = null;
+      this.numeroRecensioni = null;
+      const dropdownMenuButtonVote = document.getElementById(
+        "dropdownMenuButtonVote"
+      );
+      dropdownMenuButtonVote.innerHTML = "Media Voti";
+      const dropdownMenuButtonReview = document.getElementById(
+        "dropdownMenuButtonReview"
+      );
+      dropdownMenuButtonReview.innerHTML = "Numero Recensioni";
     },
   },
   created() {
@@ -58,9 +90,7 @@ export default {
 
 <template>
   <header class="py-3">
-    <div
-      class="container d-flex flex-row justify-content-between align-items-center p-3"
-    >
+    <div class="container d-flex flex-row align-items-center p-3">
       <form
         id="form"
         class="d-flex align-items-center gap-3"
@@ -96,13 +126,17 @@ export default {
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            id="dropdownMenuButton"
+            id="dropdownMenuButtonVote"
           >
             Media Voti
           </button>
           <ul class="dropdown-menu rounded-4 w-100">
-            <li>
-              <a class="dropdown-item" href="#">Prova</a>
+            <li
+              v-for="voto in 5"
+              class="dropdown-item"
+              @click="updateVote(voto)"
+            >
+              {{ voto }}
             </li>
           </ul>
         </div>
@@ -113,19 +147,26 @@ export default {
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            id="dropdownMenuButton"
+            id="dropdownMenuButtonReview"
           >
             Numero Recensioni
           </button>
           <ul class="dropdown-menu rounded-4 w-100">
-            <li>
-              <a class="dropdown-item" href="#">Prova</a>
+            <li
+              v-for="review in 3"
+              class="dropdown-item"
+              @click="updateReview(review * 5)"
+            >
+              {{ review * 5 }}
             </li>
           </ul>
         </div>
 
         <button class="btn btn-default btn-cerca">Cerca</button>
       </form>
+      <button class="btn btn-azzera ms-2" @click="azzera">
+        azzera ricerca
+      </button>
     </div>
   </header>
 </template>
@@ -140,6 +181,11 @@ export default {
 }
 
 .btn-cerca {
+  border: 2px solid #022b3aff;
+}
+
+.btn-azzera {
+  font-size: 10px;
   border: 2px solid #022b3aff;
 }
 
@@ -163,7 +209,7 @@ export default {
   }
 
   .btn-default.specializations {
-    width: 400px;
+    width: 300px;
   }
 }
 </style>

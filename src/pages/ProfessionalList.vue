@@ -22,7 +22,7 @@ export default {
     AppMainSubPages,
   },
   methods: {
-    search() {
+    search(mediaVoti, numeroRecensioni) {
       this.loading = true;
       if (this.store.specializationsId === "") {
         this.$route.params.id = this.$route.params.id.replace("-", " ");
@@ -41,7 +41,11 @@ export default {
         // });
         axios
           .get("http://127.0.0.1:8000/api/professionals", {
-            params: { specialization_id: this.store.specializationsId },
+            params: {
+              specialization_id: this.store.specializationsId,
+              vote: mediaVoti,
+              review: numeroRecensioni,
+            },
           })
           .then((response) => {
             console.log(response);
