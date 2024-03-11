@@ -45,7 +45,9 @@ export default {
         </li>
       </ul>
 
-      <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
+      <div class="star">
+        <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
+      </div>
     </div>
   </div>
   <div class="card-details">
@@ -126,6 +128,9 @@ img {
 .card-details li {
   padding: 5px 0;
 }
+.star {
+  font-size: 26px;
+}
 
 @media (min-width: 767.98px) {
   .card-info h3 {
@@ -145,5 +150,14 @@ img {
   .specialization h5 {
     font-size: 18px;
   }
+
+  .star {
+    font-size: 30px;
+  }
 }
+
+/* .star li:hover {
+  color: rgb(255, 230, 8);
+  cursor: pointer;
+}  */
 </style>
