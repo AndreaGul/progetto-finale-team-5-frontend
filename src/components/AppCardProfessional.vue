@@ -41,15 +41,23 @@ export default {
         />
       </div>
       <div class="user-card-info">
-        <h2>{{ slug.split('-').join(' ') }}</h2>
+        <div class="d-flex flex-column flex-xl-row align-items-cente info mb-4">
+          <h2>{{ slug.split('-').join(' ') }}</h2>
+          <div class="stars ms-xl-5">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i
+            ><i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+
         <p><span>Email:</span>{{ mail }}</p>
         <p><span>Indirizzo:</span> {{ address }}</p>
-        <p><span>Specializzazioni:</span></p>
-        <ul>
+        <p><span>Specializzazioni:</span>        <ul>
           <li v-for="specialization in specializations">
             - {{ specialization.name }}
           </li>
-        </ul>
+        </ul></p>
+
 
         <router-link
           :to="{
@@ -147,20 +155,20 @@ img {
 .user-card-info {
   text-align: center;
   z-index: 3;
+  margin-left: 25px;
 }
 
 .user-card-info h2 {
-  margin: 0;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 3px;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   font-size: 35px;
 }
 
 .user-card-info p {
   font-size: 14px;
-  margin-bottom: 2px;
+  margin-bottom: 15px;
 }
 
 .user-card-info ul {
@@ -170,7 +178,6 @@ img {
 
 .user-card-info p span {
   display: block;
-  margin-bottom: 15px;
   font-size: 18px;
 }
 
@@ -196,6 +203,7 @@ img {
 
   .user-card-info {
     text-align: left;
+    margin-top: 15px;
   }
 
   .user-card:before {
