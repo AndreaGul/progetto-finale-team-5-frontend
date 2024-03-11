@@ -1,9 +1,7 @@
 <script>
 import AppJumbotron from './AppJumbotron.vue';
 import AppCardProfessional from './AppCardProfessional.vue';
-
 import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
-
 import store from '../../store';
 // da mettere nella pagina info
 
@@ -52,6 +50,9 @@ export default {
   created() {
     this.sponsorizedCards();
   },
+  created() {
+    this.store.specializationsName = '';
+  },
 };
 </script>
 
@@ -60,6 +61,7 @@ export default {
 
   <AppSponsoredProfessional></AppSponsoredProfessional>
 
+
   <div class="container">
     <div class="row d-flex flex-wrap">
       <div class="card" v-for="sponsor in this.sponsored">
@@ -67,6 +69,7 @@ export default {
       </div>
     </div>
   </div>
+
 
 </template>
 
