@@ -1,33 +1,59 @@
 <script>
 export default {
-  name: 'AppSendMessage',
+  name: "AppSendMessage",
+  data() {
+    return {
+      email: "",
+      review: "",
+      name: "",
+    };
+  },
+  methods: {
+    newReview() {
+      this.$emit("newReview", this.email, this.review, this.name);
+    },
+  },
 };
 </script>
 
 <template>
   <div class="cont-message">
-    <h3 class="text-uppercase">Manda Una Recensione</h3>
+    <h3 class="text-uppercase">Lascia Una Recensione</h3>
+    <form @submit.prevent="newReview">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control mail-style"
+          placeholder="Nome Cognome"
+          v-model="name"
+          required
+        />
+      </div>
 
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control mail-style"
-        placeholder="Inserisci il tuo nome"
-        aria-label="Username"
-      />
-    </div>
+      <div class="input-group mb-3">
+        <input
+          type="email"
+          class="form-control mail-style"
+          placeholder="Inserisci la tua mail"
+          v-model="email"
+          required
+        />
+      </div>
 
-    <div class="input-group">
-      <textarea
-        class="form-control color-textarea"
-        placeholder="Scrivi la tua recensione qui"
-        aria-label="With textarea"
-      ></textarea>
-    </div>
+      <div class="input-group">
+        <textarea
+          class="form-control color-textarea"
+          placeholder="Scrivi la tua recensione qui"
+          aria-label="With textarea"
+          v-model="review"
+          required
+        ></textarea>
+      </div>
 
-    <div class="cont-button">
-      <div class="btn button-send">Invia</div>
-    </div>
+      <div class="cont-button">
+        <button class="btn button-send">Invia</button>
+      </div>
+    </form>
   </div>
 </template>
 

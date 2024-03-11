@@ -1,15 +1,15 @@
 <script>
-import axios from 'axios';
-import AppHeader from '../components/AppHeader.vue';
-import AppSearchSubPages from '../components/AppSearchSubPages.vue';
-import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
-import AppSendMessage from '../components/AppSendMessage.vue';
-import AppSendReviews from '../components/AppSendReviews.vue';
-import AppSendVote from '../components/AppSendVote.vue';
-import AppReviews from '../components/AppReviews.vue';
-import store from '../../store';
+import axios from "axios";
+import AppHeader from "../components/AppHeader.vue";
+import AppSearchSubPages from "../components/AppSearchSubPages.vue";
+import AppInfoSingleProfessional from "../components/AppInfoSingleProfessional.vue";
+import AppSendMessage from "../components/AppSendMessage.vue";
+import AppSendReviews from "../components/AppSendReviews.vue";
+import AppSendVote from "../components/AppSendVote.vue";
+import AppReviews from "../components/AppReviews.vue";
+import store from "../../store";
 export default {
-  name: 'ProfessionalDetail',
+  name: "ProfessionalDetail",
   components: {
     AppHeader,
     AppSearchSubPages,
@@ -23,6 +23,8 @@ export default {
     return {
       store,
       professional: null,
+      alertMessage: "",
+      alertError: {},
     };
   },
   methods: {
@@ -33,7 +35,7 @@ export default {
       if (this.store.professionalId !== null) {
         axios
           .get(
-            'http://127.0.0.1:8000/api/professionals/show/' +
+            "http://127.0.0.1:8000/api/professionals/show/" +
               this.store.professionalId
           )
           .then((response) => {
@@ -43,27 +45,154 @@ export default {
       }
     },
     search(id) {
-      if (id !== '') {
+      if (id !== "") {
         axios
-          .get('http://127.0.0.1:8000/api/professionals/' + id)
+          .get("http://127.0.0.1:8000/api/professionals/" + id)
           .then((response) => {
             this.professionals = response.data.data.data;
           });
         this.$router.push({
-          name: 'professionalList',
+          name: "professionalList",
           params: { id: this.store.specializationsId },
         });
       }
     },
+    sendMessage(email, messaggio, nome) {
+      axios
+        .post("http://127.0.0.1:8000/api/professionals/message", null, {
+          params: {
+            id: this.professional.id,
+            email: email,
+            message: messaggio,
+            name: nome,
+          },
+        })
+        .then(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scrolling
+          });
+          this.alertMessage = "Messaggio inviato correttamente";
+          setTimeout(() => {
+            this.alertMessage = "";
+          }, 2000);
+        })
+        .catch((error) => {
+          this.alertError = error.response.data.error;
+          console.log(this.alertError);
+          setTimeout(() => {
+            this.alertError = {};
+          }, 3000);
+        });
+    },
+    sendReview(email, recensione, nome) {
+      axios
+        .post("http://127.0.0.1:8000/api/professionals/review", null, {
+          params: {
+            id: this.professional.id,
+            email: email,
+            review: recensione,
+            name: nome,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scrolling
+          });
+          this.alertMessage = "Recensione aggiunta correttamente";
+          setTimeout(() => {
+            this.alertMessage = "";
+          }, 2000);
+        })
+        .catch((error) => {
+          this.alertError = error.response.data.error;
+          console.log(this.alertError);
+          setTimeout(() => {
+            this.alertError = {};
+          }, 3000);
+        });
+    },
+    sendVote(vote) {
+      axios
+        .post("http://127.0.0.1:8000/api/professionals/vote", null, {
+          params: {
+            professional_id: this.professional.id,
+            lookup_id: vote,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scrolling
+          });
+          this.alertMessage = "Voto aggiunto correttamente";
+          setTimeout(() => {
+            this.alertMessage = "";
+          }, 2000);
+        })
+        .catch((error) => {
+          this.alertError = error.response.data.error;
+          console.log(this.alertError);
+          setTimeout(() => {
+            this.alertError = {};
+          }, 3000);
+        });
+    },
   },
   created() {
     this.getInfo();
-    console.log('slug', this.$route.params.slug);
+    console.log("slug", this.$route.params.slug);
   },
 };
 </script>
 
 <template>
+  <!-- alert se tutto ok-->
+  <div
+    v-if="alertMessage !== ''"
+    class="toast show position-fixed bottom-0 end-0 p-1 align-items-center text-bg-success border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">{{ alertMessage }}</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <!-- /alert se tutto ok -->
+
+  <!-- alert se errori -->
+  <div class="position-fixed bottom-0 end-0 p-1 d-flex flex-column gap-1">
+    <div
+      v-if="alertError !== {}"
+      v-for="(value, key) in alertError"
+      class="toast show text-bg-danger border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex">
+        <div class="toast-body">{{ value[0] }}</div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+  </div>
+  <!-- /alert se errori -->
+
   <AppHeader></AppHeader>
   <AppSearchSubPages @search="search"></AppSearchSubPages>
   <div class="container pt-5" v-if="professional !== null">
@@ -78,15 +207,14 @@ export default {
           :phone="professional.phone"
           :curriculum="professional.curriculum"
         ></AppInfoSingleProfessional>
-        <AppSendMessage></AppSendMessage>
-        <AppSendReviews></AppSendReviews>
-        <AppSendVote></AppSendVote>
+        <AppSendMessage @newMessage="sendMessage"></AppSendMessage>
+        <AppSendReviews @newReview="sendReview"></AppSendReviews>
+        <AppSendVote @newVote="sendVote"></AppSendVote>
       </div>
       <div class="col-12 col-lg-5 right-container">
         <AppReviews :reviews="professional.reviews"></AppReviews>
       </div>
     </div>
-    
   </div>
 </template>
 

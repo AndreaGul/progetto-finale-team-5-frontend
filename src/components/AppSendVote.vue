@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'SendVote',
+  name: "SendVote",
   data() {
     return {
       numeroDiStelle: 5,
@@ -15,6 +15,9 @@ export default {
       } else {
         this.stelleColorate = index + 1;
       }
+    },
+    newVote() {
+      this.$emit("newVote", this.stelleColorate);
     },
   },
 };
@@ -43,7 +46,7 @@ export default {
         </li>
       </ul>
       <div class="col-6 col-lg-2 text-end">
-        <button class="btn button-send">invia</button>
+        <button class="btn button-send" @click="newVote">invia</button>
       </div>
     </div>
   </div>
@@ -66,6 +69,7 @@ h3 {
 }
 .star li {
   font-size: 26px;
+  cursor: pointer;
 }
 
 /* .star li:hover {
