@@ -59,17 +59,8 @@ export default {
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
 
-  <AppSponsoredProfessional></AppSponsoredProfessional>
 
-
-  <div class="container">
-    <div class="row d-flex flex-wrap">
-      <div class="card" v-for="sponsor in this.sponsored">
-        {{ sponsor.user.name }}
-      </div>
-    </div>
-  </div>
-
+  <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
 
 </template>
 

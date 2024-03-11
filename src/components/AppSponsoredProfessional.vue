@@ -1,32 +1,10 @@
 <script>
-import store from '../../store';
-import AppShowStarVote from './AppShowStarVote.vue';
-
 export default {
-  name: 'CardProfessional',
-  props: [
-    'slug',
-    'mail',
-    'specializations',
-    'photo',
-    'address',
-    'performance',
-    'id',
-    'vote',
-  ],
-  components: {
-    AppShowStarVote,
-  },
-  methods: {
-    getInfo() {
-      this.store.professionalId = this.id;
-    },
-  },
-  data() {
-    return {
-      store,
-    };
-  },
+  name: 'CardSponsor',
+  props: ['sponsorProp'],
+  // created() {
+  //   console.log(sponsor.user.photo);
+  // },
 };
 </script>
 
@@ -35,27 +13,39 @@ export default {
     <h1>I migliori professionisti</h1>
 
     <div class="container-all-card d-flex gap-3">
-      <div class="card">
-        <div class="container-card">
-          <img src="" alt="foto" />
-          <p class="card-title">Nome</p>
-          <p class="card-description">Specializzazioni</p>
-        </div>
-      </div>
+      <div class="card" v-for="sponsor in sponsorProp">
+        <div class="container-card d-flex gap-3">
+          <div>
+            <p class="card-title">
+              {{ sponsor.user.name }} {{ sponsor.user.surname }}
+            </p>
 
-      <div class="card">
-        <div class="container-card">
-          <img src="" alt="foto" />
-          <p class="card-title">Nome</p>
-          <p class="card-description">Specializzazioni</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="container-card">
-          <img src="" alt="foto" />
-          <p class="card-title">Nome</p>
-          <p class="card-description">Specializzazioni</p>
+            <div class="card-description">Specializzazioni:</div>
+            <p>
+              <span
+                v-for="(specialization, index) in sponsor.specializations"
+                :key="index"
+              >
+                {{ specialization.name }}
+                <span v-if="index < sponsor.specializations.length - 1"
+                  >,
+                </span>
+              </span>
+            </p>
+          </div>
+          <div class="user-card-img">
+            <img
+              v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
+              :src="'http://127.0.0.1:8000/storage/' + photo"
+              alt=""
+            />
+            <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
+            <img
+              v-else
+              src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -103,6 +93,13 @@ export default {
   color: hsla(0, 0%, 100%, 0.5);
   font-size: 16px;
   max-width: 470px;
+}
+
+.user-card-img img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 /*
