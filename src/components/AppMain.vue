@@ -1,6 +1,10 @@
 <script>
 import AppJumbotron from './AppJumbotron.vue';
 import AppCardProfessional from './AppCardProfessional.vue';
+
+import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
+
+
 import store from '../../store';
 // da mettere nella pagina info
 
@@ -23,6 +27,7 @@ export default {
   components: {
     AppJumbotron,
     AppCardProfessional,
+    AppSponsoredProfessional,
 
     // AppInfoSingleProfessional,
     // AppDetailInfoProfessional,
@@ -53,13 +58,9 @@ export default {
 
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
-  <div class="container">
-    <div class="row d-flex flex-wrap">
-      <div class="card" v-for="sponsor in this.sponsored">
-        {{ sponsor.user.name }}
-      </div>
-    </div>
-  </div>
+
+  <AppSponsoredProfessional></AppSponsoredProfessional>
+
 </template>
 
 <style scoped></style>
