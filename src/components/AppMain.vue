@@ -61,6 +61,16 @@ export default {
 
   <AppSponsoredProfessional></AppSponsoredProfessional>
 
+
+  <div class="container">
+    <div class="row d-flex flex-wrap">
+      <div class="card" v-for="sponsor in this.sponsored">
+        {{ sponsor.user.name }}
+      </div>
+    </div>
+  </div>
+
+
 </template>
 
 <style scoped></style>
