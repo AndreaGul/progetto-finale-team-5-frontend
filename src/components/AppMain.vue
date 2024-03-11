@@ -49,8 +49,6 @@ export default {
   },
   created() {
     this.sponsorizedCards();
-  },
-  created() {
     this.store.specializationsName = '';
   },
 };
@@ -59,9 +57,7 @@ export default {
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
 
-
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
-
 </template>
 
 <style scoped></style>

@@ -10,7 +10,7 @@ export default {
 
 <template>
   <div class="container p-3">
-    <h1>I migliori professionisti</h1>
+    <h4 class="text-center text-uppercase">In evidenza</h4>
 
     <div class="container-all-card d-flex gap-3">
       <div class="card" v-for="sponsor in sponsorProp">
