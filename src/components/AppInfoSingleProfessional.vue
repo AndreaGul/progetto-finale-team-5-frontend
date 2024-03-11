@@ -52,8 +52,12 @@ export default {
   <div class="card-details">
     <ul class="p-0 m-0">
       <li class="list-unstyled">
-        <h4>Indirizzo</h4>
-        <h5>{{ address }}</h5>
+        <h4>
+          Indirizzo
+
+          <i class="fa-solid fa-location-dot"></i>
+        </h4>
+        <h6>{{ address }}</h6>
       </li>
       <li class="list-unstyled" v-if="phone">
         <!-- <h4>Telefono</h4> -->
