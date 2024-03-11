@@ -34,17 +34,8 @@ export default {
 </template>
 
 <style scoped>
-.star li {
-  font-size: 26px;
-}
 /* .star li:hover {
   color: rgb(255, 230, 8);
   cursor: pointer;
 }  */
-
-@media (min-width: 767.98px) {
-  .star li {
-    font-size: 30px;
-  }
-}
 </style>

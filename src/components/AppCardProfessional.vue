@@ -49,10 +49,8 @@ export default {
       <div class="user-card-info">
         <div class="d-flex flex-column flex-xl-row align-items-cente info mb-2">
           <h2>{{ slug.split('-').join(' ') }}</h2>
-          <div class="stars ms-xl-5">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-            ><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i
-            ><i class="fa-regular fa-star"></i>
+          <div class="stars ms-xl-5 d-flex justify-content-center justify-content-md-start">
+             <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
           </div>
         </div>
 
@@ -69,7 +67,7 @@ export default {
 
 
 
-        <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
+      
 
         <router-link
           :to="{
@@ -227,6 +225,8 @@ img {
   .user-card-info h2 {
     font-size: 24px;
   }
+
+
 }
 
 /* @media (max-width: 767px) {
