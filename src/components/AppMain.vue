@@ -4,7 +4,6 @@ import AppCardProfessional from './AppCardProfessional.vue';
 
 import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
 
-
 import store from '../../store';
 // da mettere nella pagina info
 
@@ -59,8 +58,7 @@ export default {
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
 
-  <AppSponsoredProfessional></AppSponsoredProfessional>
-
+  <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
 </template>
 
 <style scoped></style>
