@@ -41,7 +41,7 @@ export default {
         />
       </div>
       <div class="user-card-info">
-        <div class="d-flex flex-column flex-xl-row align-items-cente info mb-4">
+        <div class="d-flex flex-column flex-xl-row align-items-cente info mb-2">
           <h2>{{ slug.split('-').join(' ') }}</h2>
           <div class="stars ms-xl-5">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
@@ -50,13 +50,17 @@ export default {
           </div>
         </div>
 
+        <p><span>Specializzazioni:</span>
+          <ul>
+            <li v-for="specialization in specializations">
+            - {{ specialization.name }}
+            </li>
+          </ul>
+        </p>
+
         <p><span>Email:</span>{{ mail }}</p>
         <p><span>Indirizzo:</span> {{ address }}</p>
-        <p><span>Specializzazioni:</span>        <ul>
-          <li v-for="specialization in specializations">
-            - {{ specialization.name }}
-          </li>
-        </ul></p>
+
 
 
         <router-link
