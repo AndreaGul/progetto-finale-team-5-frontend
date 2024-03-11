@@ -149,5 +149,9 @@ img {
   .card-details h5 {
     font-size: 22px;
   }
+
+  .specialization h5 {
+    font-size: 18px;
+  }
 }
 </style>
