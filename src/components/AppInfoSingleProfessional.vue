@@ -1,4 +1,5 @@
 <script>
+import AppShowStarVote from './AppShowStarVote.vue';
 export default {
   name: 'AppInfoSingleProfessional',
   props: [
@@ -9,7 +10,11 @@ export default {
     'address',
     'phone',
     'curriculum',
+    'vote',
   ],
+  components: {
+    AppShowStarVote,
+  },
 };
 </script>
 
@@ -40,13 +45,7 @@ export default {
         </li>
       </ul>
 
-      <ul class="d-flex list-unstyled star">
-        <li><i class="fa-solid fa-star"></i></li>
-        <li><i class="fa-solid fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
-        <li><i class="fa-regular fa-star"></i></li>
-      </ul>
+      <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
     </div>
   </div>
   <div class="card-details">
@@ -107,15 +106,6 @@ img {
   width: 200px;
 }
 
-.star li {
-  font-size: 26px;
-}
-
-.star li:hover {
-  color: rgb(255, 230, 8);
-  cursor: pointer;
-}
-
 .card-details {
   background-color: #e1e5f2;
   padding: 25px;
@@ -137,9 +127,7 @@ img {
   .card-info h3 {
     font-size: 32px;
   }
-  .star li {
-    font-size: 30px;
-  }
+
   .card-info h5 {
     font-size: 22px;
   }

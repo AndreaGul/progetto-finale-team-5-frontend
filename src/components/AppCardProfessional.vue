@@ -1,5 +1,7 @@
 <script>
 import store from '../../store';
+import AppShowStarVote from './AppShowStarVote.vue';
+
 export default {
   name: 'CardProfessional',
   props: [
@@ -10,7 +12,11 @@ export default {
     'address',
     'performance',
     'id',
+    'vote',
   ],
+  components: {
+    AppShowStarVote,
+  },
   methods: {
     getInfo() {
       this.store.professionalId = this.id;
@@ -50,6 +56,8 @@ export default {
             - {{ specialization.name }}
           </li>
         </ul>
+
+        <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
 
         <router-link
           :to="{
