@@ -2,6 +2,16 @@
 export default {
   name: 'AppReviews',
   props: ['reviews'],
+  data(){
+    return{
+      data: 10,
+    }
+  },
+  methods:{
+    dataGiusta(stringa,numeroCaratteri){
+      return stringa.slice(0, numeroCaratteri);
+    }
+  }
 };
 </script>
 
@@ -12,7 +22,7 @@ export default {
       <div v-if="reviews.length > 0">
         <div class="info-reviews" v-for="review in reviews">
           <p class="nome-recensione">{{ review.name_reviewer }}
- <p class="data-recensione">{{ review.created_at }}</p>
+ <p class="data-recensione">{{ dataGiusta(review.created_at,data)  }}</p>
            </p>
 
                 <div class="message">
