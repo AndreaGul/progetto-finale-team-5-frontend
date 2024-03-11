@@ -63,7 +63,7 @@ export default {
         <!-- <h4>Telefono</h4> -->
 
         <h4>Telefono</h4>
-        <h5>{{ phone }}</h5>
+        <h6>{{ phone }}</h6>
       </li>
 
       <li class="list-unstyled" v-if="curriculum">
