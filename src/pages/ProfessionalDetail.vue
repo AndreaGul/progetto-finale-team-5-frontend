@@ -1,15 +1,15 @@
 <script>
-import axios from "axios";
-import AppHeader from "../components/AppHeader.vue";
-import AppSearchSubPages from "../components/AppSearchSubPages.vue";
-import AppInfoSingleProfessional from "../components/AppInfoSingleProfessional.vue";
-import AppSendMessage from "../components/AppSendMessage.vue";
-import AppSendReviews from "../components/AppSendReviews.vue";
-import AppSendVote from "../components/AppSendVote.vue";
-import AppReviews from "../components/AppReviews.vue";
-import store from "../../store";
+import axios from 'axios';
+import AppHeader from '../components/AppHeader.vue';
+import AppSearchSubPages from '../components/AppSearchSubPages.vue';
+import AppInfoSingleProfessional from '../components/AppInfoSingleProfessional.vue';
+import AppSendMessage from '../components/AppSendMessage.vue';
+import AppSendReviews from '../components/AppSendReviews.vue';
+import AppSendVote from '../components/AppSendVote.vue';
+import AppReviews from '../components/AppReviews.vue';
+import store from '../../store';
 export default {
-  name: "ProfessionalDetail",
+  name: 'ProfessionalDetail',
   components: {
     AppHeader,
     AppSearchSubPages,
@@ -23,7 +23,7 @@ export default {
     return {
       store,
       professional: null,
-      alertMessage: "",
+      alertMessage: '',
       alertError: {},
     };
   },
@@ -35,7 +35,7 @@ export default {
       if (this.store.professionalId !== null) {
         axios
           .get(
-            "http://127.0.0.1:8000/api/professionals/show/" +
+            'http://127.0.0.1:8000/api/professionals/show/' +
               this.store.professionalId
           )
           .then((response) => {
@@ -45,21 +45,21 @@ export default {
       }
     },
     search(id) {
-      if (id !== "") {
+      if (id !== '') {
         axios
-          .get("http://127.0.0.1:8000/api/professionals/" + id)
+          .get('http://127.0.0.1:8000/api/professionals/' + id)
           .then((response) => {
             this.professionals = response.data.data.data;
           });
         this.$router.push({
-          name: "professionalList",
+          name: 'professionalList',
           params: { id: this.store.specializationsId },
         });
       }
     },
     sendMessage(email, messaggio, nome) {
       axios
-        .post("http://127.0.0.1:8000/api/professionals/message", null, {
+        .post('http://127.0.0.1:8000/api/professionals/message', null, {
           params: {
             id: this.professional.id,
             email: email,
@@ -70,11 +70,11 @@ export default {
         .then(() => {
           window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scrolling
+            behavior: 'smooth', // Smooth scrolling
           });
-          this.alertMessage = "Messaggio inviato correttamente";
+          this.alertMessage = 'Messaggio inviato correttamente';
           setTimeout(() => {
-            this.alertMessage = "";
+            this.alertMessage = '';
           }, 2000);
         })
         .catch((error) => {
@@ -87,7 +87,7 @@ export default {
     },
     sendReview(email, recensione, nome) {
       axios
-        .post("http://127.0.0.1:8000/api/professionals/review", null, {
+        .post('http://127.0.0.1:8000/api/professionals/review', null, {
           params: {
             id: this.professional.id,
             email: email,
@@ -99,11 +99,11 @@ export default {
           console.log(response);
           window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scrolling
+            behavior: 'smooth', // Smooth scrolling
           });
-          this.alertMessage = "Recensione aggiunta correttamente";
+          this.alertMessage = 'Recensione aggiunta correttamente';
           setTimeout(() => {
-            this.alertMessage = "";
+            this.alertMessage = '';
           }, 2000);
         })
         .catch((error) => {
@@ -116,7 +116,7 @@ export default {
     },
     sendVote(vote) {
       axios
-        .post("http://127.0.0.1:8000/api/professionals/vote", null, {
+        .post('http://127.0.0.1:8000/api/professionals/vote', null, {
           params: {
             professional_id: this.professional.id,
             lookup_id: vote,
@@ -126,11 +126,11 @@ export default {
           console.log(response);
           window.scrollTo({
             top: 0,
-            behavior: "smooth", // Smooth scrolling
+            behavior: 'smooth', // Smooth scrolling
           });
-          this.alertMessage = "Voto aggiunto correttamente";
+          this.alertMessage = 'Voto aggiunto correttamente';
           setTimeout(() => {
-            this.alertMessage = "";
+            this.alertMessage = '';
           }, 2000);
         })
         .catch((error) => {
@@ -144,7 +144,7 @@ export default {
   },
   created() {
     this.getInfo();
-    console.log("slug", this.$route.params.slug);
+    console.log('slug', this.$route.params.slug);
   },
 };
 </script>
@@ -206,6 +206,7 @@ export default {
           :address="professional.address"
           :phone="professional.phone"
           :curriculum="professional.curriculum"
+          :vote="professional.average_rating"
         ></AppInfoSingleProfessional>
         <AppSendMessage @newMessage="sendMessage"></AppSendMessage>
         <AppSendReviews @newReview="sendReview"></AppSendReviews>

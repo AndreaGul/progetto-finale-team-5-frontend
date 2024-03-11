@@ -1,10 +1,10 @@
 <script>
-import AppCardProfessional from "../components/AppCardProfessional.vue";
-import AppInfoSingleProfessional from "./AppInfoSingleProfessional.vue";
-import AppReviews from "./AppReviews.vue";
-import axios from "axios";
+import AppCardProfessional from '../components/AppCardProfessional.vue';
+import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
+import AppReviews from './AppReviews.vue';
+import axios from 'axios';
 export default {
-  name: "MainSubPages",
+  name: 'MainSubPages',
   data() {
     return {
       professional: null,
@@ -25,7 +25,7 @@ export default {
     getInfo(id) {
       console.log(id);
       axios
-        .get("http://127.0.0.1:8000/api/professionals/show/" + id)
+        .get('http://127.0.0.1:8000/api/professionals/show/' + id)
         .then((response) => {
           console.log(response.data.data);
           this.professional = response.data.data;
@@ -48,6 +48,7 @@ export default {
         :slug="professional.slug"
         :specializations="professional.specializations"
         :photo="professional.photo"
+        :vote="professional.average_rating"
       ></AppCardProfessional>
     </div>
 
