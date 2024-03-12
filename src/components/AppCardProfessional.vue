@@ -13,6 +13,7 @@ export default {
     'performance',
     'id',
     'vote',
+    'sponsorization',
   ],
   components: {
     AppShowStarVote,
@@ -32,7 +33,7 @@ export default {
 
 <template>
   <div class="wrapper col-12 col-lg-6 pb-3 d-flex align-items-stretch">
-    <div class="user-card justify-content-start">
+    <div class="user-card justify-content-start " :class="{'card-sponsored': sponsorization[0]} ">
       <div class="user-card-img">
         <img
           v-if="photo && photo.startsWith('uploads')"
@@ -46,7 +47,7 @@ export default {
           alt=""
         />
       </div>
-      <div class="user-card-info">
+      <div class="user-card-info ">
         <div class="d-flex flex-column flex-xl-row align-items-cente info mb-2">
           <h2>{{ slug.split('-').join(' ') }}</h2>
           <div class="stars ms-xl-5 d-flex justify-content-center justify-content-md-start">
@@ -88,6 +89,10 @@ export default {
   border-radius: 15px;
   background-color: #e1e4f1;
   border-color: #012a3a;
+}
+
+.card-sponsored{
+  border: #1f798b  1px solid;
 }
 
 .cont-card {

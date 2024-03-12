@@ -1,13 +1,13 @@
 <script>
-import AppHeader from "../components/AppHeader.vue";
-import AppSearchSubPages from "../components/AppSearchSubPages.vue";
+import AppHeader from '../components/AppHeader.vue';
+import AppSearchSubPages from '../components/AppSearchSubPages.vue';
 //import AppHeaderSubPages from '../components/AppHeaderSubPages.vue';
-import AppMainSubPages from "../components/AppMainSubPages.vue";
-import axios from "axios";
-import store from "../../store";
+import AppMainSubPages from '../components/AppMainSubPages.vue';
+import axios from 'axios';
+import store from '../../store';
 
 export default {
-  name: "ProfessionalList",
+  name: 'ProfessionalList',
   data() {
     return {
       loading: false,
@@ -24,12 +24,12 @@ export default {
   methods: {
     search(mediaVoti, numeroRecensioni) {
       this.loading = true;
-      if (this.store.specializationsId === "") {
-        this.$route.params.id = this.$route.params.id.replace("-", " ");
+      if (this.store.specializationsId === '') {
+        this.$route.params.id = this.$route.params.id.replace('-', ' ');
         this.store.specializationsId = this.$route.params.id;
         this.store.specializationsName = this.$route.params.id;
       }
-      if (this.store.specializationsId !== "") {
+      if (this.store.specializationsId !== '') {
         const specializationName = this.formatSpecializationName(
           this.store.specializationsName
         );
@@ -40,7 +40,7 @@ export default {
         //   params: { id: formattedSpecializationName },
         // });
         axios
-          .get("http://127.0.0.1:8000/api/professionals", {
+          .get('http://127.0.0.1:8000/api/professionals', {
             params: {
               specialization_id: this.store.specializationsId,
               vote: mediaVoti,
@@ -55,13 +55,13 @@ export default {
             this.loading = false;
           });
         this.$router.push({
-          name: "professionalList",
+          name: 'professionalList',
           params: { id: specializationName },
         });
       }
     },
     formatSpecializationName(name) {
-      return name.replace(/\s+/g, "-");
+      return name.replace(/\s+/g, '-');
     },
   },
   created() {
