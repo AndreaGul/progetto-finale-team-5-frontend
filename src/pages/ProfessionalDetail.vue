@@ -209,6 +209,7 @@ export default {
           :phone="professional.phone"
           :curriculum="professional.curriculum"
           :vote="professional.average_rating"
+          :num_vote="professional.votes_count"
         ></AppInfoSingleProfessional>
         <AppSendMessage @newMessage="sendMessage"></AppSendMessage>
         <AppSendReviews @newReview="sendReview"></AppSendReviews>
