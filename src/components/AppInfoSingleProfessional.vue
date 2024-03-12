@@ -46,11 +46,15 @@ export default {
         </li>
       </ul>
 
-      <div class="star">
+      <div class="star d-flex flex-column flex-md-row">
         <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
+        <div class="align-self-center ms-3">
+          <div v-if="num_vote === 0">Nessun Voto</div>
+          <div v-else-if="num_vote === 1">Un voto</div>
+          <div v-else>{{ num_vote }} Voti</div>
+        </div>
       </div>
-      <div>{{ vote }}</div>
-      <div>{{ num_vote }}</div>
+      <!-- <div>{{ vote }}</div> -->
     </div>
   </div>
   <div class="card-details">
