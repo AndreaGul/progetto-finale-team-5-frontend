@@ -2,12 +2,9 @@
 import AppJumbotron from './AppJumbotron.vue';
 import AppCardProfessional from './AppCardProfessional.vue';
 import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
+import AppSpecializationMain from './AppSpecializationMain.vue';
 import store from '../../store';
 // da mettere nella pagina info
-
-// import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
-// import AppReviews from './AppReviews.vue';
-// import AppDetailInfoProfessional from './AppDetailInfoProfessional.vue';
 
 import axios from 'axios';
 
@@ -25,6 +22,7 @@ export default {
     AppJumbotron,
     AppCardProfessional,
     AppSponsoredProfessional,
+    AppSpecializationMain,
 
     // AppInfoSingleProfessional,
     // AppDetailInfoProfessional,
@@ -58,6 +56,7 @@ export default {
   <AppJumbotron @search="search"></AppJumbotron>
 
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
+  <AppSpecializationMain></AppSpecializationMain>
 </template>
 
 <style scoped></style>
