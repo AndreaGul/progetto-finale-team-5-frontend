@@ -1,18 +1,20 @@
 <script>
-import AppJumbotron from './AppJumbotron.vue';
-import AppCardProfessional from './AppCardProfessional.vue';
-import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
-import store from '../../store';
+import AppJumbotron from "./AppJumbotron.vue";
+import AppCardProfessional from "./AppCardProfessional.vue";
+import AppSponsoredProfessional from "./AppSponsoredProfessional.vue";
+import AppCarousel from "./AppLogoCarousel.vue";
+import store from "../../store";
 // da mettere nella pagina info
 
 // import AppInfoSingleProfessional from './AppInfoSingleProfessional.vue';
 // import AppReviews from './AppReviews.vue';
 // import AppDetailInfoProfessional from './AppDetailInfoProfessional.vue';
 
-import axios from 'axios';
+import axios from "axios";
+import AppLogoCarousel from "./AppLogoCarousel.vue";
 
 export default {
-  name: 'Main',
+  name: "Main",
 
   data() {
     return {
@@ -25,6 +27,7 @@ export default {
     AppJumbotron,
     AppCardProfessional,
     AppSponsoredProfessional,
+    AppLogoCarousel,
 
     // AppInfoSingleProfessional,
     // AppDetailInfoProfessional,
@@ -34,13 +37,13 @@ export default {
   methods: {
     search() {
       this.$router.push({
-        name: 'professionalList',
+        name: "professionalList",
         params: { id: this.store.specializationsName },
       });
     },
     sponsorizedCards() {
       axios
-        .get('http://127.0.0.1:8000/api/professionals/sponsored')
+        .get("http://127.0.0.1:8000/api/professionals/sponsored")
         .then((response) => {
           console.log(response);
           this.sponsored = response.data.data;
@@ -49,7 +52,7 @@ export default {
   },
   created() {
     this.sponsorizedCards();
-    this.store.specializationsName = '';
+    this.store.specializationsName = "";
   },
 };
 </script>
@@ -58,6 +61,7 @@ export default {
   <AppJumbotron @search="search"></AppJumbotron>
 
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
+  <AppLogoCarousel></AppLogoCarousel>
 </template>
 
 <style scoped></style>
