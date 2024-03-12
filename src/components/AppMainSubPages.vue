@@ -49,6 +49,7 @@ export default {
         :specializations="professional.specializations"
         :photo="professional.photo"
         :vote="professional.average_rating"
+        :sponsorization="professional.sponsorizations"
       ></AppCardProfessional>
     </div>
 
