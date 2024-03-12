@@ -194,7 +194,9 @@ export default {
   <!-- /alert se errori -->
 
   <AppHeader></AppHeader>
+  <!--
   <AppSearchSubPages @search="search"></AppSearchSubPages>
+  -->
   <div class="container pt-5" v-if="professional !== null">
     <div class="row">
       <div class="left-container col-12 col-lg-7">
