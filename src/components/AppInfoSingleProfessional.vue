@@ -11,6 +11,7 @@ export default {
     'phone',
     'curriculum',
     'vote',
+    'num_vote',
   ],
   components: {
     AppShowStarVote,
@@ -48,6 +49,8 @@ export default {
       <div class="star">
         <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
       </div>
+      <div>{{ vote }}</div>
+      <div>{{ num_vote }}</div>
     </div>
   </div>
   <div class="card-details">
