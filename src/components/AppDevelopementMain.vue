@@ -2,7 +2,7 @@
 import axios from 'axios';
 import store from '../../store';
 export default {
-  name: 'Jumbotron',
+  name: 'Developement',
 
   data() {
     return {
@@ -58,8 +58,7 @@ export default {
         </p>
       </div>
       <div class="button-wrapper">
-        <button class="btn outline">DETAILS</button>
-        <button class="btn fill">BUY NOW</button>
+        <button class="btn outline">DETTAGLI</button>
       </div>
     </div>
   </body>
