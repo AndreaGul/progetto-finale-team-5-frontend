@@ -38,12 +38,16 @@ export default {
 </template>
 
 <style scoped>
+
+
+
 .card-reviews {
   overflow-y: auto;
   padding: 20px;
   background-color: #e1e5f2;
-  max-height: 65vh;
+
   margin-bottom: 35px;
+
   border-radius: 33px;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
