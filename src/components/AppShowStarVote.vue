@@ -4,18 +4,18 @@ export default {
   data() {
     return {
       numeroDiStelle: 5,
-      colorate: null,
+      // colorate: null,
     };
   },
   props: ['stelleColorate'],
-  methods: {
-    numeroIntero() {
-      this.colorate = Math.round(parseFloat(this.stelleColorate));
-    },
-  },
-  created() {
-    this.numeroIntero();
-  },
+  // methods: {
+  //   numeroIntero() {
+  //     this.colorate = Math.round(parseFloat(this.stelleColorate));
+  //   },
+  // },
+  // created() {
+  //   this.numeroIntero();
+  // },
 };
 </script>
 
@@ -25,8 +25,8 @@ export default {
     <li v-for="(star, index) in numeroDiStelle">
       <i
         :class="{
-          'fas fa-star': index < colorate,
-          'far fa-star': index >= colorate,
+          'fas fa-star': index < Math.round(parseFloat(this.stelleColorate)),
+          'far fa-star': index >= Math.round(parseFloat(this.stelleColorate)),
         }"
       ></i>
     </li>
