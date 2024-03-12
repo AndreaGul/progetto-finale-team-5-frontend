@@ -41,6 +41,9 @@ export default {
 </template>
 
 <style scoped>
+.container{
+  width: 100%;
+}
 
 
 

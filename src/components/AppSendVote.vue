@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "SendVote",
+  name: 'SendVote',
   data() {
     return {
       numeroDiStelle: 5,
@@ -17,7 +17,7 @@ export default {
       }
     },
     newVote() {
-      this.$emit("newVote", this.stelleColorate);
+      this.$emit('newVote', this.stelleColorate);
     },
   },
 };
@@ -25,7 +25,7 @@ export default {
 
 <template>
   <div class="vote-container">
-    <div class="row align-items-center">
+    <div class="row align-items-center card-vote-star">
       <h3 class="text-uppercase m-0 col-12 col-lg-6 p-2">
         Vota Professionista
       </h3>
@@ -54,10 +54,16 @@ export default {
 
 <style scoped>
 .vote-container {
+  position: relative;
+  top: 10px;
   padding: 20px;
   margin: 20px 0;
   background-color: aliceblue;
   border-radius: 30px;
+}
+
+.card-vote-star {
+  height: 150px;
 }
 
 .button-send {
