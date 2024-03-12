@@ -36,7 +36,7 @@ export default {
           <div class="user-card-img">
             <img
               v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
-              :src="'http://127.0.0.1:8000/storage/' + photo"
+              :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
               alt=""
             />
             <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
