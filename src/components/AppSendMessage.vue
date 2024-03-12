@@ -1,16 +1,16 @@
 <script>
 export default {
-  name: "AppSendMessage",
+  name: 'AppSendMessage',
   data() {
     return {
-      email: "",
-      message: "",
-      name: "",
+      email: '',
+      message: '',
+      name: '',
     };
   },
   methods: {
     newMessage() {
-      this.$emit("newMessage", this.email, this.message, this.name);
+      this.$emit('newMessage', this.email, this.message, this.name);
     },
   },
 };
