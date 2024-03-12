@@ -5,13 +5,16 @@ export default {
   data(){
     return{
       data: 10,
+      
+      // dataFormat: (new Date(this.review.created_at)),
     }
   },
-  methods:{
-    dataGiusta(stringa,numeroCaratteri){
-      return stringa.slice(0, numeroCaratteri);
-    }
-  }
+  methods: {
+    dataFormat(dataFormat) {
+      dataFormat = new Date(dataFormat);
+      return `${dataFormat.getDate()}-${dataFormat.getMonth() + 1}-${dataFormat.getFullYear()}`;
+    },
+  },
 };
 </script>
 
@@ -22,7 +25,7 @@ export default {
       <div v-if="reviews.length > 0">
         <div class="info-reviews" v-for="review in reviews">
           <p class="nome-recensione">{{ review.name_reviewer }}
- <p class="data-recensione">{{ dataGiusta(review.created_at,data)  }}</p>
+ <p class="data-recensione">{{ dataFormat(review.created_at) }}</p>
            </p>
 
                 <div class="message">
@@ -38,12 +41,19 @@ export default {
 </template>
 
 <style scoped>
+.container{
+  width: 100%;
+}
+
+
+
 .card-reviews {
   overflow-y: auto;
   padding: 20px;
   background-color: #e1e5f2;
-  max-height: 65vh;
+
   margin-bottom: 35px;
+
   border-radius: 33px;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,

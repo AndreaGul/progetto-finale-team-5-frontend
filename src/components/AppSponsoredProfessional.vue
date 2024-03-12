@@ -12,7 +12,7 @@ export default {
   <div class="container p-3">
     <h4 class="text-center text-uppercase">In evidenza</h4>
 
-    <div class="container-all-card d-flex gap-3">
+    <div class="container-all-card gap-3">
       <div class="card" v-for="sponsor in sponsorProp">
         <div class="container-card d-flex gap-3">
           <div>
@@ -21,7 +21,7 @@ export default {
             </p>
 
             <div class="card-description">Specializzazioni:</div>
-            <p>
+            <p class="specialization-list">
               <span
                 v-for="(specialization, index) in sponsor.specializations"
                 :key="index"
@@ -60,9 +60,12 @@ export default {
   margin-inline: auto;
 }
 
-.container-card {
-  padding: 0.875em 2em;
+.container-all-card {
+  display: flex;
+}
 
+.container-card {
+  padding: 30px;
   background: linear-gradient(90deg, #346b7a, transparent) #080509;
   font-family: inherit;
   color: #fff;
@@ -96,10 +99,28 @@ export default {
 }
 
 .user-card-img img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.specialization-list {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 992px) {
+  .container-all-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .user-card-img img {
+    margin-bottom: 0;
+    margin-right: 50px;
+  }
+  .specialization-list {
+    font-size: 14px;
+  }
 }
 
 /*

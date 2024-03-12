@@ -173,6 +173,7 @@ export default {
           :curriculum="professional.curriculum"
           :vote="professional.average_rating"
         ></AppInfoSingleProfessional>
+
         <!-- alert se tutto ok-->
         <div
           v-if="alertMessage !== ''"
@@ -241,9 +242,13 @@ export default {
         </div>
       </div>
       <div class="col-12 col-lg-5 right-container">
-        <AppReviews :reviews="professional.reviews"></AppReviews>
+        <AppSendVote @newVote="sendVote"></AppSendVote>
+
+        <AppSendMessage @newMessage="sendMessage"></AppSendMessage>
       </div>
     </div>
+
+    <AppReviews :reviews="professional.reviews"></AppReviews>
   </div>
 </template>
 
@@ -253,7 +258,16 @@ export default {
 }
 
 .right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   padding: 20px 0;
+
+  height: 850px;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
 }
 
 .alert-mex {

@@ -1,8 +1,10 @@
 <script>
+
 import AppJumbotron from "./AppJumbotron.vue";
 import AppCardProfessional from "./AppCardProfessional.vue";
 import AppSponsoredProfessional from "./AppSponsoredProfessional.vue";
 import AppCarousel from "./AppLogoCarousel.vue";
+import AppSpecializationMain from './AppSpecializationMain.vue';
 import store from "../../store";
 // da mettere nella pagina info
 
@@ -12,6 +14,7 @@ import store from "../../store";
 
 import axios from "axios";
 import AppLogoCarousel from "./AppLogoCarousel.vue";
+
 
 export default {
   name: "Main",
@@ -28,7 +31,7 @@ export default {
     AppCardProfessional,
     AppSponsoredProfessional,
     AppLogoCarousel,
-
+    AppSpecializationMain,
     // AppInfoSingleProfessional,
     // AppDetailInfoProfessional,
     // AppReviews,
@@ -62,6 +65,7 @@ export default {
 
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
   <AppLogoCarousel></AppLogoCarousel>
+  <AppSpecializationMain></AppSpecializationMain>
 </template>
 
 <style scoped></style>
