@@ -17,6 +17,7 @@ export default {
 </script>
 
 <template>
+  <!-- Invio Messaggio -->
   <div class="cont-message">
     <h3 class="text-uppercase">Manda Un Messaggio</h3>
     <form @submit.prevent="newMessage">
@@ -55,6 +56,7 @@ export default {
       </div>
     </form>
   </div>
+  <!-- Fine Invio Messaggio -->
 </template>
 
 <style scoped>

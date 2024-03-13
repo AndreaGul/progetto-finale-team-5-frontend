@@ -2,13 +2,11 @@
 export default {
   name: 'CardSponsor',
   props: ['sponsorProp'],
-  // created() {
-  //   console.log(sponsor.user.photo);
-  // },
 };
 </script>
 
 <template>
+  <!-- In evidenza -->
   <div class="container p-3">
     <h4 class="text-center text-uppercase">In evidenza</h4>
 
@@ -50,6 +48,7 @@ export default {
       </div>
     </div>
   </div>
+  <!-- Fine In evidenza -->
 </template>
 
 <style scoped>
@@ -122,51 +121,4 @@ export default {
     font-size: 14px;
   }
 }
-
-/*
-@media only screen and (min-width: 768px) {
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .user-card-img {
-    margin-bottom: 0;
-    margin-right: 50px;
-  }
-
-  .user-card-info {
-    text-align: left;
-    margin-top: 15px;
-  }
-
-  .user-card:before {
-    transform: rotate(17deg);
-    height: 300%;
-    width: 173px;
-  }
-
-  .user-card-info h2 {
-    font-size: 24px;
-  }
-} */
-
-/* @media (max-width: 767px) {
-   .wrapper {
-    padding-top: 3%;
-  }
-   .user-card:before {
-    width: 300%;
-    height: 200px;
-    transform: rotate(0);
-  }
-   .user-card-info h2 {
-    margin-top: 25px;
-    font-size: 35px;
-  }
-   .user-card-info p span {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 18px;
-  }
-} */
 </style>

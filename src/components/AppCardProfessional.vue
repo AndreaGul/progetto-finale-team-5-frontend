@@ -32,100 +32,61 @@ export default {
 </script>
 
 <template>
-  <div class="wrapper col-12 col-lg-6 pb-3 d-flex align-items-stretch">
-    <div class="user-card justify-content-start " :class="{'card-sponsored': sponsorization[0]} ">
+  <!-- Professionista -->
+  <div class="wrapper col-12 col-lg-6 pb-3 d-flex align-items-stretch card-box">
+    <div class="user-card justify-content-start " :class="{ 'card-sponsored': sponsorization[0] }">
       <div class="user-card-img">
-        <img
-          v-if="photo && photo.startsWith('uploads')"
-          :src="'http://127.0.0.1:8000/storage/' + photo"
-          alt=""
-        />
+        <img v-if="photo && photo.startsWith('uploads')" :src="'http://127.0.0.1:8000/storage/' + photo" alt="" />
         <img v-else-if="photo" :src="photo" alt="" />
-        <img
-          v-else
+        <img v-else
           src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
-          alt=""
-        />
+          alt="" />
       </div>
       <div class="user-card-info ">
+        <!-- Informazioni Professionista -->
         <div class="d-flex flex-column flex-xl-row align-items-cente info mb-2">
           <h2>{{ slug.split('-').join(' ') }}</h2>
           <div class="stars ms-xl-5 d-flex justify-content-center justify-content-md-start">
-             <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
+            <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
           </div>
         </div>
 
         <p><span>Specializzazioni:</span>
-          <ul>
-            <li v-for="specialization in specializations">
+        <ul>
+          <li v-for="specialization in specializations">
             - {{ specialization.name }}
-            </li>
-          </ul>
+          </li>
+        </ul>
         </p>
 
         <p><span>Email:</span>{{ mail }}</p>
         <p><span>Indirizzo:</span> {{ address }}</p>
+        <!-- Fine Informazioni Professionista -->
 
 
 
-      
 
-        <router-link
-          :to="{
-            name: 'ProfessionalDetail',
-            params: { slug: slug },
-          }"
-          @click="getInfo"
-          class="text-decoration-none color-a btn btn-detail"
-          >Dettaglio</router-link
-        >
+        <!-- Dettaglio Professionista -->
+        <router-link :to="{name: 'ProfessionalDetail', params: { slug: slug }}" @click="getInfo" class="text-decoration-none btn btn-detail">Dettaglio</router-link>
+        <!-- Fine Dettaglio Professionista -->
       </div>
     </div>
   </div>
+  <!-- Fine Professionista -->
 </template>
 
-<style scoped>
-.card {
-  border-radius: 15px;
-  background-color: #e1e4f1;
-  border-color: #012a3a;
-}
-
-.card-sponsored{
-  border: #1f798b  1px solid;
-}
-
-.cont-card {
-  color: #1f798b;
-}
-
-.color-a {
-  color: #1f798b;
-}
-
-.cont-img {
-  width: 100px;
-  height: 100px;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.cont-ul {
-  display: flex;
-  flex-direction: column;
-}
-
-.wrapper {
+<style lang="scss" scoped>
+.card-box {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 3%;
+
+  .card-sponsored {
+    border: #1f798b 1px solid;
+  }
 }
+
 .user-card {
   display: flex;
   flex-direction: column;
@@ -135,122 +96,97 @@ img {
   border-radius: 10px;
   padding: 20px;
   width: 650px;
-
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.5);
-}
 
-.user-card:before {
-  content: '';
-  position: absolute;
-  background: #1f798b;
-  top: -60px;
-  left: -125px;
-  z-index: 0;
-  width: 300%;
-  height: 200px;
-  transform: rotate(0);
-}
-
-.user-card-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3;
-}
-
-.user-card-img img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.user-card-info {
-  text-align: center;
-  z-index: 3;
-  margin-left: 25px;
-}
-
-.user-card-info h2 {
-  /* margin-bottom: 10px; */
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 3px;
-  /* margin-top: 25px; */
-  font-size: 35px;
-}
-
-.user-card-info p {
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.user-card-info ul {
-  padding-inline-start: 0;
-  list-style: none;
-}
-
-.user-card-info p span {
-  display: block;
-  font-size: 18px;
-}
-
-.user-card-info p span,
-.user-card-info ul span {
-  font-weight: 700;
-  margin-right: 10px;
-}
-
-.btn-detail {
-  background-color: #1f798b;
-  color: white;
-}
-@media only screen and (min-width: 768px) {
-  .user-card {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .user-card-img {
-    margin-bottom: 0;
-    margin-right: 50px;
-  }
-
-  .user-card-info {
-    text-align: left;
-    margin-top: 15px;
-  }
-
-  .user-card:before {
-    transform: rotate(17deg);
-    height: 300%;
-    width: 173px;
-  }
-
-  .user-card-info h2 {
-    font-size: 24px;
-  }
-
-
-}
-
-/* @media (max-width: 767px) {
-   .wrapper {
-    padding-top: 3%;
-  } 
-   .user-card:before {
+  &:before {
+    content: '';
+    position: absolute;
+    background: #1f798b;
+    top: -60px;
+    left: -125px;
+    z-index: 0;
     width: 300%;
     height: 200px;
     transform: rotate(0);
-  } 
-   .user-card-info h2 {
-    margin-top: 25px;
-    font-size: 35px;
-  } 
-   .user-card-info p span {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 18px;
-  } 
-} */
+  }
+
+  .user-card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+
+    & img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .user-card-info {
+    z-index: 3;
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 3px;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+
+      span {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+    }
+
+    ul {
+      padding-inline-start: 0;
+      list-style: none;
+    }
+  }
+
+  .btn-detail {
+    background-color: #1f798b;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .user-card {
+    flex-direction: row;
+    align-items: flex-start;
+
+    &:before {
+      transform: rotate(17deg);
+      height: 300%;
+      width: 173px;
+    }
+
+    .user-card-img {
+      margin-bottom: 0;
+      margin-left: -15px;
+      margin-right: 50px;
+    }
+
+    .user-card-info {
+      text-align: left;
+      margin-top: 15px;
+
+      h2 {
+        text-align: left;
+        font-size: 24px;
+      }
+    }
+  }
+}
 </style>
