@@ -5,3 +5,21 @@ body {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
 }
+
+//scrollbar
+::-webkit-scrollbar {
+  //dimensioni
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  //sfondo
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #012a3a, #1f798b);
+  border-radius: 8px;
+  border: 3px solid #f1f1f1;
+  &:hover {
+    background: linear-gradient(45deg, #011c26, #185f6e);
+  }
+}
