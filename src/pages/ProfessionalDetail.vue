@@ -28,6 +28,7 @@ export default {
       voteSent: false,
       messageSent: false,
       reviewSent: false,
+      loading: true,
     };
   },
   methods: {
@@ -42,11 +43,14 @@ export default {
               this.store.professionalId
           )
           .then((response) => {
-            if (response.data.status === "error") {
+            if (response.data.status === 'error') {
               this.$router.push({
-                name: "NotFound",
+                name: 'NotFound',
               });
-            } else this.professional = response.data.data;
+            } else {
+              this.professional = response.data.data;
+              this.loading = false; // Set to false when data is loaded
+            }
           });
       }
     },
@@ -163,53 +167,38 @@ export default {
   <!--
   <AppSearchSubPages @search="search"></AppSearchSubPages>
   -->
-  <div class="container pt-5" v-if="professional !== null">
-    <div class="row">
-      <div class="left-container col-12 col-lg-7">
-        <AppInfoSingleProfessional
-          :name="professional.user.name"
-          :surname="professional.user.surname"
-          :specializations="professional.specializations"
-          :photo="professional.photo"
-          :address="professional.address"
-          :phone="professional.phone"
-          :curriculum="professional.curriculum"
-          :vote="professional.average_rating"
-          :num_vote="professional.votes_count"
-        ></AppInfoSingleProfessional>
+  <div class="my-3 container" v-if="loading">
+    Caricamento in corso...
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div v-else>
+    <div class="container pt-5" v-if="professional !== null">
+      <div class="row">
+        <div class="left-container col-12 col-lg-7">
+          <AppInfoSingleProfessional
+            :name="professional.user.name"
+            :surname="professional.user.surname"
+            :specializations="professional.specializations"
+            :photo="professional.photo"
+            :address="professional.address"
+            :phone="professional.phone"
+            :curriculum="professional.curriculum"
+            :vote="professional.average_rating"
+            :num_vote="professional.votes_count"
+          ></AppInfoSingleProfessional>
 
-        <!-- alert se tutto ok-->
-        <div
-          v-if="alertMessage !== ''"
-          class="toast show p-1 align-items-center justify-content-between text-bg-success border-0 alert-mex"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-        >
-          <div class="d-flex">
-            <div class="toast-body">{{ alertMessage }}</div>
-            <button
-              type="button"
-              class="btn-close btn-close-white me-2 m-auto"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-            ></button>
-          </div>
-        </div>
-        <!-- /alert se tutto ok -->
-
-        <!-- alert se errori -->
-        <div class="position-fixed bottom-0 end-0 p-1 d-flex flex-column gap-1">
+          <!-- alert se tutto ok-->
           <div
-            v-if="alertError !== {}"
-            v-for="(value, key) in alertError"
-            class="toast show text-bg-danger border-0"
+            v-if="alertMessage !== ''"
+            class="toast show p-1 align-items-center justify-content-between text-bg-success border-0 alert-mex"
             role="alert"
             aria-live="assertive"
             aria-atomic="true"
           >
             <div class="d-flex">
-              <div class="toast-body">{{ value[0] }}</div>
+              <div class="toast-body">{{ alertMessage }}</div>
               <button
                 type="button"
                 class="btn-close btn-close-white me-2 m-auto"
@@ -218,40 +207,65 @@ export default {
               ></button>
             </div>
           </div>
-        </div>
-        <!-- /alert se errori -->
+          <!-- /alert se tutto ok -->
 
-        <AppSendReviews
-          v-if="!reviewSent"
-          @newReview="sendReview"
-        ></AppSendReviews>
-        <div class="vote-container" v-else>
-          <h3 class="text-uppercase m-0 col-12 p-2">
-            Hai inviato correttamente la recensione!
-          </h3>
+          <!-- alert se errori -->
+          <div
+            class="position-fixed bottom-0 end-0 p-1 d-flex flex-column gap-1"
+          >
+            <div
+              v-if="alertError !== {}"
+              v-for="(value, key) in alertError"
+              class="toast show text-bg-danger border-0"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              <div class="d-flex">
+                <div class="toast-body">{{ value[0] }}</div>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white me-2 m-auto"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+            </div>
+          </div>
+          <!-- /alert se errori -->
+
+          <AppSendReviews
+            v-if="!reviewSent"
+            @newReview="sendReview"
+          ></AppSendReviews>
+          <div class="vote-container" v-else>
+            <h3 class="text-uppercase m-0 col-12 p-2">
+              Hai inviato correttamente la recensione!
+            </h3>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5 right-container">
+          <AppSendVote v-if="!voteSent" @newVote="sendVote"></AppSendVote>
+          <div class="vote-container" v-else>
+            <h3 class="text-uppercase m-0 col-12 p-2">
+              Hai inviato correttamente il voto!
+            </h3>
+          </div>
+
+          <AppSendMessage
+            v-if="!messageSent"
+            @newMessage="sendMessage"
+          ></AppSendMessage>
+          <div class="vote-container" v-else>
+            <h3 class="text-uppercase m-0 col-12 p-2">
+              Hai inviato correttamente il messaggio!
+            </h3>
+          </div>
         </div>
       </div>
-      <div class="col-12 col-lg-5 right-container">
-        <AppSendVote v-if="!voteSent" @newVote="sendVote"></AppSendVote>
-        <div class="vote-container" v-else>
-          <h3 class="text-uppercase m-0 col-12 p-2">
-            Hai inviato correttamente il voto!
-          </h3>
-        </div>
 
-        <AppSendMessage
-          v-if="!messageSent"
-          @newMessage="sendMessage"
-        ></AppSendMessage>
-        <div class="vote-container" v-else>
-          <h3 class="text-uppercase m-0 col-12 p-2">
-            Hai inviato correttamente il messaggio!
-          </h3>
-        </div>
-      </div>
+      <AppReviews :reviews="professional.reviews"></AppReviews>
     </div>
-
-    <AppReviews :reviews="professional.reviews"></AppReviews>
   </div>
 </template>
 
