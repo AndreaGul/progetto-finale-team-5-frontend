@@ -2,13 +2,11 @@
 export default {
   name: 'CardSponsor',
   props: ['sponsorProp'],
-  // created() {
-  //   console.log(sponsor.user.photo);
-  // },
 };
 </script>
 
 <template>
+  <!-- In evidenza -->
   <div class="container p-3">
     <h4 class="text-center text-uppercase titolo">
       Cerca il miglior professionista che fa per te
@@ -64,6 +62,7 @@ export default {
       </div>
     </div>
   </div>
+  <!-- Fine In evidenza -->
 </template>
 
 <style scoped>

@@ -52,30 +52,7 @@ export default {
         :sponsorization="professional.sponsorizations"
       ></AppCardProfessional>
     </div>
-
-    <!-- <div v-if="professional" class="info d-flex">
-      <AppInfoSingleProfessional
-        :name="professional.user.name"
-        :surname="professional.user.surname"
-        :specializations="professional.specializations"
-        :photo="professional.photo"
-        :address="professional.address"
-        :phone="professional.phone"
-        :curriculum="professional.curriculum"
-      ></AppInfoSingleProfessional>
-      <AppReviews
-        v-if="professional"
-        :reviews="professional.reviews"
-      ></AppReviews>
-    </div> -->
   </div>
-  <!-- <div class="container">
-    <p>{{ professional.user.name }}</p>
-    <p>{{ professional.user.surname }}</p>
-    <p>{{ professional.slug }}</p>
-    <p>{{ professional.address }}</p>
-    <p>{{ professional.performance }}</p>
-  </div> -->
 </template>
 
 <style scoped></style>

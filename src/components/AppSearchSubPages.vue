@@ -89,6 +89,7 @@ export default {
 </script>
 
 <template>
+  <!-- Ricerca -->
   <div class="py-3">
     <div class="container d-flex flex-row align-items-center p-3">
       <form
@@ -183,6 +184,7 @@ export default {
       </form>
     </div>
   </div>
+  <!-- Ricerca -->
 </template>
 
 <style scoped>

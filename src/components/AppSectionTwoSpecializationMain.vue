@@ -1,18 +1,18 @@
 <script>
 export default {
-  name: "SectionTwoSpecializations",
+  name: 'SectionTwoSpecializations',
   data() {
     return {
       specializations: [
         {
-          name: "artificial intelligence",
+          name: 'artificial intelligence',
           description:
-            "Si occupa dello sviluppo di sistemi in grado di eseguire compiti tipicamente richiedenti intelligenza umana.",
+            'Sviluppo di sistemi in grado di eseguire compiti richiedenti intelligenza umana.',
         },
         {
-          name: "mobile development",
+          name: 'mobile development',
           description:
-            "Processo di creazione di applicazioni software per dispositivi mobili.",
+            'Processo di creazione di applicazioni software per dispositivi mobili.',
         },
       ],
     };
@@ -43,8 +43,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-// @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
 .contain {
   /* solid background */
@@ -65,7 +63,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 100vh;
+  padding: 20px;
 }
 
 .container-r {
@@ -93,7 +91,7 @@ export default {
   background-image: url(https://img.freepik.com/free-vector/ai-technology-microchip-background-vector-digital-transformation-concept_53876-117808.jpg);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 250px;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.255);
@@ -103,22 +101,23 @@ export default {
   background-image: url(https://evatronix.com/images/en/offer/product-design/software-development/Evatronix_Mobile_applications_01_1920x1080.jpg);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 250px;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.255);
 }
 
 h1 {
-  font-family: "Righteous", sans-serif;
+  margin-top: 20px;
+  font-family: 'Righteous', sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
-  font-size: 2.4rem;
+  font-size: 30px;
 }
 
 p {
   color: #fff;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;
@@ -172,4 +171,64 @@ p {
   filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
   transition: all 0.3s ease;
 }
+
+@media only screen and (max-width: 1200px) {
+  h1 {
+    font-size: 25px;
+  }
+  p {
+    font-size: 11px;
+  }
+
+  .container-r {
+    height: 500px;
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .contain {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .container-r {
+    height: 400px;
+    width: 300px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 13px;
+  }
+
+  .banner-image-0 {
+    height: 80px;
+  }
+
+  .banner-image-1 {
+    height: 80px;
+  }
+}
+
+// @media only screen and (max-width: 768px) {
+//   .container-r {
+//     height: 300px;
+//   }
+
+//   .banner-image-0 {
+//     height: 80px;
+//   }
+
+//   .banner-image-1 {
+//     height: 80px;
+//   }
+//   h1 {
+//     font-size: 20px;
+//   }
+//   p {
+//     font-size: 13px;
+//   }
+// }
 </style>
