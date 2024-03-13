@@ -59,13 +59,13 @@ export default {
 
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
-
-  <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
-  <AppSectionSubscribe></AppSectionSubscribe>
-  <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>//
-  <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
-  <AppLogoCarousel></AppLogoCarousel>//
   <AppInfoHomepage></AppInfoHomepage>
+  <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
+
+  <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>
+  <AppSectionSubscribe></AppSectionSubscribe>
+  <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
+  <AppLogoCarousel></AppLogoCarousel>
 </template>
 
 <style scoped></style>
