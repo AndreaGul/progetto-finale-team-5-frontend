@@ -25,9 +25,6 @@ export default {
     AppLogoCarousel,
     AppSectionThreeSpecializationMain,
     AppSectionTwoSpecializationMain,
-    // AppInfoSingleProfessional,
-    // AppDetailInfoProfessional,
-    // AppReviews,
   },
 
   methods: {
@@ -63,4 +60,3 @@ export default {
 </template>
 
 <style scoped></style>
-./AppDevelopementMain.vue

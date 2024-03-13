@@ -28,8 +28,8 @@ export default {
 </script>
 
 <template>
+  <!-- Stelle -->
   <ul class="d-flex list-unstyled star my-0">
-    <!-- <li><i class="fa-solid fa-star"></i></li> -->
     <li v-for="(star, index) in numeroDiStelle">
       <i
         :class="{
@@ -47,11 +47,8 @@ export default {
       ></i>
     </li>
   </ul>
+  <!-- Fine Stelle -->
 </template>
 
 <style scoped>
-/* .star li:hover {
-  color: rgb(255, 230, 8);
-  cursor: pointer;
-}  */
 </style>

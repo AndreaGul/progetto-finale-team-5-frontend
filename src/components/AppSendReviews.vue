@@ -17,6 +17,7 @@ export default {
 </script>
 
 <template>
+  <!-- Invio Recensione -->
   <div class="cont-message">
     <h3 class="text-uppercase">Lascia Una Recensione</h3>
     <form @submit.prevent="newReview">
@@ -55,6 +56,7 @@ export default {
       </div>
     </form>
   </div>
+  <!-- Fine Invio Recensione -->
 </template>
 
 <style scoped>

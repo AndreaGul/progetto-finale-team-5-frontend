@@ -8,7 +8,6 @@ export default {
     return {
       store,
       loading: false,
-      // specializationId: "",
     };
   },
 
@@ -32,7 +31,6 @@ export default {
       const dropdownMenuButton = document.getElementById("dropdownMenuButton");
 
       dropdownMenuButton.innerHTML = option;
-      // this.specializationId = id;
       this.store.specializationsId = id;
       this.store.specializationsName = option;
     },
@@ -47,6 +45,7 @@ export default {
 </script>
 
 <template>
+  <!-- Jumbotron -->
   <div class="bg">
     <div class="container pb-2" v-if="!loading">
       <h1 class="titolo mb-5">Cerca il professionista tech che fa per te</h1>
@@ -89,9 +88,10 @@ export default {
       </div>
     </div>
   </div>
+  <!-- Jumbotron -->
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .bg {
   background: linear-gradient(-45deg, #e1e4f1, #012a3a, #1f798b, #bedaf6);
   background-size: 400% 400%;
