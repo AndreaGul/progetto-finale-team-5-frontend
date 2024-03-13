@@ -25,28 +25,25 @@ export default {
 
 <template>
   <div class="vote-container">
-    <div class="row align-items-center card-vote-star">
-      <h3 class="text-uppercase m-0 col-12 col-lg-6 p-2">
-        Vota Professionista
-      </h3>
-
-      <ul
-        class="d-flex list-unstyled star my-0 col-4 col-lg-4 justify-content-end"
-      >
-        <!-- <li><i class="fa-solid fa-star"></i></li> -->
-        <li>
-          <i
-            v-for="(star, index) in numeroDiStelle"
-            :class="{
-              'fas fa-star': index < stelleColorate,
-              'far fa-star': index >= stelleColorate,
-            }"
-            @click="coloraStelle(index)"
-          ></i>
-        </li>
-      </ul>
-      <div class="col-6 col-lg-2 text-end">
-        <button class="btn button-send" @click="newVote">invia</button>
+    <div class="align-items-start card-vote-star d-flex flex-column">
+      <h3 class="text-uppercase m-0">Vota Professionista</h3>
+      <div class="mt-2">
+        <ul class="d-flex list-unstyled star">
+          <!-- <li><i class="fa-solid fa-star"></i></li> -->
+          <li>
+            <i
+              v-for="(star, index) in numeroDiStelle"
+              :class="{
+                'fas fa-star': index < stelleColorate,
+                'far fa-star': index >= stelleColorate,
+              }"
+              @click="coloraStelle(index)"
+            ></i>
+          </li>
+        </ul>
+        <div class="">
+          <button class="btn button-send" @click="newVote">invia</button>
+        </div>
       </div>
     </div>
   </div>
