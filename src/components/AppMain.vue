@@ -3,11 +3,6 @@ import AppJumbotron from './AppJumbotron.vue';
 import AppCardProfessional from './AppCardProfessional.vue';
 import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
 import AppCarousel from './AppLogoCarousel.vue';
-import AppDevelopementMain from './AppDevelopementMain.vue';
-import AppMobileMain from './AppMobileMain.vue';
-import AppArtificialIntelligenceMain from './AppArtificialIntelligenceMain.vue';
-import AppMachineLearningMain from './AppMachineLearningMain.vue';
-import AppDataAnalysisMain from './AppDataAnalysisMain.vue';
 import AppInfoHomepage from './AppInfoHomepage.vue';
 import store from '../../store';
 import axios from 'axios';
@@ -31,11 +26,6 @@ export default {
     AppCardProfessional,
     AppSponsoredProfessional,
     AppLogoCarousel,
-    AppDevelopementMain,
-    AppMobileMain,
-    AppArtificialIntelligenceMain,
-    AppMachineLearningMain,
-    AppDataAnalysisMain,
     AppInfoHomepage,
     AppSectionThreeSpecializationMain,
     AppSectionTwoSpecializationMain,
