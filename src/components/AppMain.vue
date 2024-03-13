@@ -8,6 +8,7 @@ import AppMobileMain from './AppMobileMain.vue';
 import AppArtificialIntelligenceMain from './AppArtificialIntelligenceMain.vue';
 import AppMachineLearningMain from './AppMachineLearningMain.vue';
 import AppDataAnalysisMain from './AppDataAnalysisMain.vue';
+import AppInfoHomepage from './AppInfoHomepage.vue';
 import store from '../../store';
 // da mettere nella pagina info
 
@@ -38,6 +39,7 @@ export default {
     AppArtificialIntelligenceMain,
     AppMachineLearningMain,
     AppDataAnalysisMain,
+    AppInfoHomepage,
     // AppInfoSingleProfessional,
     // AppDetailInfoProfessional,
     // AppReviews,
@@ -71,6 +73,7 @@ export default {
 
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
   <AppLogoCarousel></AppLogoCarousel>
+  <AppInfoHomepage></AppInfoHomepage>
   <AppDevelopementMain></AppDevelopementMain>
   <AppMobileMain></AppMobileMain>
   <AppArtificialIntelligenceMain></AppArtificialIntelligenceMain>
