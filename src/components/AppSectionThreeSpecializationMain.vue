@@ -1,21 +1,21 @@
 <script>
 export default {
-  name: "SectionThreeSpecializations",
+  name: 'SectionThreeSpecializations',
   data() {
     return {
       specializations: [
         {
-          name: "web development",
+          name: 'web development',
           description:
-            "Il processo di creazione e manutenzione di siti e applicazioni web.",
+            'Il processo di creazione e manutenzione di siti e applicazioni web.',
         },
         {
-          name: "data analysis",
+          name: 'data analysis',
           description:
-            "Il processo di esplorazione e interpretazione dei dati per estrarre insight e prendere decisioni informate.",
+            'Il processo di esplorazione, interpretazione dei dati e analisi.',
         },
         {
-          name: "machine learning",
+          name: 'machine learning',
           description:
             "L'arte di far imparare ai computer senza istruzioni esplicite.",
         },
@@ -48,8 +48,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-// @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
 .contain {
   /* solid background */
@@ -71,7 +69,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 100vh;
+  padding: 20px;
 }
 
 .container-r {
@@ -99,7 +97,7 @@ export default {
   background-image: url(https://miro.medium.com/v2/resize:fit:12000/0*tQQ7SLPOJfxaG4ZY);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 250px;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.255);
@@ -109,7 +107,7 @@ export default {
   background-image: url(https://www.simplilearn.com/ice9/free_resources_article_thumb/data_analyticstrendsmin.jpg);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 250px;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.255);
@@ -119,22 +117,23 @@ export default {
   background-image: url(https://www.it-impresa.it/wp-content/uploads/Machine-Learning-for-Data-Analytics-Concept-800x469.jpg.webp);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 250px;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.255);
 }
 
 h1 {
-  font-family: "Righteous", sans-serif;
+  margin-top: 20px;
+  font-family: 'Righteous', sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
-  font-size: 2.4rem;
+  font-size: 30px;
 }
 
 p {
   color: #fff;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;
@@ -187,5 +186,61 @@ p {
   border-color: rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
   transition: all 0.3s ease;
+}
+
+@media only screen and (max-width: 1200px) {
+  h1 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 11px;
+  }
+
+  .container-r {
+    height: 500px;
+    width: 300px;
+  }
+
+  .banner-image-0 {
+    height: 200px;
+  }
+
+  .banner-image-1 {
+    height: 200px;
+  }
+
+  .banner-image-2 {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .contain {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .container-r {
+    height: 400px;
+    width: 300px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 13px;
+  }
+
+  .banner-image-0 {
+    height: 80px;
+  }
+
+  .banner-image-1 {
+    height: 80px;
+  }
+
+  .banner-image-2 {
+    height: 80px;
+  }
 }
 </style>

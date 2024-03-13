@@ -2,105 +2,86 @@
 export default {
   name: 'CardSponsor',
   props: ['sponsorProp'],
-  // created() {
-  //   console.log(sponsor.user.photo);
-  // },
 };
 </script>
 
 <template>
+  <!-- In evidenza -->
   <div class="container p-3">
-    <h4 class="text-center text-uppercase">In evidenza</h4>
+    <h4 class="text-center text-uppercase titolo">
+      Cerca il miglior professionista che fa per te
+    </h4>
 
-    <div class="container-all-card gap-3">
-      <div class="card" v-for="sponsor in sponsorProp">
-        <div class="container-card d-flex gap-3">
-          <div>
-            <p class="card-title">
-              {{ sponsor.user.name }} {{ sponsor.user.surname }}
-            </p>
+    <div class="ag-format-container">
+      <div class="ag-courses_box row g-3">
+        <div
+          class="ag-courses_item col-12 col-md-6 col-xl-4"
+          v-for="sponsor in sponsorProp"
+        >
+          <a href="#" class="ag-courses-item_link text-decoration-none">
+            <div class="ag-courses-item_bg"></div>
 
-            <div class="card-description">Specializzazioni:</div>
-            <p class="specialization-list">
-              <span
-                v-for="(specialization, index) in sponsor.specializations"
-                :key="index"
-              >
-                {{ specialization.name }}
-                <span v-if="index < sponsor.specializations.length - 1"
-                  >,
+            <div
+              class="ag-courses-item_title row mb-3 justify-content-md-center"
+            >
+              <div class="user-card-img col-5 col-md-6 col-lg-4">
+                <img
+                  v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
+                  :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
+                  alt=""
+                />
+                <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
+                <img
+                  v-else
+                  src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+                  alt=""
+                />
+              </div>
+
+              <div class="col-7 col-md-6 col-lg-8">
+                {{ sponsor.user.name }} {{ sponsor.user.surname }}
+              </div>
+            </div>
+
+            <div class="ag-courses-item_date-box">
+              <div class="card-description">Specializzazioni:</div>
+              <p class="specialization-list">
+                <span
+                  v-for="(specialization, index) in sponsor.specializations"
+                  :key="index"
+                >
+                  {{ specialization.name }}
+                  <span v-if="index < sponsor.specializations.length - 1"
+                    >,
+                  </span>
                 </span>
-              </span>
-            </p>
-          </div>
-          <div class="user-card-img">
-            <img
-              v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
-              :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
-              alt=""
-            />
-            <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
-            <img
-              v-else
-              src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
-              alt=""
-            />
-          </div>
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
+  <!-- Fine In evidenza -->
 </template>
 
 <style scoped>
-.card {
-  max-width: 550px;
-  border: 0;
-  width: 100%;
-  margin-inline: auto;
-}
-
-.container-all-card {
-  display: flex;
-}
-
-.container-card {
-  padding: 30px;
-  background: linear-gradient(90deg, #346b7a, transparent) #080509;
-  font-family: inherit;
-  color: #fff;
-  text-decoration: none;
-  transition: background-color 0.4s;
-  place-content: center;
-  border-radius: 30px;
-}
-.container-card:hover,
-.container-card:focus {
-  background-color: #1b3741;
-  color: #fff;
-}
-
-.card-title {
+.titolo {
+  font-family: 'Share Tech Mono', monospace;
   font-weight: 600;
-  color: white;
-  letter-spacing: -0.02em;
-  line-height: 40px;
-  font-style: normal;
-  font-size: 28px;
-  padding-bottom: 8px;
 }
 
 .card-description {
   font-weight: 600;
   line-height: 32px;
-  color: hsla(0, 0%, 100%, 0.5);
+  color: hsla(0, 0%, 100%, 0.6);
   font-size: 16px;
-  max-width: 470px;
 }
 
 .user-card-img img {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
+  display: block;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -109,64 +90,115 @@ export default {
   font-size: 14px;
 }
 
-@media only screen and (max-width: 992px) {
-  .container-all-card {
-    flex-direction: column;
-    align-items: flex-start;
+.ag-format-container {
+  min-height: 100px;
+  max-height: calc(100vh / 1.5);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+}
+
+.ag-courses_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+
+  padding: 50px 0;
+}
+.ag-courses_item {
+  /* -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px); */
+
+  overflow: hidden;
+}
+.ag-courses-item_link {
+  display: block;
+  padding: 22px 40px;
+  background-color: #022b3a;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  position: relative;
+}
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_date {
+  text-decoration: none;
+  color: #fff;
+}
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+.ag-courses-item_title {
+  min-height: 72px;
+  line-height: 1;
+
+  font-size: 24px;
+  overflow: hidden;
+
+  font-weight: bold;
+
+  color: #fff;
+
+  z-index: 2;
+  position: relative;
+}
+.ag-courses-item_date-box {
+  font-size: 16px;
+  color: #fff;
+
+  z-index: 2;
+  position: relative;
+}
+.ag-courses-item_date {
+  font-weight: bold;
+  color: #1f7a8c;
+
+  -webkit-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+}
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #1f7a8c;
+  filter: blur(1px);
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+@media only screen and (min-width: 639px) {
+  .ag-courses-item_title {
+    min-height: 87px;
+    font-size: 28px;
   }
+  .ag-courses-item_link {
+    padding: 40px 30px;
+  }
+  .ag-courses-item_date-box {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 767px) {
   .user-card-img img {
-    margin-bottom: 0;
-    margin-right: 50px;
-  }
-  .specialization-list {
-    font-size: 14px;
+    width: 100px;
+    height: 100px;
   }
 }
 
-/*
-@media only screen and (min-width: 768px) {
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .user-card-img {
-    margin-bottom: 0;
-    margin-right: 50px;
-  }
-
-  .user-card-info {
-    text-align: left;
-    margin-top: 15px;
-  }
-
-  .user-card:before {
-    transform: rotate(17deg);
-    height: 300%;
-    width: 173px;
-  }
-
-  .user-card-info h2 {
-    font-size: 24px;
-  }
-} */
-
-/* @media (max-width: 767px) {
-   .wrapper {
-    padding-top: 3%;
-  }
-   .user-card:before {
-    width: 300%;
-    height: 200px;
-    transform: rotate(0);
-  }
-   .user-card-info h2 {
-    margin-top: 25px;
-    font-size: 35px;
-  }
-   .user-card-info p span {
-    display: block;
-    margin-bottom: 15px;
+@media only screen and (min-width: 992px) {
+  .specialization-list {
     font-size: 18px;
   }
-} */
+  .ag-courses-item_title {
+    font-size: 30px;
+  }
+}
 </style>
