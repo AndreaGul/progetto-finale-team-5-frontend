@@ -6,13 +6,13 @@ import AppCarousel from './AppLogoCarousel.vue';
 import AppInfoHomepage from './AppInfoHomepage.vue';
 import store from '../../store';
 import axios from 'axios';
-import AppSectionThreeSpecializationMain from "./AppSectionThreeSpecializationMain.vue";
-import AppSectionTwoSpecializationMain from "./AppSectionTwoSpecializationMain.vue";
-import AppLogoCarousel from "./AppLogoCarousel.vue";
-import AppSectionSubscribe from "./AppSectionSubscribe.vue";
+import AppSectionThreeSpecializationMain from './AppSectionThreeSpecializationMain.vue';
+import AppSectionTwoSpecializationMain from './AppSectionTwoSpecializationMain.vue';
+import AppLogoCarousel from './AppLogoCarousel.vue';
+import AppSectionSubscribe from './AppSectionSubscribe.vue';
 
 export default {
-  name: "Main",
+  name: 'Main',
 
   data() {
     return {
@@ -35,13 +35,13 @@ export default {
   methods: {
     search() {
       this.$router.push({
-        name: "professionalList",
+        name: 'professionalList',
         params: { id: this.store.specializationsName },
       });
     },
     sponsorizedCards() {
       axios
-        .get("http://127.0.0.1:8000/api/professionals/sponsored")
+        .get('http://127.0.0.1:8000/api/professionals/sponsored')
         .then((response) => {
           console.log(response);
           this.sponsored = response.data.data;
@@ -50,7 +50,7 @@ export default {
   },
   created() {
     this.sponsorizedCards();
-    this.store.specializationsName = "";
+    this.store.specializationsName = '';
   },
 };
 </script>
@@ -64,11 +64,6 @@ export default {
   <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
   <AppLogoCarousel></AppLogoCarousel>
   <AppInfoHomepage></AppInfoHomepage>
-  <AppDevelopementMain></AppDevelopementMain>
-  <AppMobileMain></AppMobileMain>
-  <AppArtificialIntelligenceMain></AppArtificialIntelligenceMain>
-  <AppMachineLearningMain></AppMachineLearningMain>
-  <AppDataAnalysisMain></AppDataAnalysisMain>
 </template>
 
 <style scoped></style>
