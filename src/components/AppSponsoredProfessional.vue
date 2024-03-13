@@ -1,7 +1,22 @@
 <script>
+import store from '../../store';
 export default {
   name: 'CardSponsor',
   props: ['sponsorProp'],
+  data() {
+    return {
+      store,
+    };
+  },
+  methods: {
+    getInfo(id) {
+      console.log(id);
+      this.store.professionalId = id;
+    },
+  },
+  created() {
+    console.log(this.sponsorProp);
+  },
 };
 </script>
 
@@ -14,51 +29,65 @@ export default {
 
     <div class="ag-format-container">
       <div class="ag-courses_box row g-3">
+        <!-- card singola -->
         <div
           class="ag-courses_item col-12 col-md-6 col-xl-4"
           v-for="sponsor in sponsorProp"
         >
-          <a href="#" class="ag-courses-item_link text-decoration-none">
-            <div class="ag-courses-item_bg"></div>
+          <router-link
+            :to="{
+              name: 'ProfessionalDetail',
+              params: { slug: sponsor.slug },
+            }"
+            @click="getInfo(sponsor.id)"
+            class="text-decoration-none"
+          >
+            <a href="#" class="ag-courses-item_link text-decoration-none">
+              <div class="ag-courses-item_bg"></div>
 
-            <div
-              class="ag-courses-item_title row mb-3 justify-content-md-center"
-            >
-              <div class="user-card-img col-5 col-md-6 col-lg-4">
-                <img
-                  v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
-                  :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
-                  alt=""
-                />
-                <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
-                <img
-                  v-else
-                  src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
-                  alt=""
-                />
+              <div
+                class="ag-courses-item_title row mb-3 justify-content-md-center"
+              >
+                <div class="user-card-img col-5 col-md-6 col-lg-4">
+                  <img
+                    v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
+                    :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
+                    alt=""
+                  />
+                  <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
+                  <img
+                    v-else
+                    src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="col-7 col-md-6 col-lg-8">
+                  {{ sponsor.user.name }} {{ sponsor.user.surname }}
+                </div>
               </div>
 
-              <div class="col-7 col-md-6 col-lg-8">
-                {{ sponsor.user.name }} {{ sponsor.user.surname }}
-              </div>
-            </div>
-
-            <div class="ag-courses-item_date-box">
-              <div class="card-description">Specializzazioni:</div>
-              <p class="specialization-list">
-                <span
-                  v-for="(specialization, index) in sponsor.specializations"
-                  :key="index"
-                >
-                  {{ specialization.name }}
-                  <span v-if="index < sponsor.specializations.length - 1"
-                    >,
+              <div class="ag-courses-item_date-box">
+                <div class="card-description">Specializzazioni:</div>
+                <p class="specialization-list">
+                  <span
+                    v-for="(specialization, index) in sponsor.specializations"
+                    :key="index"
+                  >
+                    {{ specialization.name }}
+                    <span v-if="index < sponsor.specializations.length - 1"
+                      >,
+                    </span>
                   </span>
-                </span>
-              </p>
-            </div>
-          </a>
+                </p>
+                <!-- Dettaglio Professionista -->
+
+                <!-- Fine Dettaglio Professionista -->
+              </div>
+            </a>
+          </router-link>
         </div>
+        <!-- card singola -->
       </div>
     </div>
   </div>
@@ -90,8 +119,18 @@ export default {
   font-size: 14px;
 }
 
+.btn-detail {
+  background-color: #1f798b;
+  color: white;
+  border: 1px solid #022b3a;
+}
+.btn-detail:hover {
+  background-color: #022b3a;
+  color: white;
+}
+
 .ag-format-container {
-  min-height: 100px;
+  min-height: 350px;
   max-height: calc(100vh / 1.5);
   overflow-y: auto;
   overflow-x: hidden;
