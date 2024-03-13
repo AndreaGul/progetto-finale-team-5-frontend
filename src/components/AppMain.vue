@@ -7,6 +7,7 @@ import AppSectionTwoSpecializationMain from "./AppSectionTwoSpecializationMain.v
 import store from "../../store";
 import axios from "axios";
 import AppLogoCarousel from "./AppLogoCarousel.vue";
+import AppSectionSubscribe from "./AppSectionSubscribe.vue";
 
 export default {
   name: "Main",
@@ -25,6 +26,7 @@ export default {
     AppLogoCarousel,
     AppSectionThreeSpecializationMain,
     AppSectionTwoSpecializationMain,
+    AppSectionSubscribe,
   },
 
   methods: {
@@ -54,6 +56,7 @@ export default {
   <AppJumbotron @search="search"></AppJumbotron>
 
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
+  <AppSectionSubscribe></AppSectionSubscribe>
   <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>
   <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
   <AppLogoCarousel></AppLogoCarousel>

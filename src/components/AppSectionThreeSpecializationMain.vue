@@ -1,21 +1,21 @@
 <script>
 export default {
-  name: "SectionThreeSpecializations",
+  name: 'SectionThreeSpecializations',
   data() {
     return {
       specializations: [
         {
-          name: "web development",
+          name: 'web development',
           description:
-            "Il processo di creazione e manutenzione di siti e applicazioni web.",
+            'Il processo di creazione e manutenzione di siti e applicazioni web.',
         },
         {
-          name: "data analysis",
+          name: 'data analysis',
           description:
-            "Il processo di esplorazione e interpretazione dei dati per estrarre insight e prendere decisioni informate.",
+            'Il processo di esplorazione e interpretazione dei dati e analisi.',
         },
         {
-          name: "machine learning",
+          name: 'machine learning',
           description:
             "L'arte di far imparare ai computer senza istruzioni esplicite.",
         },
@@ -124,7 +124,8 @@ export default {
 }
 
 h1 {
-  font-family: "Righteous", sans-serif;
+  margin-top: 20px;
+  font-family: 'Righteous', sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
   font-size: 2.4rem;
@@ -132,7 +133,7 @@ h1 {
 
 p {
   color: #fff;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;

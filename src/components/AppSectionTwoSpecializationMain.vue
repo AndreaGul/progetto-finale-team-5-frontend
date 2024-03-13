@@ -1,18 +1,18 @@
 <script>
 export default {
-  name: "SectionTwoSpecializations",
+  name: 'SectionTwoSpecializations',
   data() {
     return {
       specializations: [
         {
-          name: "artificial intelligence",
+          name: 'artificial intelligence',
           description:
-            "Si occupa dello sviluppo di sistemi in grado di eseguire compiti tipicamente richiedenti intelligenza umana.",
+            'Sviluppo di sistemi in grado di eseguire compiti richiedenti intelligenza umana.',
         },
         {
-          name: "mobile development",
+          name: 'mobile development',
           description:
-            "Processo di creazione di applicazioni software per dispositivi mobili.",
+            'Processo di creazione di applicazioni software per dispositivi mobili.',
         },
       ],
     };
@@ -108,7 +108,8 @@ export default {
 }
 
 h1 {
-  font-family: "Righteous", sans-serif;
+  margin-top: 20px;
+  font-family: 'Righteous', sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
   font-size: 2.4rem;
@@ -116,7 +117,7 @@ h1 {
 
 p {
   color: #fff;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;
