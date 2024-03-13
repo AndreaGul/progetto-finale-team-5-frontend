@@ -1,11 +1,18 @@
 <script>
-import AppJumbotron from "./AppJumbotron.vue";
-import AppCardProfessional from "./AppCardProfessional.vue";
-import AppSponsoredProfessional from "./AppSponsoredProfessional.vue";
+import AppJumbotron from './AppJumbotron.vue';
+import AppCardProfessional from './AppCardProfessional.vue';
+import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
+import AppCarousel from './AppLogoCarousel.vue';
+import AppDevelopementMain from './AppDevelopementMain.vue';
+import AppMobileMain from './AppMobileMain.vue';
+import AppArtificialIntelligenceMain from './AppArtificialIntelligenceMain.vue';
+import AppMachineLearningMain from './AppMachineLearningMain.vue';
+import AppDataAnalysisMain from './AppDataAnalysisMain.vue';
+import AppInfoHomepage from './AppInfoHomepage.vue';
+import store from '../../store';
+import axios from 'axios';
 import AppSectionThreeSpecializationMain from "./AppSectionThreeSpecializationMain.vue";
 import AppSectionTwoSpecializationMain from "./AppSectionTwoSpecializationMain.vue";
-import store from "../../store";
-import axios from "axios";
 import AppLogoCarousel from "./AppLogoCarousel.vue";
 import AppSectionSubscribe from "./AppSectionSubscribe.vue";
 
@@ -24,6 +31,12 @@ export default {
     AppCardProfessional,
     AppSponsoredProfessional,
     AppLogoCarousel,
+    AppDevelopementMain,
+    AppMobileMain,
+    AppArtificialIntelligenceMain,
+    AppMachineLearningMain,
+    AppDataAnalysisMain,
+    AppInfoHomepage,
     AppSectionThreeSpecializationMain,
     AppSectionTwoSpecializationMain,
     AppSectionSubscribe,
@@ -60,6 +73,12 @@ export default {
   <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>
   <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
   <AppLogoCarousel></AppLogoCarousel>
+  <AppInfoHomepage></AppInfoHomepage>
+  <AppDevelopementMain></AppDevelopementMain>
+  <AppMobileMain></AppMobileMain>
+  <AppArtificialIntelligenceMain></AppArtificialIntelligenceMain>
+  <AppMachineLearningMain></AppMachineLearningMain>
+  <AppDataAnalysisMain></AppDataAnalysisMain>
 </template>
 
 <style scoped></style>
