@@ -91,7 +91,7 @@ export default {
 
 <template>
   <!-- Ricerca -->
-  <div class="py-3">
+  <div class="py-3 not-whit">
     <div class="container d-flex flex-row align-items-center p-3">
       <form
         id="form"
@@ -189,6 +189,9 @@ export default {
 </template>
 
 <style scoped>
+.not-whit {
+  background-color: #1f7a8c;
+}
 form {
   width: 100vw;
 }
@@ -197,7 +200,7 @@ form {
   background-color: white;
   color: #022b3aff;
   font-weight: bold;
-  border-radius: 30px;
+  border-radius: 10px;
   font-size: 18px;
   border: 2px solid #022b3aff;
 }
