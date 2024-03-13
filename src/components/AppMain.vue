@@ -27,9 +27,6 @@ export default {
     AppSectionThreeSpecializationMain,
     AppSectionTwoSpecializationMain,
     AppSectionSubscribe,
-    // AppInfoSingleProfessional,
-    // AppDetailInfoProfessional,
-    // AppReviews,
   },
 
   methods: {
@@ -66,4 +63,3 @@ export default {
 </template>
 
 <style scoped></style>
-./AppDevelopementMain.vue

@@ -43,8 +43,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-// @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
 .contain {
   /* solid background */
