@@ -14,13 +14,16 @@ export default {
   methods: {
     getSpecializations() {
       this.loading = true;
+      /*
+        api lista specializzazioni
+      */
       axios
         .get("http://127.0.0.1:8000/api/specializations")
         .then((response) => {
           this.store.specializations = response.data.data;
         })
         .catch((error) => {
-          console.log(error);
+          //console.log(error);
         })
         .finally(() => {
           this.loading = false;

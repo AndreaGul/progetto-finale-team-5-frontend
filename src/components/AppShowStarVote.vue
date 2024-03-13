@@ -18,7 +18,6 @@ export default {
       // Controlla se la stringa contiene ".0"
 
       this.haZeroDopoPunto = numeroStringa.includes('.0');
-      console.log(this.haZeroDopoPunto);
     },
   },
   created() {

@@ -40,10 +40,12 @@ export default {
       });
     },
     sponsorizedCards() {
+      /*
+        api lista professionisti sponsorizzati
+      */
       axios
         .get('http://127.0.0.1:8000/api/professionals/sponsored')
         .then((response) => {
-          console.log(response);
           this.sponsored = response.data.data;
         });
     },
@@ -60,9 +62,9 @@ export default {
 
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
   <AppSectionSubscribe></AppSectionSubscribe>
-  <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>
+  <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>//
   <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
-  <AppLogoCarousel></AppLogoCarousel>
+  <AppLogoCarousel></AppLogoCarousel>//
   <AppInfoHomepage></AppInfoHomepage>
 </template>
 

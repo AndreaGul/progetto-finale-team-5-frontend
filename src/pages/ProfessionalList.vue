@@ -33,12 +33,10 @@ export default {
         const specializationName = this.formatSpecializationName(
           this.store.specializationsName
         );
-        // const formattedSpecializationName =
-        //   this.formatSpecializationName(specializationName);
-        // this.$router.push({
-        //   name: 'professionalList',
-        //   params: { id: formattedSpecializationName },
-        // });
+        /*
+          api lista professionisti
+          parmetri: specialization_id, vote, review
+        */
         axios
           .get('http://127.0.0.1:8000/api/professionals', {
             params: {
@@ -48,11 +46,10 @@ export default {
             },
           })
           .then((response) => {
-            console.log(response);
             this.professionals = response.data.data;
           })
           .catch((error) => {
-            console.log(error);
+            //console.log(error);
             this.$router.push({
               name: "NotFound",
             });
