@@ -1,80 +1,90 @@
 <script>
 export default {
-  name: 'Footer',
+  name: "Footer",
 };
 </script>
 
 <template>
-  <div class="boxes">
-    <div class="container-box"></div>
-    <div class="container-box-shop">
-      <div class="slot">
-        <h2>BoolTechs</h2>
-        <ul class="ul-box">
-          <li>Team 5</li>
-        </ul>
+  <footer>
+    <div class="footer-up">
+      <div class="container d-flex justify-content-between">
+        <div class="footer-links">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Chi siamo</a></li>
+            <li><a href="#">Servizi</a></li>
+            <li><a href="#">Contatti</a></li>
+          </ul>
+        </div>
+        <div>img logo</div>
+        <div class="footer-social">
+          <ul>
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="footer-down">
+      <div class="container">BoolTechs. Designed by Team 5</div>
+    </div>
+  </footer>
 </template>
 
 <style scoped lang="scss">
-h2 {
+.footer-up {
+  background-color: #022b3a;
+  color: #fff;
+  padding: 30px;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-social ul {
+  list-style-type: none;
+}
+
+.footer-social ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.footer-social ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.footer-down {
+  background-color: #123c46;
   color: white;
-}
-
-li {
-  color: rgb(255, 255, 255);
-  list-style: none;
-}
-
-.boxes {
-  padding: 10px;
-
-  background: rgb(1, 42, 58);
-  background: linear-gradient(
-    90deg,
-    rgba(1, 42, 58, 1) 0%,
-    rgba(31, 121, 176, 1) 100%
-  );
-
-  .container-box {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-
-    .box {
-      display: flex;
-      flex-direction: column;
-      height: 120px;
-      width: 1230px;
-      background-size: cover;
-
-      .cont-btn {
-        display: flex;
-        justify-content: end;
-      }
-
-      h3 {
-        color: rgb(255, 255, 255);
-      }
-
-      h1 {
-        font-size: 32px;
-        color: rgb(45, 45, 45);
-        margin: 0;
-      }
-    }
-  }
-}
-
-.info-header {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.container-box-shop {
-  display: flex;
-  justify-content: center;
+  padding: 15px 0;
 }
 </style>
