@@ -48,7 +48,8 @@ export default {
 
 
 .card-reviews {
-  overflow-y: auto;
+  overflow-y:scroll;
+  max-height: 70vh;
   padding: 20px;
   background-color: #e1e5f2;
 
@@ -71,7 +72,7 @@ export default {
   }
 
   .nome-recensione {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .data-recensione {
@@ -81,7 +82,7 @@ export default {
   }
   .testo-recensione {
     margin-left: 20px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .message{
@@ -94,7 +95,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 .info-reviews {
   background-color: rgb(249, 247, 247);
   padding: 15px;
-  margin-bottom: 17px;
+  margin-bottom: 10px;
   border-radius: 33px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }

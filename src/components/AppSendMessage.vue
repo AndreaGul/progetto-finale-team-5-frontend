@@ -65,7 +65,6 @@ h3 {
 }
 .cont-message {
   padding: 20px;
-  margin: 20px 0;
   background-color: aliceblue;
   border-radius: 30px;
 }
