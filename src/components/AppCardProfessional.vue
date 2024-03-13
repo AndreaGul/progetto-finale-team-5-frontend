@@ -49,7 +49,7 @@ export default {
       </div>
       <div class="user-card-info ">
         <div class="d-flex flex-column flex-xl-row align-items-cente info mb-2">
-          <h2>{{ slug.split('-').join(' ') }}</h2>
+          <h2>{{ slug.split('-').join(' ') }} <div v-if="sponsorization[0]"><i class="fa-solid fa-crown"></i></div></h2>
           <div class="stars ms-xl-5 d-flex justify-content-center justify-content-md-start">
              <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
           </div>
@@ -85,6 +85,11 @@ export default {
 </template>
 
 <style scoped>
+
+.fa-crown{
+  color: #daa520;
+  opacity: 0.8; 
+}
 .card {
   border-radius: 15px;
   background-color: #e1e4f1;
