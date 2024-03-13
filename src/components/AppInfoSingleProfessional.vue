@@ -56,9 +56,9 @@ export default {
       </div>
     </div>
   </div>
-  <div class="card-details">
+  <div class="card-details" v-if="address || phone || curriculum">
     <ul class="p-0 m-0">
-      <li class="list-unstyled">
+      <li class="list-unstyled" v-if="address">
         <h4>
           Indirizzo
 
