@@ -1,26 +1,40 @@
 <script>
+import store from "../../store";
 export default {
-  name: 'SectionThreeSpecializations',
+  name: "SectionThreeSpecializations",
   data() {
     return {
+      store,
       specializations: [
         {
-          name: 'web development',
+          name: "web development",
           description:
-            'Il processo di creazione e manutenzione di siti e applicazioni web.',
+            "Il processo di creazione e manutenzione di siti e applicazioni web.",
+          specialization_name: "Web Development",
         },
         {
-          name: 'data analysis',
+          name: "data analysis",
           description:
-            'Il processo di esplorazione, interpretazione dei dati e analisi.',
+            "Il processo di esplorazione, interpretazione dei dati e analisi.",
+          specialization_name: "Data Analysis",
         },
         {
-          name: 'machine learning',
+          name: "machine learning",
           description:
             "L'arte di far imparare ai computer senza istruzioni esplicite.",
+          specialization_name: "Machine Learning",
         },
       ],
     };
+  },
+  methods: {
+    search(name) {
+      this.store.specializationsName = name;
+      this.$router.push({
+        name: "professionalList",
+        params: { id: this.store.specializationsName },
+      });
+    },
   },
 };
 </script>
@@ -39,7 +53,10 @@ export default {
         </p>
       </div>
       <div class="button-wrapper">
-        <button class="btn outline">
+        <button
+          class="btn outline"
+          @click="search(specialization.specialization_name)"
+        >
           Cerca il professionista che fa per te
         </button>
       </div>
@@ -48,7 +65,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-
 .contain {
   /* solid background */
   background: rgb(0, 212, 255);
@@ -125,7 +141,7 @@ export default {
 
 h1 {
   margin-top: 20px;
-  font-family: 'Righteous', sans-serif;
+  font-family: "Righteous", sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
   font-size: 30px;
@@ -133,7 +149,7 @@ h1 {
 
 p {
   color: #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;

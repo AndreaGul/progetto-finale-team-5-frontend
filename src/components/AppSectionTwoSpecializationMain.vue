@@ -1,21 +1,34 @@
 <script>
+import store from "../../store";
 export default {
-  name: 'SectionTwoSpecializations',
+  name: "SectionTwoSpecializations",
   data() {
     return {
+      store,
       specializations: [
         {
-          name: 'artificial intelligence',
+          name: "artificial intelligence",
           description:
-            'Sviluppo di sistemi in grado di eseguire compiti richiedenti intelligenza umana.',
+            "Sviluppo di sistemi in grado di eseguire compiti richiedenti intelligenza umana.",
+          specialization_name: "Artificial Intelligence",
         },
         {
-          name: 'mobile development',
+          name: "mobile development",
           description:
-            'Processo di creazione di applicazioni software per dispositivi mobili.',
+            "Processo di creazione di applicazioni software per dispositivi mobili.",
+          specialization_name: "Mobile Development",
         },
       ],
     };
+  },
+  methods: {
+    search(name) {
+      this.store.specializationsName = name;
+      this.$router.push({
+        name: "professionalList",
+        params: { id: this.store.specializationsName },
+      });
+    },
   },
 };
 </script>
@@ -34,7 +47,10 @@ export default {
         </p>
       </div>
       <div class="button-wrapper">
-        <button class="btn outline">
+        <button
+          class="btn outline"
+          @click="search(specialization.specialization_name)"
+        >
           Cerca il professionista che fa per te
         </button>
       </div>
@@ -43,7 +59,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-
 .contain {
   /* solid background */
   background: rgb(0, 212, 255);
@@ -109,7 +124,7 @@ export default {
 
 h1 {
   margin-top: 20px;
-  font-family: 'Righteous', sans-serif;
+  font-family: "Righteous", sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
   font-size: 30px;
@@ -117,7 +132,7 @@ h1 {
 
 p {
   color: #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;

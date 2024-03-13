@@ -30,7 +30,9 @@ export default {
             nell'insegnamento
           </li>
         </ul>
-        <button class="btn outline">REGISTRATI &rarr;</button>
+        <a href="http://127.0.0.1:8000/register" class="btn outline"
+          >REGISTRATI &rarr;</a
+        >
       </div>
     </div>
   </section>
