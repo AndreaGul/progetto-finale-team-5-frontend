@@ -42,8 +42,11 @@ export default {
               this.store.professionalId
           )
           .then((response) => {
-            console.log(response.data.data);
-            this.professional = response.data.data;
+            if (response.data.status === "error") {
+              this.$router.push({
+                name: "NotFound",
+              });
+            } else this.professional = response.data.data;
           });
       }
     },

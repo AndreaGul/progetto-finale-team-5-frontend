@@ -5,8 +5,6 @@ export default {
   data(){
     return{
       data: 10,
-      
-      // dataFormat: (new Date(this.review.created_at)),
     }
   },
   methods: {
@@ -19,6 +17,7 @@ export default {
 </script>
 
 <template>
+  <!-- Recensioni -->
   <div class="container">
     <div class="card-reviews">
       <h2>Recensioni</h2>
@@ -38,6 +37,7 @@ export default {
       </div>
     </div>
   </div>
+  <!-- Fine Recensioni -->
 </template>
 
 <style scoped>

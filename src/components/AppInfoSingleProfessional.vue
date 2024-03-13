@@ -54,7 +54,6 @@ export default {
           <div v-else>{{ num_vote }} Voti</div>
         </div>
       </div>
-      <!-- <div>{{ vote }}</div> -->
     </div>
   </div>
   <div class="card-details">
@@ -68,7 +67,6 @@ export default {
         <h6>{{ address }}</h6>
       </li>
       <li class="list-unstyled" v-if="phone">
-        <!-- <h4>Telefono</h4> -->
 
         <h4>Telefono</h4>
         <h6>{{ phone }}</h6>
@@ -85,26 +83,22 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .card-info {
   margin-bottom: 40px;
-}
-
-.card-info h3 {
-  font-size: 28px;
-  font-weight: 600;
-}
-
-.card-info h5 {
-  font-size: 18px;
-}
-
-.card-info ul {
-  margin: 0 0 0 60px;
-}
-
-.card-info .specialization {
-  margin: 10px 0 20px 0;
+  h3 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  ul {
+    margin: 0 0 0 60px;
+  }
+  .specialization {
+    margin: 10px 0 20px 0;
+  }
 }
 
 img {
@@ -123,35 +117,36 @@ img {
   background-color: #e1e5f2;
   padding: 25px;
   border-radius: 10px;
-}
-
-.card-details h4 {
-  font-size: 22px;
-}
-.card-details h5 {
-  font-size: 18px;
-}
-
-.card-details li {
-  padding: 5px 0;
+  h4 {
+    font-size: 22px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  li {
+    padding: 5px 0;
+  }
 }
 .star {
   font-size: 26px;
 }
 
 @media (min-width: 767.98px) {
-  .card-info h3 {
-    font-size: 32px;
+  .card-info {
+    h3 {
+      font-size: 32px;
+    }
+    h5 {
+      font-size: 22px;
+    }
   }
-
-  .card-info h5 {
-    font-size: 22px;
-  }
-  .card-details h4 {
-    font-size: 26px;
-  }
-  .card-details h5 {
-    font-size: 22px;
+  .card-details {
+    h4 {
+      font-size: 26px;
+    }
+    h5 {
+      font-size: 22px;
+    }
   }
 
   .specialization h5 {
@@ -162,9 +157,4 @@ img {
     font-size: 30px;
   }
 }
-
-/* .star li:hover {
-  color: rgb(255, 230, 8);
-  cursor: pointer;
-}  */
 </style>

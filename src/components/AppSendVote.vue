@@ -24,6 +24,7 @@ export default {
 </script>
 
 <template>
+  <!-- Invio Voto -->
   <div class="vote-container">
     <div class="row align-items-center card-vote-star">
       <h3 class="text-uppercase m-0 col-12 col-lg-6 p-2">
@@ -50,6 +51,7 @@ export default {
       </div>
     </div>
   </div>
+  <!-- Fine Invio Voto -->
 </template>
 
 <style scoped>

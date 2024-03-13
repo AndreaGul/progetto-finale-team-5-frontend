@@ -51,6 +51,12 @@ export default {
             console.log(response);
             this.professionals = response.data.data;
           })
+          .catch((error) => {
+            console.log(error);
+            this.$router.push({
+              name: "NotFound",
+            });
+          })
           .finally(() => {
             this.loading = false;
           });
