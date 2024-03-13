@@ -17,12 +17,13 @@ export default {
   methods: {
     getSpecializations() {
       this.loading = true;
+      /*
+        api lista specializzazioni
+      */
       axios
         .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
-          console.log(response);
           this.store.specializations = response.data.data;
-          console.log(this.store.specializations);
         })
         .finally(() => {
           this.loading = false;

@@ -36,6 +36,10 @@ export default {
         this.store.professionalId = this.$route.params.slug;
       }
       if (this.store.professionalId !== null) {
+        /*
+          api singolo professionista
+          parmetri: id o slug professionista
+        */
         axios
           .get(
             'http://127.0.0.1:8000/api/professionals/show/' +
@@ -50,6 +54,7 @@ export default {
           });
       }
     },
+    /*
     search(id) {
       if (id !== '') {
         axios
@@ -62,8 +67,12 @@ export default {
           params: { id: this.store.specializationsId },
         });
       }
-    },
+    },*/
     sendMessage(email, messaggio, nome) {
+      /*
+        api invio messaggio
+        parmetri: id (professionista), emai,l message, name
+      */
       axios
         .post('http://127.0.0.1:8000/api/professionals/message', null, {
           params: {
@@ -86,13 +95,16 @@ export default {
         })
         .catch((error) => {
           this.alertError = error.response.data.error;
-          console.log(this.alertError);
           setTimeout(() => {
             this.alertError = {};
           }, 3000);
         });
     },
     sendReview(email, recensione, nome) {
+      /*
+        api invio recensione
+        parmetri: id (professionista), email, review, name
+      */
       axios
         .post('http://127.0.0.1:8000/api/professionals/review', null, {
           params: {
@@ -103,7 +115,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
           window.scrollTo({
             top: 0,
             behavior: 'smooth', // Smooth scrolling
@@ -116,13 +127,17 @@ export default {
         })
         .catch((error) => {
           this.alertError = error.response.data.error;
-          console.log(this.alertError);
+          //console.log(this.alertError);
           setTimeout(() => {
             this.alertError = {};
           }, 3000);
         });
     },
     sendVote(vote) {
+      /*
+        api invio voto
+        parmetri: professional_id, lookup_id
+      */
       axios
         .post('http://127.0.0.1:8000/api/professionals/vote', null, {
           params: {
@@ -131,7 +146,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
           window.scrollTo({
             top: 0,
             behavior: 'smooth', // Smooth scrolling
@@ -144,7 +158,7 @@ export default {
         })
         .catch((error) => {
           this.alertError = error.response.data.error;
-          console.log(this.alertError);
+          //console.log(this.alertError);
           setTimeout(() => {
             this.alertError = {};
           }, 3000);
@@ -153,7 +167,6 @@ export default {
   },
   created() {
     this.getInfo();
-    console.log('slug', this.$route.params.slug);
   },
 };
 </script>
