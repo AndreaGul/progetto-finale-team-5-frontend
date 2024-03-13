@@ -1,74 +1,52 @@
 <script>
-import axios from 'axios';
-import store from '../../store';
 export default {
-  name: 'Developement',
-
+  name: "SectionTwoSpecializations",
   data() {
     return {
-      store,
-      loading: false,
-      // specializationId: "",
+      specializations: [
+        {
+          name: "artificial intelligence",
+          description:
+            "Si occupa dello sviluppo di sistemi in grado di eseguire compiti tipicamente richiedenti intelligenza umana.",
+        },
+        {
+          name: "mobile development",
+          description:
+            "Processo di creazione di applicazioni software per dispositivi mobili.",
+        },
+      ],
     };
-  },
-
-  methods: {
-    getSpecializations() {
-      this.loading = true;
-      axios
-        .get('http://127.0.0.1:8000/api/specializations')
-        .then((response) => {
-          this.store.specializations = response.data.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
-
-    selectOption(option, id) {
-      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
-
-      dropdownMenuButton.innerHTML = option;
-      // this.specializationId = id;
-      this.store.specializationsId = id;
-      this.store.specializationsName = option;
-    },
-    search() {
-      this.$emit('search');
-    },
-  },
-  created() {
-    this.getSpecializations();
   },
 };
 </script>
 
 <template>
-  <body>
-    <div class="container-r">
+  <div class="contain">
+    <div
+      v-for="(specialization, index) in specializations"
+      class="container-r col-3"
+    >
       <div class="wrapper-r">
-        <div class="banner-image"></div>
-        <h1>Web Developement</h1>
+        <div :class="'banner-image-' + index"></div>
+        <h1>{{ specialization.name }}</h1>
         <p>
-          Lorem ipsum dolor sit amet, <br />
-          consectetur adipiscing elit.
+          {{ specialization.description }}
         </p>
       </div>
       <div class="button-wrapper">
-        <button class="btn outline">DETTAGLI</button>
+        <button class="btn outline">
+          Cerca il professionista che fa per te
+        </button>
       </div>
     </div>
-  </body>
+  </div>
 </template>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+<style scoped lang="scss">
+// @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
-body {
+.contain {
   /* solid background */
   background: rgb(0, 212, 255);
 
@@ -79,14 +57,14 @@ body {
     rgba(11, 3, 45, 1) 100%
   );
 
-  /* photo background */
-  background-image: url(https://xbsoftware.com/wp-content/uploads/2023/03/website-development-process-full-guide-1-fb.jpg);
+  background-image: url(https://www.morganstanley.com/content/dam/msdotcom/ideas/ai-brain/tw-ai-brain.jpg);
+
   background-size: cover;
   background-position: center;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 100vh;
 }
 
@@ -95,7 +73,7 @@ body {
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(17, 25, 40, 0.25);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.649);
   padding: 38px;
   filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));
   display: flex;
@@ -103,6 +81,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  height: 600px;
 }
 
 .wrapper-r {
@@ -110,8 +89,18 @@ body {
   height: 100%;
 }
 
-.banner-image {
-  background-image: url(https://miro.medium.com/v2/resize:fit:12000/0*tQQ7SLPOJfxaG4ZY);
+.banner-image-0 {
+  background-image: url(https://img.freepik.com/free-vector/ai-technology-microchip-background-vector-digital-transformation-concept_53876-117808.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.255);
+}
+
+.banner-image-1 {
+  background-image: url(https://evatronix.com/images/en/offer/product-design/software-development/Evatronix_Mobile_applications_01_1920x1080.jpg);
   background-position: center;
   background-size: cover;
   height: 300px;
@@ -121,7 +110,7 @@ body {
 }
 
 h1 {
-  font-family: 'Righteous', sans-serif;
+  font-family: "Righteous", sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
   font-size: 2.4rem;
@@ -129,7 +118,7 @@ h1 {
 
 p {
   color: #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;
