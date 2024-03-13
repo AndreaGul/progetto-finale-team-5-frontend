@@ -48,10 +48,10 @@ export default {
 
       <div class="star d-flex flex-column flex-md-row">
         <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
-        <div class="align-self-center ms-3">
-          <div v-if="num_vote === 0">Nessun Voto</div>
-          <div v-else-if="num_vote === 1">Un voto</div>
-          <div v-else>{{ num_vote }} Voti</div>
+        <div class="align-self-md-end">
+          <p v-if="num_vote === 0">(Nessun Voto)</p>
+          <p v-else-if="num_vote === 1">(Su un voto)</p>
+          <p v-else>(Su {{ num_vote }} voti)</p>
         </div>
       </div>
     </div>
@@ -67,7 +67,6 @@ export default {
         <h6>{{ address }}</h6>
       </li>
       <li class="list-unstyled" v-if="phone">
-
         <h4>Telefono</h4>
         <h6>{{ phone }}</h6>
       </li>
@@ -130,6 +129,11 @@ img {
 .star {
   font-size: 26px;
 }
+.star p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-left: 60px;
+}
 
 @media (min-width: 767.98px) {
   .card-info {
@@ -155,6 +159,10 @@ img {
 
   .star {
     font-size: 30px;
+  }
+
+  .star p {
+    margin-left: 10px;
   }
 }
 </style>
