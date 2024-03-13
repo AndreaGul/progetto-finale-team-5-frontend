@@ -57,7 +57,7 @@ export default {
                   <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
                   <img
                     v-else
-                    src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+                    src="https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
                     alt=""
                   />
                 </div>

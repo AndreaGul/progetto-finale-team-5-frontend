@@ -39,7 +39,7 @@ export default {
         <img v-if="photo && photo.startsWith('uploads')" :src="'http://127.0.0.1:8000/storage/' + photo" alt="" />
         <img v-else-if="photo" :src="photo" alt="" />
         <img v-else
-          src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+          src="https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
           alt="" />
       </div>
       <div class="user-card-info ">
