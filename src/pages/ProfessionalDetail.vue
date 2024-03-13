@@ -42,9 +42,9 @@ export default {
               this.store.professionalId
           )
           .then((response) => {
-            if (response.data.status === "error") {
+            if (response.data.status === 'error') {
               this.$router.push({
-                name: "NotFound",
+                name: 'NotFound',
               });
             } else this.professional = response.data.data;
           });
@@ -221,6 +221,12 @@ export default {
         </div>
         <!-- /alert se errori -->
 
+        <AppSendVote v-if="!voteSent" @newVote="sendVote"></AppSendVote>
+        <div class="vote-container" v-else>
+          <h3 class="text-uppercase m-0 col-12 p-2">
+            Hai inviato correttamente il voto!
+          </h3>
+        </div>
         <AppSendReviews
           v-if="!reviewSent"
           @newReview="sendReview"
@@ -230,15 +236,9 @@ export default {
             Hai inviato correttamente la recensione!
           </h3>
         </div>
+        <AppReviews :reviews="professional.reviews"></AppReviews>
       </div>
       <div class="col-12 col-lg-5 right-container">
-        <AppSendVote v-if="!voteSent" @newVote="sendVote"></AppSendVote>
-        <div class="vote-container" v-else>
-          <h3 class="text-uppercase m-0 col-12 p-2">
-            Hai inviato correttamente il voto!
-          </h3>
-        </div>
-
         <AppSendMessage
           v-if="!messageSent"
           @newMessage="sendMessage"
@@ -250,8 +250,6 @@ export default {
         </div>
       </div>
     </div>
-
-    <AppReviews :reviews="professional.reviews"></AppReviews>
   </div>
 </template>
 
@@ -263,9 +261,8 @@ export default {
 .right-container {
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  padding: 20px 0;
-
+  position: sticky;
+  top: 100px;
   height: 850px;
 }
 .center-container {
