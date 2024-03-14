@@ -66,7 +66,7 @@ h3 {
 .cont-message {
   padding: 20px;
   background-color: aliceblue;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .button-send {

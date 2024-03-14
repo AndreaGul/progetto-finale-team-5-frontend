@@ -1,16 +1,16 @@
 <script>
 export default {
-  name: "AppSendMessage",
+  name: 'AppSendMessage',
   data() {
     return {
-      email: "",
-      review: "",
-      name: "",
+      email: '',
+      review: '',
+      name: '',
     };
   },
   methods: {
     newReview() {
-      this.$emit("newReview", this.email, this.review, this.name);
+      this.$emit('newReview', this.email, this.review, this.name);
     },
   },
 };
@@ -67,7 +67,7 @@ h3 {
   padding: 20px;
   margin: 20px 0;
   background-color: aliceblue;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .button-send {
