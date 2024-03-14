@@ -49,7 +49,7 @@ export default {
 
 
 .card-reviews {
-  overflow-y:scroll;
+  overflow-y:auto;
   max-height: 70vh;
   padding: 20px;
   background-color: #e1e5f2;
