@@ -6,10 +6,11 @@ import AppCarousel from './AppLogoCarousel.vue';
 import AppInfoHomepage from './AppInfoHomepage.vue';
 import store from '../../store';
 import axios from 'axios';
-import AppSectionThreeSpecializationMain from './AppSectionThreeSpecializationMain.vue';
-import AppSectionTwoSpecializationMain from './AppSectionTwoSpecializationMain.vue';
+
 import AppLogoCarousel from './AppLogoCarousel.vue';
 import AppSectionSubscribe from './AppSectionSubscribe.vue';
+
+import AppCaroselSpecialization from './AppCaroselSpecialization.vue';
 
 export default {
   name: 'Main',
@@ -27,9 +28,10 @@ export default {
     AppSponsoredProfessional,
     AppLogoCarousel,
     AppInfoHomepage,
-    AppSectionThreeSpecializationMain,
-    AppSectionTwoSpecializationMain,
+
     AppSectionSubscribe,
+
+    AppCaroselSpecialization,
   },
 
   methods: {
@@ -60,12 +62,12 @@ export default {
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
   <AppInfoHomepage></AppInfoHomepage>
+
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
 
-  <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>
-  <AppSectionSubscribe></AppSectionSubscribe>
-  <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
+  <AppCaroselSpecialization></AppCaroselSpecialization>
   <AppLogoCarousel></AppLogoCarousel>
+  <AppSectionSubscribe></AppSectionSubscribe>
 </template>
 
 <style scoped></style>
