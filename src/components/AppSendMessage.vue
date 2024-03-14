@@ -19,7 +19,7 @@ export default {
 <template>
   <!-- Invio Messaggio -->
   <div class="cont-message">
-    <h3 class="text-uppercase">Manda Un Messaggio</h3>
+    <h3 class="text-uppercase">Scrivi per una consulenza</h3>
     <form @submit.prevent="newMessage">
       <div class="input-group mb-3">
         <input
