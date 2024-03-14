@@ -76,7 +76,7 @@ export default {
               class="btn outline"
               @click="search(specialization.specialization_name)"
             >
-              Cerca il professionista che fa per te
+              <h5 class="m-0">Cerca</h5>
             </button>
           </div>
         </div>
@@ -86,6 +86,9 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.hand {
+  font-size: 30px;
+}
 .carousel-container {
   height: 700px;
   margin: 0;
