@@ -113,7 +113,7 @@ img {
 }
 
 .card-details {
-  background-color: #e1e5f2;
+  background-color: aliceblue;
   padding: 25px;
   border-radius: 10px;
   h4 {
