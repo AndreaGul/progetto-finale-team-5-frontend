@@ -1,4 +1,5 @@
 <script>
+
 import AppJumbotron from './AppJumbotron.vue';
 import AppCardProfessional from './AppCardProfessional.vue';
 import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
@@ -13,12 +14,11 @@ import AppSectionSubscribe from './AppSectionSubscribe.vue';
 import AppCaroselSpecialization from './AppCaroselSpecialization.vue';
 
 export default {
-  name: 'Main',
+  name: "Main",
 
   data() {
     return {
       professionals: [],
-      sponsored: [],
       store,
     };
   },
@@ -37,24 +37,14 @@ export default {
   methods: {
     search() {
       this.$router.push({
-        name: 'professionalList',
+        name: "professionalList",
         params: { id: this.store.specializationsName },
       });
     },
-    sponsorizedCards() {
-      /*
-        api lista professionisti sponsorizzati
-      */
-      axios
-        .get('http://127.0.0.1:8000/api/professionals/sponsored')
-        .then((response) => {
-          this.sponsored = response.data.data;
-        });
-    },
+
   },
   created() {
-    this.sponsorizedCards();
-    this.store.specializationsName = '';
+    this.store.specializationsName = "";
   },
 };
 </script>
@@ -62,9 +52,7 @@ export default {
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
   <AppInfoHomepage></AppInfoHomepage>
-
   <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
-
   <AppCaroselSpecialization></AppCaroselSpecialization>
   <AppLogoCarousel></AppLogoCarousel>
   <AppSectionSubscribe></AppSectionSubscribe>

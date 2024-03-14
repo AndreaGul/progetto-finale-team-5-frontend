@@ -1,40 +1,66 @@
 <script>
-import store from '../../store';
+
+import axios from "axios";
 export default {
-  name: 'CardSponsor',
-  props: ['sponsorProp'],
+  name: "CardSponsor",
   data() {
     return {
-      store,
+      sponsored: [],
+      nextPage: null,
+      prevPage: null,
     };
   },
   methods: {
-    getInfo(id) {
-      console.log(id);
-      this.store.professionalId = id;
+    sponsorizedCards(url) {
+      console.log("sto qua");
+      console.log(url);
+      axios.get(url).then((response) => {
+        console.log(response);
+        this.sponsored = response.data.data.data;
+        this.nextPage = response.data.data.next_page_url; // Assicurati che la risposta contenga un campo 'next_page_url'
+        this.prevPage = response.data.data.prev_page_url;
+      });
     },
   },
   created() {
-    console.log(this.sponsorProp);
+    this.sponsorizedCards("http://127.0.0.1:8000/api/professionals/sponsored");
+
   },
 };
 </script>
 
 <template>
+
   <div class="container_sponsorizzati">
     <!-- In evidenza -->
     <div class="container p-3">
-      <h4 class="text-center text-uppercase titolo">
-        Cerca il miglior professionista che fa per te
-      </h4>
+      <div class="d-flex justify-content-between">
+      <h4 class="text-center text-uppercase titolo">In Evidenza</h4>
 
-      <div class="ag-format-container">
-        <div class="ag-courses_box row g-3">
-          <!-- card singola -->
-          <div
-            class="ag-courses_item col-12 col-md-6 col-xl-4"
-            v-for="sponsor in sponsorProp"
+      <div class="buttons">
+        <button
+          class="btn outline"
+          @click="sponsorizedCards(prevPage)"
+          v-if="prevPage !== null"
+        >
+          <
+        </button>
+        <button
+          class="btn outline"
+          @click="sponsorizedCards(nextPage)"
+          v-if="nextPage !== null"
+        >
           >
+        </button>
+      </div>
+    </div>
+
+     <div class="ag-format-container">
+      <div class="ag-courses_box row g-3">
+        <div
+          class="ag-courses_item col-12 col-md-6 col-xl-4"
+          v-for="sponsor in sponsored"
+        >
             <router-link
               :to="{
                 name: 'ProfessionalDetail',
@@ -42,7 +68,7 @@ export default {
               }"
               @click="getInfo(sponsor.id)"
               class="text-decoration-none"
-            >
+              >
               <a href="#" class="ag-courses-item_link text-decoration-none">
                 <div class="ag-courses-item_bg"></div>
 
@@ -108,7 +134,7 @@ export default {
 }
 
 .titolo {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-weight: 600;
 }
 
@@ -223,6 +249,34 @@ export default {
   -webkit-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+.btn {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
+
+.outline {
+  background: #022b3a;
+  color: white;
+  border: 1px solid white;
+  transition: all 0.3s ease;
+}
+
+.outline:hover {
+  transform: scale(1.125);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
 }
 @media only screen and (min-width: 639px) {
   .ag-courses-item_title {
