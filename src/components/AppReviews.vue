@@ -22,7 +22,7 @@ export default {
     <div class="card-reviews">
       <h2>Recensioni</h2>
       <div v-if="reviews.length > 0">
-        <div class="info-reviews" v-for="review in reviews">
+        <div class="info-reviews" v-for="review in reviews.slice().reverse()">
           <p class="nome-recensione">{{ review.name_reviewer }}
  <p class="data-recensione">{{ dataFormat(review.created_at) }}</p>
            </p>
