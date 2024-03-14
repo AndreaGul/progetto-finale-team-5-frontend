@@ -253,16 +253,6 @@ export default {
               Hai inviato correttamente il voto!
             </h3>
           </div>
-          <AppSendReviews
-            v-if="!reviewSent"
-            @newReview="sendReview"
-          ></AppSendReviews>
-          <div class="vote-container" v-else>
-            <h3 class="text-uppercase m-0 col-12 p-2">
-              Hai inviato correttamente la recensione!
-            </h3>
-          </div>
-          <AppReviews :reviews="professional.reviews"></AppReviews>
         </div>
         <div class="col-12 col-lg-5 right-container">
           <AppSendMessage
@@ -275,6 +265,18 @@ export default {
             </h3>
           </div>
         </div>
+        <div class="left-container col-12 col-lg-7">
+          <AppSendReviews
+            v-if="!reviewSent"
+            @newReview="sendReview"
+          ></AppSendReviews>
+          <div class="vote-container" v-else>
+            <h3 class="text-uppercase m-0 col-12 p-2">
+              Hai inviato correttamente la recensione!
+            </h3>
+          </div>
+          <AppReviews :reviews="professional.reviews"></AppReviews>
+        </div>
       </div>
     </div>
   </div>
@@ -285,13 +287,13 @@ export default {
   padding: 20px;
 }
 
-.right-container {
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 100px;
-  height: 850px;
-}
+// .right-container {
+//   display: flex;
+//   flex-direction: column;
+//   position: sticky;
+//   top: 100px;
+//   height: 850px;
+// }
 .center-container {
   display: flex;
   justify-content: center;
@@ -313,6 +315,16 @@ export default {
   h3 {
     font-weight: 700;
     font-size: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 150px;
+    height: 850px;
   }
 }
 </style>
