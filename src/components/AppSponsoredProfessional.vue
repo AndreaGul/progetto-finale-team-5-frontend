@@ -1,18 +1,19 @@
 <script>
-
-import axios from "axios";
+import store from '../../store';
+import axios from 'axios';
 export default {
-  name: "CardSponsor",
+  name: 'CardSponsor',
   data() {
     return {
       sponsored: [],
       nextPage: null,
       prevPage: null,
+      store,
     };
   },
   methods: {
     sponsorizedCards(url) {
-      console.log("sto qua");
+      console.log('sto qua');
       console.log(url);
       axios.get(url).then((response) => {
         console.log(response);
@@ -21,46 +22,47 @@ export default {
         this.prevPage = response.data.data.prev_page_url;
       });
     },
+    getInfo(id) {
+      this.store.professionalId = id;
+    },
   },
   created() {
-    this.sponsorizedCards("http://127.0.0.1:8000/api/professionals/sponsored");
-
+    this.sponsorizedCards('http://127.0.0.1:8000/api/professionals/sponsored');
   },
 };
 </script>
 
 <template>
-
   <div class="container_sponsorizzati">
     <!-- In evidenza -->
     <div class="container p-3">
       <div class="d-flex justify-content-between">
-      <h4 class="text-center text-uppercase titolo">In Evidenza</h4>
+        <h4 class="text-center text-uppercase titolo">In Evidenza</h4>
 
-      <div class="buttons">
-        <button
-          class="btn outline"
-          @click="sponsorizedCards(prevPage)"
-          v-if="prevPage !== null"
-        >
-          <
-        </button>
-        <button
-          class="btn outline"
-          @click="sponsorizedCards(nextPage)"
-          v-if="nextPage !== null"
-        >
+        <div class="buttons">
+          <button
+            class="btn outline"
+            @click="sponsorizedCards(prevPage)"
+            v-if="prevPage !== null"
           >
-        </button>
+            <
+          </button>
+          <button
+            class="btn outline"
+            @click="sponsorizedCards(nextPage)"
+            v-if="nextPage !== null"
+          >
+            >
+          </button>
+        </div>
       </div>
-    </div>
 
-     <div class="ag-format-container">
-      <div class="ag-courses_box row g-3">
-        <div
-          class="ag-courses_item col-12 col-md-6 col-xl-4"
-          v-for="sponsor in sponsored"
-        >
+      <div class="ag-format-container">
+        <div class="ag-courses_box row g-3">
+          <div
+            class="ag-courses_item col-12 col-md-6 col-xl-4"
+            v-for="sponsor in sponsored"
+          >
             <router-link
               :to="{
                 name: 'ProfessionalDetail',
@@ -68,7 +70,7 @@ export default {
               }"
               @click="getInfo(sponsor.id)"
               class="text-decoration-none"
-              >
+            >
               <a href="#" class="ag-courses-item_link text-decoration-none">
                 <div class="ag-courses-item_bg"></div>
 
@@ -134,7 +136,7 @@ export default {
 }
 
 .titolo {
-  font-family: "Share Tech Mono", monospace;
+  font-family: 'Share Tech Mono', monospace;
   font-weight: 600;
 }
 
