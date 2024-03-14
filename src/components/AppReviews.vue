@@ -12,6 +12,7 @@ export default {
       dataFormat = new Date(dataFormat);
       return `${dataFormat.getDate()}-${dataFormat.getMonth() + 1}-${dataFormat.getFullYear()}`;
     },
+ 
   },
 };
 </script>
@@ -20,7 +21,8 @@ export default {
   <!-- Recensioni -->
   <div class="container">
     <div class="card-reviews">
-      <h2>Recensioni</h2>
+      <h2 v-if="reviews.length === 1">{{ reviews.length }} Recensione</h2>
+      <h2 v-else>{{ reviews.length }} Recensioni</h2>
       <div v-if="reviews.length > 0">
         <div class="info-reviews" v-for="review in reviews">
           <p class="nome-recensione">{{ review.name_reviewer }}
