@@ -96,7 +96,7 @@ export default {
 main#carousel {
   grid-row: 1 / 2;
   grid-column: 1 / 8;
-  width: 100vw;
+  width: calc(100vw - 20px);
   height: 100%;
   display: flex;
   align-items: center;
