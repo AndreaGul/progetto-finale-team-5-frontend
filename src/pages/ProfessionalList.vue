@@ -13,6 +13,7 @@ export default {
       loading: false,
       professionals: [],
       store,
+      risultatiTrovati: 0,
     };
   },
   components: {
@@ -47,11 +48,12 @@ export default {
           })
           .then((response) => {
             this.professionals = response.data.data;
+            this.risultatiTrovati = this.professionals.length;
           })
           .catch((error) => {
             //console.log(error);
             this.$router.push({
-              name: "NotFound",
+              name: 'NotFound',
             });
           })
           .finally(() => {
@@ -90,7 +92,12 @@ export default {
     </div>
   </div>
 
+  <h4 class="container my-3">Risultati trovati: {{ risultatiTrovati }}</h4>
   <AppMainSubPages :professionals="professionals"></AppMainSubPages>
 </template>
 
-<style scoped></style>
+<style scoped>
+h4 {
+  font-weight: 600;
+}
+</style>
