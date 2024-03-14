@@ -25,7 +25,7 @@ export default {
 
 <template>
   <!-- Invio Voto -->
-  <div class="vote-container">
+  <div class="send-vote-container">
     <div class="align-items-start card-vote-star d-flex flex-column">
       <h3 class="text-uppercase m-0">Vota Professionista</h3>
       <div class="mt-2">
@@ -52,13 +52,13 @@ export default {
 </template>
 
 <style scoped>
-.vote-container {
+.send-vote-container {
   position: relative;
   top: 10px;
   padding: 20px;
   margin: 20px 0;
   background-color: aliceblue;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .card-vote-star {

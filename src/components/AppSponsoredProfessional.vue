@@ -1,4 +1,5 @@
 <script>
+
 import axios from "axios";
 export default {
   name: "CardSponsor",
@@ -23,14 +24,17 @@ export default {
   },
   created() {
     this.sponsorizedCards("http://127.0.0.1:8000/api/professionals/sponsored");
+
   },
 };
 </script>
 
 <template>
-  <!-- In evidenza -->
-  <div class="container p-3">
-    <div class="d-flex justify-content-between">
+
+  <div class="container_sponsorizzati">
+    <!-- In evidenza -->
+    <div class="container p-3">
+      <div class="d-flex justify-content-between">
       <h4 class="text-center text-uppercase titolo">In Evidenza</h4>
 
       <div class="buttons">
@@ -51,60 +55,84 @@ export default {
       </div>
     </div>
 
-    <div class="ag-format-container">
+     <div class="ag-format-container">
       <div class="ag-courses_box row g-3">
         <div
           class="ag-courses_item col-12 col-md-6 col-xl-4"
           v-for="sponsor in sponsored"
         >
-          <a href="#" class="ag-courses-item_link text-decoration-none">
-            <div class="ag-courses-item_bg"></div>
+            <router-link
+              :to="{
+                name: 'ProfessionalDetail',
+                params: { slug: sponsor.slug },
+              }"
+              @click="getInfo(sponsor.id)"
+              class="text-decoration-none"
+              >
+              <a href="#" class="ag-courses-item_link text-decoration-none">
+                <div class="ag-courses-item_bg"></div>
 
-            <div
-              class="ag-courses-item_title row mb-3 justify-content-md-center"
-            >
-              <div class="user-card-img col-5 col-md-6 col-lg-4">
-                <img
-                  v-if="sponsor.photo && sponsor.photo.startsWith('uploads')"
-                  :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
-                  alt=""
-                />
-                <img v-else-if="sponsor.photo" :src="sponsor.photo" alt="" />
-                <img
-                  v-else
-                  src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
-                  alt=""
-                />
-              </div>
-
-              <div class="col-7 col-md-6 col-lg-8">
-                {{ sponsor.user.name }} {{ sponsor.user.surname }}
-              </div>
-            </div>
-
-            <div class="ag-courses-item_date-box">
-              <div class="card-description">Specializzazioni:</div>
-              <p class="specialization-list">
-                <span
-                  v-for="(specialization, index) in sponsor.specializations"
-                  :key="index"
+                <div
+                  class="ag-courses-item_title row mb-3 justify-content-md-center"
                 >
-                  {{ specialization.name }}
-                  <span v-if="index < sponsor.specializations.length - 1"
-                    >,
-                  </span>
-                </span>
-              </p>
-            </div>
-          </a>
+                  <div class="user-card-img col-5 col-md-6 col-lg-4">
+                    <img
+                      v-if="
+                        sponsor.photo && sponsor.photo.startsWith('uploads')
+                      "
+                      :src="'http://127.0.0.1:8000/storage/' + sponsor.photo"
+                      alt=""
+                    />
+                    <img
+                      v-else-if="sponsor.photo"
+                      :src="sponsor.photo"
+                      alt=""
+                    />
+                    <img
+                      v-else
+                      src="https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="col-7 col-md-6 col-lg-8">
+                    {{ sponsor.user.name }} {{ sponsor.user.surname }}
+                  </div>
+                </div>
+
+                <div class="ag-courses-item_date-box">
+                  <div class="card-description">Specializzazioni:</div>
+                  <p class="specialization-list">
+                    <span
+                      v-for="(specialization, index) in sponsor.specializations"
+                      :key="index"
+                    >
+                      {{ specialization.name }}
+                      <span v-if="index < sponsor.specializations.length - 1"
+                        >,
+                      </span>
+                    </span>
+                  </p>
+                  <!-- Dettaglio Professionista -->
+
+                  <!-- Fine Dettaglio Professionista -->
+                </div>
+              </a>
+            </router-link>
+          </div>
+          <!-- card singola -->
         </div>
       </div>
     </div>
+    <!-- Fine In evidenza -->
   </div>
-  <!-- Fine In evidenza -->
 </template>
 
 <style scoped>
+.container_sponsorizzati {
+  background-color: #bfdbf7;
+}
+
 .titolo {
   font-family: "Share Tech Mono", monospace;
   font-weight: 600;
@@ -129,12 +157,21 @@ export default {
   font-size: 14px;
 }
 
+.btn-detail {
+  background-color: #1f798b;
+  color: white;
+  border: 1px solid #022b3a;
+}
+.btn-detail:hover {
+  background-color: #022b3a;
+  color: white;
+}
+
 .ag-format-container {
-  min-height: 100px;
+  min-height: 350px;
   max-height: calc(100vh / 1.5);
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: stable;
 }
 
 .ag-courses_box {

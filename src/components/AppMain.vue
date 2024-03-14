@@ -1,15 +1,17 @@
 <script>
-import AppJumbotron from "./AppJumbotron.vue";
-import AppCardProfessional from "./AppCardProfessional.vue";
-import AppSponsoredProfessional from "./AppSponsoredProfessional.vue";
-import AppCarousel from "./AppLogoCarousel.vue";
-import AppInfoHomepage from "./AppInfoHomepage.vue";
-import store from "../../store";
-import axios from "axios";
-import AppSectionThreeSpecializationMain from "./AppSectionThreeSpecializationMain.vue";
-import AppSectionTwoSpecializationMain from "./AppSectionTwoSpecializationMain.vue";
-import AppLogoCarousel from "./AppLogoCarousel.vue";
-import AppSectionSubscribe from "./AppSectionSubscribe.vue";
+
+import AppJumbotron from './AppJumbotron.vue';
+import AppCardProfessional from './AppCardProfessional.vue';
+import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
+import AppCarousel from './AppLogoCarousel.vue';
+import AppInfoHomepage from './AppInfoHomepage.vue';
+import store from '../../store';
+import axios from 'axios';
+
+import AppLogoCarousel from './AppLogoCarousel.vue';
+import AppSectionSubscribe from './AppSectionSubscribe.vue';
+
+import AppCaroselSpecialization from './AppCaroselSpecialization.vue';
 
 export default {
   name: "Main",
@@ -26,9 +28,10 @@ export default {
     AppSponsoredProfessional,
     AppLogoCarousel,
     AppInfoHomepage,
-    AppSectionThreeSpecializationMain,
-    AppSectionTwoSpecializationMain,
+
     AppSectionSubscribe,
+
+    AppCaroselSpecialization,
   },
 
   methods: {
@@ -38,6 +41,7 @@ export default {
         params: { id: this.store.specializationsName },
       });
     },
+
   },
   created() {
     this.store.specializationsName = "";
@@ -47,13 +51,11 @@ export default {
 
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
-
-  <AppSponsoredProfessional></AppSponsoredProfessional>
-  <AppSectionSubscribe></AppSectionSubscribe>
-  <AppSectionThreeSpecializationMain></AppSectionThreeSpecializationMain>
-  <AppSectionTwoSpecializationMain></AppSectionTwoSpecializationMain>
-  <AppLogoCarousel></AppLogoCarousel>
   <AppInfoHomepage></AppInfoHomepage>
+  <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
+  <AppCaroselSpecialization></AppCaroselSpecialization>
+  <AppLogoCarousel></AppLogoCarousel>
+  <AppSectionSubscribe></AppSectionSubscribe>
 </template>
 
 <style scoped></style>

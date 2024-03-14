@@ -30,7 +30,7 @@ export default {
       <img v-else-if="photo" :src="photo" alt="" />
       <img
         v-else
-        src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+        src="https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
         alt=""
       />
     </div>
@@ -48,17 +48,17 @@ export default {
 
       <div class="star d-flex flex-column flex-md-row">
         <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
-        <div class="align-self-center ms-3">
-          <div v-if="num_vote === 0">Nessun Voto</div>
-          <div v-else-if="num_vote === 1">Un voto</div>
-          <div v-else>{{ num_vote }} Voti</div>
+        <div class="align-self-md-end">
+          <p v-if="num_vote === 0">(Nessun Voto)</p>
+          <p v-else-if="num_vote === 1">(Su un voto)</p>
+          <p v-else>(Su {{ num_vote }} voti)</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="card-details">
+  <div class="card-details" v-if="address || phone || curriculum">
     <ul class="p-0 m-0">
-      <li class="list-unstyled">
+      <li class="list-unstyled" v-if="address">
         <h4>
           Indirizzo
 
@@ -67,7 +67,6 @@ export default {
         <h6>{{ address }}</h6>
       </li>
       <li class="list-unstyled" v-if="phone">
-
         <h4>Telefono</h4>
         <h6>{{ phone }}</h6>
       </li>
@@ -114,7 +113,7 @@ img {
 }
 
 .card-details {
-  background-color: #e1e5f2;
+  background-color: aliceblue;
   padding: 25px;
   border-radius: 10px;
   h4 {
@@ -129,6 +128,11 @@ img {
 }
 .star {
   font-size: 26px;
+}
+.star p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-left: 60px;
 }
 
 @media (min-width: 767.98px) {
@@ -155,6 +159,10 @@ img {
 
   .star {
     font-size: 30px;
+  }
+
+  .star p {
+    margin-left: 10px;
   }
 }
 </style>

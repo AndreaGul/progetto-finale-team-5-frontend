@@ -23,11 +23,13 @@ export default {
   },
   methods: {
     getInfo(id) {
-      console.log(id);
+      /*
+        api singolo professionista
+        parmetri: id o slug professionista
+      */
       axios
         .get('http://127.0.0.1:8000/api/professionals/show/' + id)
         .then((response) => {
-          console.log(response.data.data);
           this.professional = response.data.data;
         });
     },

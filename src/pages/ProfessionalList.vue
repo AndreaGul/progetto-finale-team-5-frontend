@@ -13,6 +13,7 @@ export default {
       loading: false,
       professionals: [],
       store,
+      risultatiTrovati: 0,
     };
   },
   components: {
@@ -33,12 +34,10 @@ export default {
         const specializationName = this.formatSpecializationName(
           this.store.specializationsName
         );
-        // const formattedSpecializationName =
-        //   this.formatSpecializationName(specializationName);
-        // this.$router.push({
-        //   name: 'professionalList',
-        //   params: { id: formattedSpecializationName },
-        // });
+        /*
+          api lista professionisti
+          parmetri: specialization_id, vote, review
+        */
         axios
           .get('http://127.0.0.1:8000/api/professionals', {
             params: {
@@ -48,13 +47,13 @@ export default {
             },
           })
           .then((response) => {
-            console.log(response);
             this.professionals = response.data.data;
+            this.risultatiTrovati = this.professionals.length;
           })
           .catch((error) => {
-            console.log(error);
+            //console.log(error);
             this.$router.push({
-              name: "NotFound",
+              name: 'NotFound',
             });
           })
           .finally(() => {
@@ -93,7 +92,12 @@ export default {
     </div>
   </div>
 
+  <h4 class="container my-3">Risultati trovati: {{ risultatiTrovati }}</h4>
   <AppMainSubPages :professionals="professionals"></AppMainSubPages>
 </template>
 
-<style scoped></style>
+<style scoped>
+h4 {
+  font-weight: 600;
+}
+</style>

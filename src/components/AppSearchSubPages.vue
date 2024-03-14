@@ -17,12 +17,13 @@ export default {
   methods: {
     getSpecializations() {
       this.loading = true;
+      /*
+        api lista specializzazioni
+      */
       axios
         .get('http://127.0.0.1:8000/api/specializations')
         .then((response) => {
-          console.log(response);
           this.store.specializations = response.data.data;
-          console.log(this.store.specializations);
         })
         .finally(() => {
           this.loading = false;
@@ -90,7 +91,7 @@ export default {
 
 <template>
   <!-- Ricerca -->
-  <div class="py-3">
+  <div class="py-3 not-whit">
     <div class="container d-flex flex-row align-items-center p-3">
       <form
         id="form"
@@ -188,6 +189,9 @@ export default {
 </template>
 
 <style scoped>
+.not-whit {
+  background-color: #1f7a8c;
+}
 form {
   width: 100vw;
 }
@@ -196,7 +200,7 @@ form {
   background-color: white;
   color: #022b3aff;
   font-weight: bold;
-  border-radius: 30px;
+  border-radius: 10px;
   font-size: 18px;
   border: 2px solid #022b3aff;
 }

@@ -43,22 +43,22 @@ export default {
 <style scoped>
 .container{
   width: 100%;
+  padding: 0;
 }
 
 
 
 .card-reviews {
-  overflow-y: auto;
+  overflow-y:auto;
+  max-height: 70vh;
   padding: 20px;
   background-color: #e1e5f2;
 
   margin-bottom: 35px;
 
-  border-radius: 33px;
+  border-radius: 10px;
 
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  
   h2 {
     font-size: 36px;
     font-weight: bold;
@@ -71,7 +71,7 @@ export default {
   }
 
   .nome-recensione {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .data-recensione {
@@ -81,7 +81,7 @@ export default {
   }
   .testo-recensione {
     margin-left: 20px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .message{
@@ -94,7 +94,7 @@ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 .info-reviews {
   background-color: rgb(249, 247, 247);
   padding: 15px;
-  margin-bottom: 17px;
+  margin-bottom: 10px;
   border-radius: 33px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }

@@ -33,20 +33,20 @@ export default {
 
 <template>
   <!-- Professionista -->
-  <div class="wrapper col-12 col-lg-6 pb-3 d-flex align-items-stretch card-box">
+  <div class="wrapper col-12 col-lg-6 pb-3 card-box">
     <div class="user-card justify-content-start " :class="{ 'card-sponsored': sponsorization[0] }">
       <div class="user-card-img">
         <img v-if="photo && photo.startsWith('uploads')" :src="'http://127.0.0.1:8000/storage/' + photo" alt="" />
         <img v-else-if="photo" :src="photo" alt="" />
         <img v-else
-          src="https://img.freepik.com/premium-vector/male-avatar-icon-unknown-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-white-background-vector-illustration_735449-120.jpg"
+          src="https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
           alt="" />
       </div>
       <div class="user-card-info ">
         <!-- Informazioni Professionista -->
-        <div class="d-flex flex-column flex-xl-row align-items-cente info mb-2">
+        <div class="d-flex flex-column flex-md-row align-items-cente info mb-2">
           <h2>{{ slug.split('-').join(' ') }} <div v-if="sponsorization[0]"><i class="fa-solid fa-crown"></i></div></h2>
-          <div class="stars ms-xl-5 d-flex justify-content-center justify-content-md-start">
+          <div class="stars ms-md-5 d-flex justify-content-center justify-content-md-start">
             <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
           </div>
         </div>
@@ -169,6 +169,7 @@ export default {
   .user-card {
     flex-direction: row;
     align-items: flex-start;
+    height: 420px;
 
     &:before {
       transform: rotate(17deg);
@@ -179,12 +180,14 @@ export default {
     .user-card-img {
       margin-bottom: 0;
       margin-left: -15px;
-      margin-right: 50px;
+      margin-right: 30px;
+      width: 35%;
     }
 
     .user-card-info {
       text-align: left;
       margin-top: 15px;
+      flex-grow: 1;
 
       h2 {
         text-align: left;
@@ -192,5 +195,89 @@ export default {
       }
     }
   }
+}
+
+@media only screen and (min-width: 992px) {
+
+.user-card {
+
+  height: 520px;
+
+  &:before {
+  left: -170px;
+    width: 145px;
+  }
+
+  .user-card-img {
+    margin-left: 0;
+  }
+}
+//   .user-card-info {
+//     text-align: left;
+//     margin-top: 15px;
+//     flex-grow: 1;
+
+//     h2 {
+//       text-align: left;
+//       font-size: 24px;
+//     }
+//   }
+// }
+}
+
+@media only screen and (min-width: 1200px) {
+
+.user-card {
+
+  height: 470px;
+
+  &:before {
+  left: -140px;
+    width: 170px;
+  }
+
+  .user-card-img {
+    margin-left: 15px;
+  }
+}
+//   .user-card-info {
+//     text-align: left;
+//     margin-top: 15px;
+//     flex-grow: 1;
+
+//     h2 {
+//       text-align: left;
+//       font-size: 24px;
+//     }
+//   }
+// }
+}
+
+@media only screen and (min-width: 1400px) {
+
+.user-card {
+
+  height: 420px;
+
+  &:before {
+  left: -140px;
+    width: 170px;
+  }
+
+  .user-card-img {
+    margin-left: -30px;
+  }
+}
+//   .user-card-info {
+//     text-align: left;
+//     margin-top: 15px;
+//     flex-grow: 1;
+
+//     h2 {
+//       text-align: left;
+//       font-size: 24px;
+//     }
+//   }
+// }
 }
 </style>
