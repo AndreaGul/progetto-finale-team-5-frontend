@@ -267,6 +267,7 @@ export default {
         </div>
         <div class="col-12 col-lg-5 right-container">
           <AppSendMessage
+            class="send-message"
             v-if="!messageSent"
             @newMessage="sendMessage"
           ></AppSendMessage>
@@ -286,7 +287,7 @@ export default {
 
 <style scoped lang="scss">
 .left-container {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .center-container {
@@ -303,7 +304,7 @@ export default {
 
 .vote-container {
   padding: 20px;
-  margin: 20px 0;
+  // margin: 20px 0;
   background-color: aliceblue;
   border-radius: 30px;
 
@@ -313,13 +314,17 @@ export default {
   }
 }
 
+.right-container {
+  padding: 0 20px;
+}
+
 @media (min-width: 992px) {
   .right-container {
     display: flex;
     flex-direction: column;
     position: sticky;
     top: 150px;
-    height: 850px;
+    height: 415px;
   }
 }
 </style>

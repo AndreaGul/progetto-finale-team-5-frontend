@@ -6,71 +6,78 @@ export default {
       email: '',
       review: '',
       name: '',
-      error: []
+      error: [],
     };
   },
   methods: {
     newReview() {
       this.checkInput();
-      if(this.error.length === 0)this.$emit('newReview', this.email, this.review, this.name);
+      if (this.error.length === 0)
+        this.$emit('newReview', this.email, this.review, this.name);
     },
-    checkInput(){
+    checkInput() {
       this.error = [];
       //email
-      if(!this.email.includes('@'))this.error.push('email');
-      if(!this.email.includes('.'))this.error.push('email');
-      if(this.email.length > 50)this.error.push('email');
+      if (!this.email.includes('@')) this.error.push('email');
+      if (!this.email.includes('.')) this.error.push('email');
+      if (this.email.length > 50) this.error.push('email');
       //review
-      if(this.review.length < 3 || this.review.length > 1000)this.error.push('review');
+      if (this.review.length < 3 || this.review.length > 1000)
+        this.error.push('review');
       //name
-      if(this.name.length < 3 || this.name.length > 20)this.error.push('name');
-    }
+      if (this.name.length < 3 || this.name.length > 20)
+        this.error.push('name');
+    },
   },
 };
 </script>
 
 <template>
   <!-- Invio Recensione -->
-  <div class="cont-message">
+  <div class="cont-message personal-margin">
     <h3 class="text-uppercase">Lascia Una Recensione</h3>
     <form @submit.prevent="newReview">
       <div class="input-group">
         <input
           type="text"
           class="form-control mail-style"
-          :class="{'border-danger' : error.includes('name')}"
+          :class="{ 'border-danger': error.includes('name') }"
           placeholder="Nome Cognome"
           v-model="name"
           required
         />
       </div>
-      <p v-if="error.includes('name')" class="mt-1 text-danger">il nome deve contenere almeno 3 e massimo 20 caratteri</p>
-
+      <p v-if="error.includes('name')" class="mt-1 text-danger">
+        il nome deve contenere almeno 3 e massimo 20 caratteri
+      </p>
 
       <div class="input-group mt-3">
         <input
           type="email"
           class="form-control mail-style"
-          :class="{'border-danger' : error.includes('email')}"
+          :class="{ 'border-danger': error.includes('email') }"
           placeholder="Inserisci la tua mail"
           v-model="email"
           required
         />
       </div>
-      <p v-if="error.includes('email')" class="mt-1 text-danger">non è un email valida</p>
-
+      <p v-if="error.includes('email')" class="mt-1 text-danger">
+        non è un email valida
+      </p>
 
       <div class="input-group mt-3">
         <textarea
-          class="form-control color-textarea  mb-0"
-          :class="{'border-danger' : error.includes('review')}"
+          class="form-control color-textarea mb-0"
+          :class="{ 'border-danger': error.includes('review') }"
           placeholder="Scrivi la tua recensione qui"
           aria-label="With textarea"
           v-model="review"
           required
         ></textarea>
       </div>
-      <p v-if="error.includes('review')" class="mt-1 text-danger">la recensione deve contenere almeno 3 e massimo 1000 caratteri</p>
+      <p v-if="error.includes('review')" class="mt-1 text-danger">
+        la recensione deve contenere almeno 3 e massimo 1000 caratteri
+      </p>
 
       <div class="cont-button mt-3">
         <button class="btn button-send">Invia</button>
@@ -86,9 +93,14 @@ h3 {
 }
 .cont-message {
   padding: 20px;
-  margin: 20px 0;
+  margin-top: 20px;
   background-color: aliceblue;
   border-radius: 10px;
+  border: 1px solid #1f798b;
+}
+
+.personal-margin {
+  margin-bottom: 10px;
 }
 
 .button-send {
