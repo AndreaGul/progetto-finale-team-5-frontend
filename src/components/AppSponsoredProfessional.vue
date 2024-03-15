@@ -1,8 +1,8 @@
 <script>
-import store from '../../store';
-import axios from 'axios';
+import store from "../../store";
+import axios from "axios";
 export default {
-  name: 'CardSponsor',
+  name: "CardSponsor",
   data() {
     return {
       sponsored: [],
@@ -16,7 +16,7 @@ export default {
     sponsorizedCards(url) {
       this.loading = true;
 
-      console.log('sto qua');
+      console.log("sto qua");
       console.log(url);
       axios.get(url).then((response) => {
         console.log(response);
@@ -31,7 +31,7 @@ export default {
     },
   },
   created() {
-    this.sponsorizedCards('http://127.0.0.1:8000/api/professionals/sponsored');
+    this.sponsorizedCards("http://127.0.0.1:8000/api/professionals/sponsored");
   },
 };
 </script>
@@ -41,7 +41,7 @@ export default {
     <!-- In evidenza -->
     <div class="container p-3">
       <div class="d-flex justify-content-between">
-        <h4 class="text-center text-uppercase titolo mt-5">In Evidenza</h4>
+        <h4 class="text-center text-uppercase titolo">In Evidenza</h4>
 
         <div class="buttons">
           <button
@@ -151,8 +151,9 @@ export default {
 }
 
 .titolo {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-weight: 600;
+  font-size: 35px;
 }
 
 .card-description {
