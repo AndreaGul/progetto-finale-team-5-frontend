@@ -44,8 +44,9 @@ export default {
       </div>
       <div class="user-card-info ">
         <!-- Informazioni Professionista -->
-        <div class="d-flex flex-column flex-md-row align-items-cente info mb-2">
-          <h2>{{ slug.split('-').join(' ') }} <div v-if="sponsorization[0]"><i class="fa-solid fa-crown"></i></div></h2>
+        <div class="d-flex flex-column flex-md-row info mb-2">
+          <h2>{{ slug.split('-').join(' ') }}</h2>
+          <div v-if="sponsorization[0]" class="d-flex justify-content-center"><i class="fa-solid fa-crown"></i></div>
           <div class="stars ms-md-5 d-flex justify-content-center justify-content-md-start">
             <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
           </div>
@@ -77,8 +78,8 @@ export default {
 
 <style lang="scss" scoped>
 .fa-crown{
-  color: #daa520;
-  opacity: 0.8; 
+  color: #f1b622;
+  font-size: 25px;
 }
 .card-box {
   display: flex;
