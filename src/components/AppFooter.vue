@@ -1,6 +1,11 @@
 <script>
 export default {
-  name: 'Footer',
+  name: "Footer",
+  methods: {
+    toTop(){
+      document.documentElement.scrollTop = 0;
+    }
+  }
 };
 </script>
 
@@ -10,7 +15,7 @@ export default {
       <div class="container d-flex justify-content-between">
         <div class="footer-links">
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><router-link to="/" class="btn btn-home" @click="toTop()">Home</router-link></li>
             <li><a href="#">Chi siamo</a></li>
             <li><a href="#">Servizi</a></li>
             <li><a href="#">Contatti</a></li>

@@ -37,7 +37,7 @@ export default {
     <!-- In evidenza -->
     <div class="container p-3">
       <div class="d-flex justify-content-between">
-        <h4 class="text-center text-uppercase titolo">In Evidenza</h4>
+        <h4 class="text-center text-uppercase titolo mt-5">In Evidenza</h4>
 
         <div class="buttons">
           <button
@@ -60,7 +60,7 @@ export default {
       <div class="ag-format-container">
         <div class="ag-courses_box row g-3">
           <div
-            class="ag-courses_item col-12 col-md-6 col-xl-4"
+            class="ag-courses_item col-12 col-md-4 col-xl-4"
             v-for="sponsor in sponsored"
           >
             <router-link
@@ -75,9 +75,9 @@ export default {
                 <div class="ag-courses-item_bg"></div>
 
                 <div
-                  class="ag-courses-item_title row mb-3 justify-content-md-center"
+                  class="ag-courses-item_title row mb-1 justify-content-md-center"
                 >
-                  <div class="user-card-img col-5 col-md-6 col-lg-4">
+                  <div class="user-card-img col-5 col-md-12 col-lg-4 mb-5">
                     <img
                       v-if="
                         sponsor.photo && sponsor.photo.startsWith('uploads')
@@ -97,13 +97,16 @@ export default {
                     />
                   </div>
 
-                  <div class="col-7 col-md-6 col-lg-8">
+                  <div
+                    class="col-7 col-md-12 col-lg-8 mb-2 nome-utente-specializzato"
+                  >
                     {{ sponsor.user.name }} {{ sponsor.user.surname }}
                   </div>
                 </div>
 
                 <div class="ag-courses-item_date-box">
-                  <div class="card-description">Specializzazioni:</div>
+                  <div v-if="!specializations"></div>
+                  <div v-else class="card-description">Specializzazioni:</div>
                   <p class="specialization-list">
                     <span
                       v-for="(specialization, index) in sponsor.specializations"
@@ -169,18 +172,18 @@ export default {
   color: white;
 }
 
-.ag-format-container {
+/* .ag-format-container {
   min-height: 350px;
   max-height: calc(100vh / 1.5);
   overflow-y: auto;
   overflow-x: hidden;
-}
+} */
 
 .ag-courses_box {
   display: -webkit-box;
   display: -ms-flexbox;
 
-  padding: 50px 0;
+  padding: 10px 0;
 }
 .ag-courses_item {
   /* -ms-flex-preferred-size: calc(33.33333% - 30px);
@@ -210,21 +213,16 @@ export default {
 .ag-courses-item_title {
   min-height: 72px;
   line-height: 1;
-
   font-size: 24px;
   overflow: hidden;
-
   font-weight: bold;
-
   color: #fff;
-
   z-index: 2;
   position: relative;
 }
 .ag-courses-item_date-box {
   font-size: 16px;
   color: #fff;
-
   z-index: 2;
   position: relative;
 }
@@ -293,6 +291,9 @@ export default {
   }
 }
 @media only screen and (min-width: 767px) {
+  .nome-utente-specializzato {
+    font-size: 22px;
+  }
   .user-card-img img {
     width: 100px;
     height: 100px;
