@@ -34,7 +34,7 @@ export default {
         alt=""
       />
     </div>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column testo-info">
       <ul class="list-unstyled">
         <li>
           <h3>{{ name + ' ' + surname }}</h3>
@@ -163,6 +163,18 @@ img {
 
   .star p {
     margin-left: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-info {
+    flex-direction: column;
+  }
+
+  .testo-info {
+    margin-top: 30px;
+    position: relative;
+    right: 30px;
   }
 }
 </style>

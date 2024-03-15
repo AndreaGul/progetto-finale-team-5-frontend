@@ -54,7 +54,7 @@ export default {
   overflow-y:auto;
   max-height: 70vh;
   padding: 20px;
-  background-color: #e1e5f2;
+  background-color: aliceblue;
 
   margin-bottom: 35px;
 
