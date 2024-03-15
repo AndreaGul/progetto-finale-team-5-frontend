@@ -11,7 +11,10 @@ export default {
       class="container d-flex flex-row justify-content-between align-items-center p-3"
     >
       <h2 class="mb-0">
-        <router-link :to="{ name: 'home' }"> HOME </router-link>
+        <router-link :to="{ name: 'home' }">
+          <!-- HOME -->
+          <img src="/BOOLTECHSBLU.png" alt="" />
+        </router-link>
       </h2>
 
       <a
@@ -27,6 +30,10 @@ export default {
 
 <style scoped lang="scss">
 header {
+  img {
+    max-height: 45px;
+  }
+
   border-bottom: 1px solid #022b3aff;
   a {
     list-style: none;
