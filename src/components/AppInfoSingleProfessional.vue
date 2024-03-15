@@ -23,6 +23,7 @@ export default {
   <div class="card-info d-flex align-items-center">
     <div class="cont-img">
       <img
+        class="img-info"
         v-if="photo && photo.startsWith('uploads')"
         :src="'http://127.0.0.1:8000/storage/' + photo"
         alt=""
@@ -35,7 +36,7 @@ export default {
       />
     </div>
     <div class="d-flex flex-column testo-info">
-      <ul class="list-unstyled">
+      <ul class="list-unstyled list-info">
         <li>
           <h3>{{ name + ' ' + surname }}</h3>
         </li>
@@ -48,7 +49,7 @@ export default {
 
       <div class="star d-flex flex-column flex-md-row">
         <AppShowStarVote :stelleColorate="vote"></AppShowStarVote>
-        <div class="align-self-md-end">
+        <div class="star align-self-md-end info-voti">
           <p v-if="num_vote === 0">(Nessun Voto)</p>
           <p v-else-if="num_vote === 1">(Su un voto)</p>
           <p v-else>(Su {{ num_vote }} voti)</p>
@@ -168,6 +169,14 @@ img {
   }
 }
 
+@media (max-width: 992px) {
+  .img-info {
+    text-align: center;
+    height: 230px;
+    width: 230px;
+  }
+}
+
 @media (max-width: 576px) {
   .card-info {
     flex-direction: column;
@@ -177,6 +186,22 @@ img {
     margin-top: 30px;
     position: relative;
     right: 30px;
+  }
+
+  .star {
+    display: flex;
+    justify-content: center;
+  }
+
+  .list-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .specialization {
+    text-align: center;
   }
 }
 </style>
