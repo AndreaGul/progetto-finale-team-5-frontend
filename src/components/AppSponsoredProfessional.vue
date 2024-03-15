@@ -9,10 +9,13 @@ export default {
       nextPage: null,
       prevPage: null,
       store,
+      loading: false,
     };
   },
   methods: {
     sponsorizedCards(url) {
+      this.loading = true;
+
       console.log('sto qua');
       console.log(url);
       axios.get(url).then((response) => {
@@ -20,6 +23,7 @@ export default {
         this.sponsored = response.data.data.data;
         this.nextPage = response.data.data.next_page_url; // Assicurati che la risposta contenga un campo 'next_page_url'
         this.prevPage = response.data.data.prev_page_url;
+        this.loading = false;
       });
     },
     getInfo(id) {
@@ -57,7 +61,15 @@ export default {
         </div>
       </div>
 
-      <div class="ag-format-container">
+      <div class="container" v-if="loading">
+        <div class="my-3">
+          caricamento in corso...
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div v-else class="ag-format-container">
         <div class="ag-courses_box row g-3">
           <div
             class="ag-courses_item col-12 col-md-4 col-xl-4"
