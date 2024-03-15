@@ -147,7 +147,7 @@ export default {
 
 <style scoped>
 .container_sponsorizzati {
-  background-color: #bfdbf7;
+  background: linear-gradient(to bottom, #bedaf6, rgba(190, 218, 246, 1) 0%);
 }
 
 .titolo {

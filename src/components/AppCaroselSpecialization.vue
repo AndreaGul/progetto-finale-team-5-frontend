@@ -56,28 +56,30 @@ export default {
 </script>
 
 <template>
-  <div class="contain">
-    <div class="carousel-container">
-      <div id="carousel" :class="'classecarousel' + (active + 1)">
-        <div
-          v-for="(specialization, index) in specializations"
-          class="container-r col-3 item"
-          @click="changeActive(index)"
-        >
-          <div class="wrapper-r">
-            <div :class="'banner-image banner-' + index"></div>
-            <h1>{{ specialization.name }}</h1>
-            <p>
-              {{ specialization.description }}
-            </p>
-          </div>
-          <div class="button-wrapper">
-            <button
-              class="btn outline"
-              @click="search(specialization.specialization_name)"
-            >
-              <h5 class="m-0">Cerca</h5>
-            </button>
+  <div class="img-sfondo">
+    <div class="contain">
+      <div class="carousel-container">
+        <div id="carousel" :class="'classecarousel' + (active + 1)">
+          <div
+            v-for="(specialization, index) in specializations"
+            class="container-r col-3 item"
+            @click="changeActive(index)"
+          >
+            <div class="wrapper-r">
+              <div :class="'banner-image banner-' + index"></div>
+              <h1>{{ specialization.name }}</h1>
+              <p>
+                {{ specialization.description }}
+              </p>
+            </div>
+            <div class="button-wrapper">
+              <button
+                class="btn outline"
+                @click="search(specialization.specialization_name)"
+              >
+                <h5 class="m-0">Cerca</h5>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -160,27 +162,41 @@ div.item:nth-of-type(5) {
   --position: 5;
 }
 
-.contain {
-  /* solid background */
-  background: rgb(0, 212, 255);
-
-  /* gradient background*/
-  background: linear-gradient(
-    45deg,
-    rgba(0, 212, 255, 1) 0%,
-    rgba(11, 3, 45, 1) 100%
-  );
-
-  /* photo background */
+.img-sfondo {
   background-image: url(https://www.coplus.co.uk/media/2fknnobq/full-stack-web-dev.jpg);
 
   background-size: cover;
   background-position: center;
+}
+
+.contain {
+  /* photo background */
 
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   padding: 20px;
+
+  background: rgb(190, 218, 246);
+  background: linear-gradient(
+    180deg,
+    rgba(190, 218, 246, 1) 0%,
+    rgba(177, 206, 238, 1) 5%,
+    rgba(158, 187, 227, 0.9290091036414566) 11%,
+    rgba(142, 172, 217, 0.861782212885154) 16%,
+    rgba(125, 155, 206, 0.8113620448179272) 21%,
+    rgba(107, 138, 195, 0.7161239495798319) 27%,
+    rgba(75, 107, 175, 0.48923319327731096) 34%,
+    rgba(75, 107, 175, 0.31836484593837533) 43%,
+    rgba(75, 107, 175, 0.06346288515406162) 54%,
+    rgba(75, 107, 175, 0) 70%
+  );
+  // background-image: -webkit-linear-gradient(
+  //     bottom,
+  //     rgba(178, 34, 34, 0.1),
+  //     rgba(75, 107, 175, 1)
+  //   ),
+  //   url(https://www.coplus.co.uk/media/2fknnobq/full-stack-web-dev.jpg);
 }
 
 .container-r {
