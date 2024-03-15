@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="scss">
 .logo img {
-  max-height: 30px;
+  max-height: 60px;
   position: relative;
   right: 40px;
 }
