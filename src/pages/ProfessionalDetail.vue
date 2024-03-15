@@ -126,6 +126,7 @@ export default {
             this.alertMessage = '';
           }, 2000);
           this.reviewSent = true;
+          this.getInfo();
         })
         .catch((error) => {
           this.alertError = error.response.data.error;
@@ -157,6 +158,7 @@ export default {
             this.alertMessage = '';
           }, 2000);
           this.voteSent = true;
+          this.getInfo();
         })
         .catch((error) => {
           this.alertError = error.response.data.error;
