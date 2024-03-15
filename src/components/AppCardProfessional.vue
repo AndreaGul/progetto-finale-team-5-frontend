@@ -34,7 +34,7 @@ export default {
 <template>
   <!-- Professionista -->
   <div class="wrapper col-12 col-lg-6 pb-3 card-box">
-    <div class="user-card justify-content-start " :class="{ 'card-sponsored': sponsorization[0] }">
+    <div class="user-card justify-content-start text-center" :class="{ 'card-sponsored': sponsorization[0] }">
       <div class="user-card-img">
         <img v-if="photo && photo.startsWith('uploads')" :src="'http://127.0.0.1:8000/storage/' + photo" alt="" />
         <img v-else-if="photo" :src="photo" alt="" />
@@ -42,7 +42,8 @@ export default {
           src="https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
           alt="" />
       </div>
-      <div class="user-card-info ">
+      <div class="user-card-info d-flex flex-column">
+        <div class="flex-grow-1">
         <!-- Informazioni Professionista -->
         <div class="d-flex flex-column flex-md-row align-items-cente info mb-2">
           <h2>{{ slug.split('-').join(' ') }} <div v-if="sponsorization[0]"><i class="fa-solid fa-crown"></i></div></h2>
@@ -63,12 +64,13 @@ export default {
         <p><span>Indirizzo:</span> {{ address }}</p>
         <!-- Fine Informazioni Professionista -->
 
-
-
+      </div>
+      <div class="mb-3">
 
         <!-- Dettaglio Professionista -->
         <router-link :to="{name: 'ProfessionalDetail', params: { slug: slug }}" @click="getInfo" class="text-decoration-none btn btn-detail">Dettaglio</router-link>
         <!-- Fine Dettaglio Professionista -->
+        </div>
       </div>
     </div>
   </div>
@@ -132,6 +134,7 @@ export default {
 
   .user-card-info {
     z-index: 3;
+    height: 100%;
 
     h2 {
       font-family: 'Bebas Neue', sans-serif;
@@ -223,6 +226,9 @@ export default {
 //     }
 //   }
 // }
+
+
+
 }
 
 @media only screen and (min-width: 1200px) {
