@@ -58,7 +58,7 @@ export default {
 <template>
   <div class="contain">
     <div class="carousel-container">
-      <main id="carousel" :class="'classecarousel' + (active + 1)">
+      <div id="carousel" :class="'classecarousel' + (active + 1)">
         <div
           v-for="(specialization, index) in specializations"
           class="container-r col-3 item"
@@ -76,16 +76,20 @@ export default {
               class="btn outline"
               @click="search(specialization.specialization_name)"
             >
-              Cerca il professionista che fa per te
+              <h5 class="m-0">Cerca</h5>
             </button>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.contain {
+  overflow-x: hidden;
+}
+
 .carousel-container {
   height: 700px;
   margin: 0;
@@ -93,10 +97,11 @@ export default {
   justify-items: center;
 }
 
-main#carousel {
+div#carousel {
   grid-row: 1 / 2;
   grid-column: 1 / 8;
-  width: calc(100vw - 20px);
+  width: 100vw;
+
   height: 100%;
   display: flex;
   align-items: center;
@@ -301,11 +306,21 @@ p {
     font-size: 11px;
   }
 
+  div.item {
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    transform: rotateY(calc(-10deg * var(--r)))
+      translateX(calc(-250px * var(--r)));
+  }
   .container-r {
     height: 500px;
     width: 300px;
   }
 
+  .banner-image {
+    height: 200px;
+  }
   .banner-image-0 {
     height: 200px;
   }
@@ -324,7 +339,16 @@ p {
     flex-direction: column;
     gap: 30px;
   }
+  .carousel-container {
+    height: 500px;
+  }
 
+  div.item {
+    width: 250px;
+    height: 420px;
+    transform: rotateY(calc(-10deg * var(--r)))
+      translateX(calc(-220px * var(--r)));
+  }
   .container-r {
     height: 400px;
     width: 300px;
@@ -333,7 +357,58 @@ p {
     font-size: 20px;
   }
   p {
-    font-size: 13px;
+    font-size: 11px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+
+  .banner-image {
+    height: 120px;
+  }
+
+  .banner-image-0 {
+    height: 80px;
+  }
+
+  .banner-image-1 {
+    height: 80px;
+  }
+
+  .banner-image-2 {
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .contain {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .carousel-container {
+    height: 500px;
+  }
+
+  div.item {
+    width: 200px;
+    height: 350px;
+    transform: rotateY(calc(-10deg * var(--r)))
+      translateX(calc(-160px * var(--r)));
+  }
+  .container-r {
+    padding: 15px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 9px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+  .banner-image {
+    height: 120px;
   }
 
   .banner-image-0 {
