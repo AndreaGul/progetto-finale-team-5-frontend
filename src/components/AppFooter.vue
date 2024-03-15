@@ -21,7 +21,9 @@ export default {
             <li><a href="#">Contatti</a></li>
           </ul>
         </div>
-        <div>img logo</div>
+        <div class="logo">
+          <img src="/BOOLTECHSLOGO.png" alt="" />
+        </div>
         <div class="footer-social">
           <ul>
             <li>
@@ -47,6 +49,11 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.logo img {
+  max-height: 45px;
+  margin: 0;
+  padding: 0;
+}
 .footer-up {
   background-color: #022b3a;
   color: #fff;
@@ -91,6 +98,5 @@ export default {
   background-color: #123c46;
   color: white;
   padding: 15px 0;
-
 }
 </style>
