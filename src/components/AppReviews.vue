@@ -55,6 +55,7 @@ export default {
   max-height: 70vh;
   padding: 20px;
   background-color: aliceblue;
+    border: 1px solid #1f798b;
 
   margin-bottom: 35px;
 

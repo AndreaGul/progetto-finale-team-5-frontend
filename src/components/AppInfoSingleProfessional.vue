@@ -114,8 +114,10 @@ img {
 
 .card-details {
   background-color: aliceblue;
-  padding: 25px;
+  padding: 20px;
+  margin-bottom: 25px;
   border-radius: 10px;
+  border: 1px solid #1f798b;
   h4 {
     font-size: 22px;
   }

@@ -56,9 +56,10 @@ export default {
   position: relative;
   top: 10px;
   padding: 20px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   background-color: aliceblue;
   border-radius: 10px;
+  border: 1px solid #1f798b;
 }
 
 .card-vote-star {
