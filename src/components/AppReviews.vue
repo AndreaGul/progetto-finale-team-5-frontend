@@ -24,7 +24,7 @@ export default {
       <h2 v-if="reviews.length === 1">{{ reviews.length }} Recensione</h2>
       <h2 v-else>{{ reviews.length }} Recensioni</h2>
       <div v-if="reviews.length > 0">
-        <div class="info-reviews" v-for="review in reviews.slice().reverse()">
+        <div class="info-reviews" v-for="review in reviews">
           <p class="nome-recensione">{{ review.name_reviewer }}
  <p class="data-recensione">{{ dataFormat(review.created_at) }}</p>
            </p>
