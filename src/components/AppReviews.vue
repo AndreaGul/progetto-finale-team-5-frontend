@@ -89,16 +89,16 @@ export default {
 
   .message{
 box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-      border-radius: 10px;
+      border-radius: 5px;
       background-color: #e1e5f2;
   }
 }
 
 .info-reviews {
-  background-color: rgb(249, 247, 247);
+  background-color: white;
   padding: 15px;
   margin-bottom: 10px;
-  border-radius: 33px;
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 .star {
