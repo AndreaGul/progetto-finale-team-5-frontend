@@ -1,17 +1,16 @@
 <script>
+import AppJumbotron from "./AppJumbotron.vue";
+import AppCardProfessional from "./AppCardProfessional.vue";
+import AppSponsoredProfessional from "./AppSponsoredProfessional.vue";
+import AppCarousel from "./AppLogoCarousel.vue";
+import AppInfoHomepage from "./AppInfoHomepage.vue";
+import store from "../../store";
+import axios from "axios";
 
-import AppJumbotron from './AppJumbotron.vue';
-import AppCardProfessional from './AppCardProfessional.vue';
-import AppSponsoredProfessional from './AppSponsoredProfessional.vue';
-import AppCarousel from './AppLogoCarousel.vue';
-import AppInfoHomepage from './AppInfoHomepage.vue';
-import store from '../../store';
-import axios from 'axios';
+import AppLogoCarousel from "./AppLogoCarousel.vue";
+import AppSectionSubscribe from "./AppSectionSubscribe.vue";
 
-import AppLogoCarousel from './AppLogoCarousel.vue';
-import AppSectionSubscribe from './AppSectionSubscribe.vue';
-
-import AppCaroselSpecialization from './AppCaroselSpecialization.vue';
+import AppCaroselSpecialization from "./AppCaroselSpecialization.vue";
 
 export default {
   name: "Main",
@@ -36,12 +35,15 @@ export default {
 
   methods: {
     search() {
+      this.store.specializationsName = this.store.specializationsName.replace(
+        " ",
+        "-"
+      );
       this.$router.push({
         name: "professionalList",
         params: { id: this.store.specializationsName },
       });
     },
-
   },
   created() {
     this.store.specializationsName = "";
@@ -52,7 +54,7 @@ export default {
 <template>
   <AppJumbotron @search="search"></AppJumbotron>
   <AppInfoHomepage></AppInfoHomepage>
-  <AppSponsoredProfessional :sponsorProp="sponsored"></AppSponsoredProfessional>
+  <AppSponsoredProfessional></AppSponsoredProfessional>
   <AppCaroselSpecialization></AppCaroselSpecialization>
   <AppLogoCarousel></AppLogoCarousel>
   <AppSectionSubscribe></AppSectionSubscribe>

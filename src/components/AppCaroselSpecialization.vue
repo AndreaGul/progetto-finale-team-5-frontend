@@ -1,41 +1,41 @@
 <script>
-import store from '../../store';
+import store from "../../store";
 export default {
-  name: 'prova',
+  name: "prova",
   data() {
     return {
       active: 2,
       store,
       specializations: [
         {
-          name: 'web development',
+          name: "web development",
           description:
-            'Il processo di creazione e manutenzione di siti e applicazioni web.',
-          specialization_name: 'Web Development',
+            "Il processo di creazione e manutenzione di siti e applicazioni web.",
+          specialization_name: "Web-Development",
         },
         {
-          name: 'data analysis',
+          name: "data analysis",
           description:
-            'Il processo di esplorazione, interpretazione dei dati e analisi.',
-          specialization_name: 'Data Analysis',
+            "Il processo di esplorazione, interpretazione dei dati e analisi.",
+          specialization_name: "Data-Analysis",
         },
         {
-          name: 'machine learning',
+          name: "machine learning",
           description:
             "L'arte di far imparare ai computer senza istruzioni esplicite.",
-          specialization_name: 'Machine Learning',
+          specialization_name: "Machine-Learning",
         },
         {
-          name: 'artificial intelligence',
+          name: "artificial intelligence",
           description:
-            'Sviluppo di sistemi in grado di eseguire compiti richiedenti intelligenza umana.',
-          specialization_name: 'Artificial Intelligence',
+            "Sviluppo di sistemi in grado di eseguire compiti richiedenti intelligenza umana.",
+          specialization_name: "Artificial-Intelligence",
         },
         {
-          name: 'mobile development',
+          name: "mobile development",
           description:
-            'Processo di creazione di applicazioni software per dispositivi mobili.',
-          specialization_name: 'Mobile Development',
+            "Processo di creazione di applicazioni software per dispositivi mobili.",
+          specialization_name: "Mobile-Development",
         },
       ],
     };
@@ -44,7 +44,7 @@ export default {
     search(name) {
       this.store.specializationsName = name;
       this.$router.push({
-        name: 'professionalList',
+        name: "professionalList",
         params: { id: this.store.specializationsName },
       });
     },
@@ -251,7 +251,7 @@ div.item:nth-of-type(5) {
 
 h1 {
   margin-top: 20px;
-  font-family: 'Righteous', sans-serif;
+  font-family: "Righteous", sans-serif;
   color: rgba(255, 255, 255, 0.98);
   text-transform: uppercase;
   font-size: 30px;
@@ -259,7 +259,7 @@ h1 {
 
 p {
   color: #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;
