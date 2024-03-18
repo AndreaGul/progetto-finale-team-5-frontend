@@ -117,7 +117,7 @@ export default {
                 </div>
 
                 <div class="ag-courses-item_date-box">
-                  <div v-if="!specializations"></div>
+                  <div v-if="!sponsor.specializations"></div>
                   <div v-else class="card-description">Specializzazioni:</div>
                   <p class="specialization-list">
                     <span
