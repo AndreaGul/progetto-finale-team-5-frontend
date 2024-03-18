@@ -250,7 +250,7 @@ export default {
           <!-- /alert se errori -->
 
           <AppSendVote v-if="!voteSent" @newVote="sendVote"></AppSendVote>
-          <div class="vote-container" v-else>
+          <div class="vote-container mb-3" v-else>
             <h3 class="text-uppercase m-0 col-12 p-2">
               Hai inviato correttamente il voto!
             </h3>
@@ -259,7 +259,7 @@ export default {
             v-if="!reviewSent"
             @newReview="sendReview"
           ></AppSendReviews>
-          <div class="vote-container" v-else>
+          <div class="vote-container mb-3" v-else>
             <h3 class="text-uppercase m-0 col-12 p-2">
               Hai inviato correttamente la recensione!
             </h3>
