@@ -12,6 +12,7 @@ export default {
     'curriculum',
     'vote',
     'num_vote',
+    'performance',
   ],
   components: {
     AppShowStarVote,
@@ -57,8 +58,17 @@ export default {
       </div>
     </div>
   </div>
-  <div class="card-details" v-if="address || phone || curriculum">
+  <div
+    class="card-details"
+    v-if="address || phone || curriculum || performance"
+  >
     <ul class="p-0 m-0">
+      <li class="list-unstyled" v-if="performance">
+        <h5>
+          <i class="fa-solid fa-circle-info"></i>
+        </h5>
+        <h6>{{ performance }}</h6>
+      </li>
       <li class="list-unstyled" v-if="address">
         <h4>
           Indirizzo
@@ -68,7 +78,7 @@ export default {
         <h6>{{ address }}</h6>
       </li>
       <li class="list-unstyled" v-if="phone">
-        <h4>Telefono</h4>
+        <h4>Telefono <i class="fa-solid fa-phone"></i></h4>
         <h6>{{ phone }}</h6>
       </li>
 
