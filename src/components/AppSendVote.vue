@@ -27,7 +27,7 @@ export default {
   <!-- Invio Voto -->
   <div class="send-vote-container">
     <div class="align-items-start card-vote-star d-flex flex-column">
-      <h3 class="text-uppercase m-0">Esprimi il tuo gradimento</h3>
+      <h3 class="text-uppercase m-0">Com'è stata la tua esperienza?</h3>
       <div class="mt-2">
         <ul class="d-flex list-unstyled star">
           <!-- <li><i class="fa-solid fa-star"></i></li> -->
