@@ -1,8 +1,8 @@
 <script>
-import store from "../../store";
-import axios from "axios";
+import store from '../../store';
+import axios from 'axios';
 export default {
-  name: "CardSponsor",
+  name: 'CardSponsor',
   data() {
     return {
       sponsored: [],
@@ -16,7 +16,7 @@ export default {
     sponsorizedCards(url) {
       this.loading = true;
 
-      console.log("sto qua");
+      console.log('sto qua');
       console.log(url);
       axios.get(url).then((response) => {
         console.log(response);
@@ -31,7 +31,7 @@ export default {
     },
   },
   created() {
-    this.sponsorizedCards("http://127.0.0.1:8000/api/professionals/sponsored");
+    this.sponsorizedCards('http://127.0.0.1:8000/api/professionals/sponsored');
   },
 };
 </script>
@@ -151,7 +151,7 @@ export default {
 }
 
 .titolo {
-  font-family: "Share Tech Mono", monospace;
+  font-family: 'Share Tech Mono', monospace;
   font-weight: 600;
   font-size: 35px;
 }
@@ -319,6 +319,13 @@ export default {
   }
   .ag-courses-item_title {
     font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .user-card-img img {
+    width: 80px;
+    height: 80px;
   }
 }
 </style>
