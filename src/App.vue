@@ -16,8 +16,17 @@ export default {
 
 <template>
   <!-- <AppHeader></AppHeader> -->
-  <router-view />
-  <AppFooter></AppFooter>
+  <div class="d-flex flex-column base-height">
+    <div class="flex-grow-1">
+      <router-view />
+    </div>
+
+    <AppFooter></AppFooter>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.base-height {
+  height: 100vh;
+}
+</style>
