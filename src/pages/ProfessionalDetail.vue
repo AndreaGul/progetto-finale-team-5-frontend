@@ -202,6 +202,7 @@ export default {
             :curriculum="professional.curriculum"
             :vote="professional.average_rating"
             :num_vote="professional.votes_count"
+            :performance="professional.performance"
           ></AppInfoSingleProfessional>
 
           <!-- alert se tutto ok-->
