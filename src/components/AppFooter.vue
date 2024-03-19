@@ -45,7 +45,13 @@ export default {
       </div>
     </div>
     <div class="footer-down">
-      <div class="container">BoolTechs. Designed by Team 5</div>
+      <div class="container">
+        <p class="m-0">BoolTechs. Designed by:</p>
+        <p>
+          Andrea Gulino, Alessandro Tacconi, Filippo Bersan, Matteo Medori,
+          Matteo Cicigoi.
+        </p>
+      </div>
     </div>
   </footer>
 </template>
