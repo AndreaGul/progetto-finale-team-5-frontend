@@ -30,7 +30,7 @@ export default {
            </p>
 
                 <div class="message">
-          <p class="testo-recensione">{{ review.review }}</p>
+          <p class="testo-recensione py-3">{{ review.review }}</p>
                 </div>
         </div>
       </div>
